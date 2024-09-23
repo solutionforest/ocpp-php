@@ -1,0 +1,16 @@
+{
+    "name": "solution-forest/oocp-php",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "SolutionForest\\OocpPhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "kelseylee",
+            "email": "kelsey.lee@solutionforest.net"
+        }
+    ],
+    "require": {}
+}
