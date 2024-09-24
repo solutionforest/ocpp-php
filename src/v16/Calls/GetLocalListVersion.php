@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OcppPhp\Calls;
+namespace SolutionForest\OocpPhp\Calls;
 
 abstract class GetLocalListVersion
 {

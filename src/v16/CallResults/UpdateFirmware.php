@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OcppPhp\CallResults;
+namespace SolutionForest\OocpPhp\CallResults;
 
 abstract class UpdateFirmware
 {

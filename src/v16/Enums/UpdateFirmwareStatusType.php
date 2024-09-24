@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OcppPhp\Enums;
+namespace SolutionForest\OocpPhp\Enums;
 
 /**
  * Values of the UpdateFirmwareStatusType field of a value in SignedUpdateFirmware.

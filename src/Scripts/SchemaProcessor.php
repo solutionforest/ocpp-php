@@ -1,20 +1,22 @@
 <?php
 
-namespace SolutionForest\OcppPhp\Scripts;
+namespace SolutionForest\OocpPhp\Scripts;
 
-require __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . "/../../vendor/autoload.php";
 
 use Nette\PhpGenerator\ClassType;
+use Nette\PhpGenerator\EnumType;
 use Nette\PhpGenerator\PhpNamespace;
 use Nette\PhpGenerator\Printer;
 
 abstract class SchemaProcessor
 {
-    public string $basepath = "../v16";
+    public string $basepath;
 
     public function main(): void
     {
-        $schemas = glob($this->basepath . "/Schemas/*.json");
+        $this->readVersion();
+        $schemas = glob(__DIR__ . $this->basepath . "/Schemas/*.json");
 
         foreach ($schemas as $schema) {
             $classes = $this->parseSchema($schema);
@@ -22,17 +24,34 @@ abstract class SchemaProcessor
         }
     }
 
+    protected function readVersion(): void
+    {
+        echo "Select version (v16/v201): ";
+        $handle = fopen("php://stdin", "r");
+        $version = trim(fgets($handle));
+        fclose($handle);
 
-    protected function generateDataClass(ClassType $class, string $filepath): void
+        if (!in_array($version, ['v16', 'v201'])) {
+            echo "Invalid version selected. Exiting.\n";
+            exit(1);
+        }
+
+        $this->basepath = "/../" . $version;
+    }
+
+
+    protected function generateDataClass(ClassType|EnumType $class, string $filepath): void
     {
         $subnamespace = ucfirst($filepath);
-        $namespace = new PhpNamespace("SolutionForest\OcppPhp\\" . $subnamespace);
+        $namespace = new PhpNamespace("SolutionForest\OocpPhp\\" . $subnamespace);
         $filename = $class->getName();
         $printer = new Printer;
         $class = $printer->printClass($class, $namespace);
         $namespace = $printer->printNamespace($namespace);
 
-        file_put_contents("{$this->basepath}/{$filepath}/{$filename}.php", "<?php\n\n{$namespace}{$class}");
+        echo "Creating {$filename} in {$subnamespace}\n";
+
+        file_put_contents(__DIR__ . "{$this->basepath}/{$filepath}/{$filename}.php", "<?php\n\n{$namespace}{$class}");
     }
 
     abstract protected function processClasses(array $classes): void;

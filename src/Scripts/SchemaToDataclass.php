@@ -1,13 +1,10 @@
 <?php
 
-namespace SolutionForest\OcppPhp\Scripts;
+namespace SolutionForest\OocpPhp\Scripts;
 
-require __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . "/../../vendor/autoload.php";
 
 use Nette\PhpGenerator\ClassType;
-
-$converter = new SchemaToDataclass();
-$converter->main();
 
 class SchemaToDataclass extends SchemaProcessor
 {
@@ -111,3 +108,4 @@ class SchemaToDataclass extends SchemaProcessor
         return $type;
     }
 }
+

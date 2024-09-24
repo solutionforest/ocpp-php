@@ -1,15 +1,10 @@
 <?php
 
-namespace SolutionForest\OcppPhp\Scripts;
+namespace SolutionForest\OocpPhp\Scripts;
 
-require __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . "/../../vendor/autoload.php";
 
 use Nette\PhpGenerator\EnumType;
-use Nette\PhpGenerator\PhpNamespace;
-use Nette\PhpGenerator\Printer;
-
-$converter = new SchemaToEnum();
-$converter->main();
 
 class SchemaToEnum extends SchemaProcessor
 {
