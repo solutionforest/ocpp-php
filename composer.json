@@ -12,5 +12,8 @@
             "email": "kelsey.lee@solutionforest.net"
         }
     ],
-    "require": {}
+    "require": {
+        "react/socket": "^1.16",
+        "nette/php-generator": "^4.1"
+    }
 }
