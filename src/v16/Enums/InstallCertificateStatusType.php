@@ -1,5 +1,7 @@
 <?php
 
+namespace SolutionForest\OcppPhp\Enums;
+
 /**
  * Values of the InstallCertificateStatusType field of a value in InstallCertificate.
  */

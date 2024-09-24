@@ -1,5 +1,7 @@
 <?php
 
+namespace SolutionForest\OcppPhp\Enums;
+
 /**
  * Values of the TriggerMessageStatusType field of a value in ExtendedTriggerMessage.
  */

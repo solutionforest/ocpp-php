@@ -1,5 +1,7 @@
 <?php
 
+namespace SolutionForest\OcppPhp\Enums;
+
 /**
  * Values of the GenericStatusType field of a value in SignCertificate.
  */

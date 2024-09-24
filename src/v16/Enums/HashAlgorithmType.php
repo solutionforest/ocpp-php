@@ -1,5 +1,7 @@
 <?php
 
+namespace SolutionForest\OcppPhp\Enums;
+
 /**
  * Values of the HashAlgorithmType field of a value in DeleteCertificate , GetInstalledCertificateIds.
  */
