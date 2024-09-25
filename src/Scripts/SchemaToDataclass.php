@@ -53,26 +53,30 @@ class SchemaToDataclass extends SchemaProcessor
         }
 
         foreach ($schemaContent["properties"] as $property => $definition) {
-            if ($property === "customData") {
-                continue;
-            }
+            // if ($property === "customData") {
+            //     $class->addProperty($property)->setType('mixed')->setInitialized();
+            //     continue;
+            // }
 
             $required = isset($schemaContent["required"]) && in_array($property, $schemaContent["required"]);
+            $description = "";
 
             if (isset($definition["type"])) {
                 $type = $definition["type"];
+                $description = $definition["description"] ?? "";
             } else {
                 if (isset($definition["\$ref"])) {
                     $ref = explode("/", $definition["\$ref"]);
                     $ref = end($ref);
                     $type = $schemaContent["definitions"][$ref]["type"];
+                    $description = $schemaContent["definitions"][$ref]["description"] ?? "";
                 } else {
                     $type = "any";
                 }
             }
 
             $type = $this->mapSchemaTypeToPhp($type, $required);
-            $class->addProperty($property)->setType($type)->setInitialized(!$required);
+            $class->addProperty($property)->setType($type)->setInitialized(!$required)->addComment(html_entity_decode($description));
         }
 
         if ($call) {
