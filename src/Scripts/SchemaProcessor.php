@@ -54,6 +54,21 @@ abstract class SchemaProcessor
         file_put_contents(__DIR__ . "{$this->basepath}/{$filepath}/{$filename}.php", "<?php\n\n{$namespace}{$class}");
     }
 
+    protected function getNameFromSchema(string $schemaPath): string
+    {
+        $title = basename($schemaPath, '.json');
+        // $name = null;
+        // if (isset($schemaData['$id'])) {
+        //     $idParts = explode(':', $schemaData['$id']);
+        //     if (!empty($idParts)) {
+        //         $name = str_replace(['.req', '.conf'], '', end($idParts));
+        //     }
+        // }
+        // $title = $name ?? $schemaData['title'];
+        $title = preg_replace("/[^a-zA-Z0-9]+/", "", $title);
+        return $title;
+    }
+
     abstract protected function processClasses(array $classes): void;
 
     abstract protected function parseSchema(string $schema): array;

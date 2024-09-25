@@ -23,14 +23,7 @@ class SchemaToDataclass extends SchemaProcessor
     {
         $schemaContent = json_decode(file_get_contents($schema), true);
 
-        $name = null;
-        if (isset($schemaContent['$id'])) {
-            $idParts = explode(':', $schemaContent['$id']);
-            if (!empty($idParts)) {
-                $name = str_replace(['.req', '.conf'], '', end($idParts));
-            }
-        }
-        $title = $name ?? $schemaContent['title'];
+        $title = $this->getNameFromSchema($schema);
 
         $call = false;
         $callResult = false;
@@ -43,6 +36,8 @@ class SchemaToDataclass extends SchemaProcessor
         } elseif (substr($title, -8) === "Response") {
             $callResult = true;
             $title = substr($title, 0, -8);
+        } else {
+            $call = true;
         }
 
         $class = new ClassType($title);
@@ -108,4 +103,3 @@ class SchemaToDataclass extends SchemaProcessor
         return $type;
     }
 }
-

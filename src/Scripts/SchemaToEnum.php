@@ -26,28 +26,21 @@ class SchemaToEnum extends SchemaProcessor
             return [];
         }
 
-
-        $name = null;
-        if (isset($schemaData['$id'])) {
-            $idParts = explode(':', $schemaData['$id']);
-            if (!empty($idParts)) {
-                $name = str_replace(['.req', '.conf'], '', end($idParts));
-            }
-        }
-        $title = $name ?? $schemaData['title'];
+        $title = $this->getNameFromSchema($schema);
 
         $definitions = isset($schemaData['definitions']) ? $schemaData['definitions'] : [];
 
         foreach ($definitions as $enumType => $value) {
-            if (str_contains($enumType, 'Enum')) {
-                $typeName = str_replace('Enum', '', $enumType);
+            if (str_contains($enumType, 'EnumType')) {
+                $typeName = str_replace('EnumType', '', $enumType);
                 if (!in_array($typeName, array_keys($this->existingEnums))) {
                     $enum = new EnumType($typeName);
 
                     $enum->addComment("Values of the {$typeName} field of a value in {$title}.");
 
                     foreach ($value['enum'] as $enumAttr) {
-                        $enum->addCase($enumAttr);
+                        $enumAttrTitle = preg_replace("/[^a-zA-Z0-9]+/", "", $enumAttr);
+                        $enum->addCase($enumAttrTitle, $enumAttr);
                     }
 
                     $this->existingEnums[$typeName] = $enum;
