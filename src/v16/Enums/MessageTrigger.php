@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Enums;
+namespace SolutionForest\OocpPhp\v16\Enums;
 
 /**
  * Values of the MessageTrigger field of a value in ExtendedTriggerMessage.

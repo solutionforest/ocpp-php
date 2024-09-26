@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class SetDisplayMessage
 {
@@ -10,7 +10,7 @@ abstract class SetDisplayMessage
 	/**
 	 * This indicates whether the Charging Station is able to display the message.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\DisplayMessageStatus $status;
 
 	/**
 	 * Element providing more information about the status.

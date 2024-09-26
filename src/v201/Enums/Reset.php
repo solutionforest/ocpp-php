@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Enums;
+namespace SolutionForest\OocpPhp\v201\Enums;
 
 /**
  * Values of the Reset field of a value in ResetRequest.

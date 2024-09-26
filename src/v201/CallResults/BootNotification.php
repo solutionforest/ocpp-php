@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class BootNotification
 {
@@ -21,7 +21,7 @@ abstract class BootNotification
 	 * This contains whether the Charging Station has been registered
 	 * within the CSMS.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\RegistrationStatus $status;
 
 	/**
 	 * Element providing more information about the status.

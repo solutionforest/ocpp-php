@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class GetBaseReport
 {
@@ -10,7 +10,7 @@ abstract class GetBaseReport
 	/**
 	 * This indicates whether the Charging Station is able to accept this request.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\GenericDeviceModelStatus $status;
 
 	/**
 	 * Element providing more information about the status.

@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class SignCertificate
 {
@@ -10,7 +10,7 @@ abstract class SignCertificate
 	/**
 	 * Specifies whether the CSMS can process the request.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\GenericStatus $status;
 
 	/**
 	 * Element providing more information about the status.

@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class SetMonitoringBase
 {
@@ -10,5 +10,5 @@ abstract class SetMonitoringBase
 	/**
 	 * Specify which monitoring base will be set
 	 */
-	public string $monitoringBase;
+	public string|\SolutionForest\OocpPhp\v201\Enums\MonitoringBase $monitoringBase;
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class SetNetworkProfile
 {
@@ -10,7 +10,7 @@ abstract class SetNetworkProfile
 	/**
 	 * Result of operation.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\SetNetworkProfileStatus $status;
 
 	/**
 	 * Element providing more information about the status.

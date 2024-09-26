@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class TriggerMessage
 {
@@ -10,7 +10,7 @@ abstract class TriggerMessage
 	/**
 	 * Indicates whether the Charging Station will send the requested notification or not.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\TriggerMessageStatus $status;
 
 	/**
 	 * Element providing more information about the status.

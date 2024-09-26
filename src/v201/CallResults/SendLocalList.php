@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class SendLocalList
 {
@@ -10,7 +10,7 @@ abstract class SendLocalList
 	/**
 	 * This indicates whether the Charging Station has successfully received and applied the update of the Local Authorization List.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\SendLocalListStatus $status;
 
 	/**
 	 * Element providing more information about the status.

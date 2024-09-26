@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class CancelReservation
 {
@@ -10,7 +10,7 @@ abstract class CancelReservation
 	/**
 	 * This indicates the success or failure of the canceling of a reservation by CSMS.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\CancelReservationStatus $status;
 
 	/**
 	 * Element providing more information about the status.

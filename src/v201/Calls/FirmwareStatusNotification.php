@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class FirmwareStatusNotification
 {
@@ -10,7 +10,7 @@ abstract class FirmwareStatusNotification
 	/**
 	 * This contains the progress status of the firmware installation.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\FirmwareStatus $status;
 
 	/**
 	 * The request id that was provided in the

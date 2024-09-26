@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class Reset
 {
@@ -10,7 +10,7 @@ abstract class Reset
 	/**
 	 * This indicates whether the Charging Station is able to perform the reset.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\ResetStatus $status;
 
 	/**
 	 * Element providing more information about the status.

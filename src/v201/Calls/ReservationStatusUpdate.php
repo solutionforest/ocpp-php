@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class ReservationStatusUpdate
 {
@@ -15,5 +15,5 @@ abstract class ReservationStatusUpdate
 	/**
 	 * The updated reservation status.
 	 */
-	public string $reservationUpdateStatus;
+	public string|\SolutionForest\OocpPhp\v201\Enums\ReservationUpdateStatus $reservationUpdateStatus;
 }

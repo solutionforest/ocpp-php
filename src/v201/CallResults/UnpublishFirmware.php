@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class UnpublishFirmware
 {
@@ -10,5 +10,5 @@ abstract class UnpublishFirmware
 	/**
 	 * Indicates whether the Local Controller succeeded in unpublishing the firmware.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\UnpublishFirmwareStatus $status;
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class SetMonitoringLevel
 {
@@ -10,7 +10,7 @@ abstract class SetMonitoringLevel
 	/**
 	 * Indicates whether the Charging Station was able to accept the request.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\GenericStatus $status;
 
 	/**
 	 * Element providing more information about the status.

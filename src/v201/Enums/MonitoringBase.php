@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Enums;
+namespace SolutionForest\OocpPhp\v201\Enums;
 
 /**
  * Values of the MonitoringBase field of a value in SetMonitoringBaseRequest.

@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Enums;
+namespace SolutionForest\OocpPhp\v16\Enums;
 
 /**
  * Values of the InstallCertificateStatus field of a value in InstallCertificateResponse.

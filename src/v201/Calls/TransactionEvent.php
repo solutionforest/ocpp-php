@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class TransactionEvent
 {
@@ -11,7 +11,7 @@ abstract class TransactionEvent
 	 * This contains the type of this event.
 	 * The first TransactionEvent of a transaction SHALL contain: "Started" The last TransactionEvent of a transaction SHALL contain: "Ended" All others SHALL contain: "Updated"
 	 */
-	public string $eventType;
+	public string|\SolutionForest\OocpPhp\v201\Enums\TransactionEvent $eventType;
 	public ?array $meterValue = null;
 
 	/**
@@ -22,7 +22,7 @@ abstract class TransactionEvent
 	/**
 	 * Reason the Charging Station sends this message to the CSMS
 	 */
-	public string $triggerReason;
+	public string|\SolutionForest\OocpPhp\v201\Enums\TriggerReason $triggerReason;
 
 	/**
 	 * Incremental sequence number, helps with determining if all messages of a transaction have been received.

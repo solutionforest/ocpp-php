@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class GetDisplayMessages
 {
@@ -10,7 +10,7 @@ abstract class GetDisplayMessages
 	/**
 	 * Indicates if the Charging Station has Display Messages that match the request criteria in the <<getdisplaymessagesrequest,GetDisplayMessagesRequest>>
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\GetDisplayMessagesStatus $status;
 
 	/**
 	 * Element providing more information about the status.

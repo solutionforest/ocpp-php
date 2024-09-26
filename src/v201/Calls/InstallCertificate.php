@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class InstallCertificate
 {
@@ -10,7 +10,7 @@ abstract class InstallCertificate
 	/**
 	 * Indicates the certificate type that is sent.
 	 */
-	public string $certificateType;
+	public string|\SolutionForest\OocpPhp\v201\Enums\InstallCertificateUse $certificateType;
 
 	/**
 	 * A PEM encoded X.509 certificate.

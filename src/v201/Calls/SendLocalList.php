@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class SendLocalList
 {
@@ -16,5 +16,5 @@ abstract class SendLocalList
 	/**
 	 * This contains the type of update (full or differential) of this request.
 	 */
-	public string $updateType;
+	public string|\SolutionForest\OocpPhp\v201\Enums\Update $updateType;
 }

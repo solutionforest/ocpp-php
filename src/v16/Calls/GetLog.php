@@ -1,11 +1,11 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v16\Calls;
 
 abstract class GetLog
 {
 	public array $log;
-	public string $logType;
+	public string|\SolutionForest\OocpPhp\v16\Enums\Log $logType;
 	public int $requestId;
 	public ?int $retries = null;
 	public ?int $retryInterval = null;

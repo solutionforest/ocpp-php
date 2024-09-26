@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class LogStatusNotification
 {
@@ -10,7 +10,7 @@ abstract class LogStatusNotification
 	/**
 	 * This contains the status of the log upload.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\UploadLogStatus $status;
 
 	/**
 	 * The request id that was provided in GetLogRequest that started this log upload. This field is mandatory,

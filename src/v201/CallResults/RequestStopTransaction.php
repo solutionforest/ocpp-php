@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class RequestStopTransaction
 {
@@ -10,7 +10,7 @@ abstract class RequestStopTransaction
 	/**
 	 * Status indicating whether Charging Station accepts the request to stop a transaction.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\RequestStartStopStatus $status;
 
 	/**
 	 * Element providing more information about the status.

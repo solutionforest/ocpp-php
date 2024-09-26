@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class Get15118EVCertificate
 {
@@ -10,7 +10,7 @@ abstract class Get15118EVCertificate
 	/**
 	 * Indicates whether the message was processed properly.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\Iso15118EVCertificateStatus $status;
 
 	/**
 	 * Element providing more information about the status.

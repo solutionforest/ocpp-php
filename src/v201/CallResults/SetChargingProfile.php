@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class SetChargingProfile
 {
@@ -10,7 +10,7 @@ abstract class SetChargingProfile
 	/**
 	 * Returns whether the Charging Station has been able to process the message successfully. This does not guarantee the schedule will be followed to the letter. There might be other constraints the Charging Station may need to take into account.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\ChargingProfileStatus $status;
 
 	/**
 	 * Element providing more information about the status.

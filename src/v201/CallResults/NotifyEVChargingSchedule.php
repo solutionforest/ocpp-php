@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class NotifyEVChargingSchedule
 {
@@ -10,7 +10,7 @@ abstract class NotifyEVChargingSchedule
 	/**
 	 * Returns whether the CSMS has been able to process the message successfully. It does not imply any approval of the charging schedule.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\GenericStatus $status;
 
 	/**
 	 * Element providing more information about the status.

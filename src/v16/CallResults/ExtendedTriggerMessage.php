@@ -1,8 +1,8 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v16\CallResults;
 
 abstract class ExtendedTriggerMessage
 {
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v16\Enums\TriggerMessageStatus $status;
 }

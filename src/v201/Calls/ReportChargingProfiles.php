@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class ReportChargingProfiles
 {
@@ -15,7 +15,7 @@ abstract class ReportChargingProfiles
 	/**
 	 * Source that has installed this charging profile.
 	 */
-	public string $chargingLimitSource;
+	public string|\SolutionForest\OocpPhp\v201\Enums\ChargingLimitSource $chargingLimitSource;
 	public array $chargingProfile;
 
 	/**

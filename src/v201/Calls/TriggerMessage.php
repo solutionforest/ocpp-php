@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class TriggerMessage
 {
@@ -17,5 +17,5 @@ abstract class TriggerMessage
 	/**
 	 * Type of message to be triggered.
 	 */
-	public string $requestedMessage;
+	public string|\SolutionForest\OocpPhp\v201\Enums\MessageTrigger $requestedMessage;
 }

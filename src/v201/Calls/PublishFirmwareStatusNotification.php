@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class PublishFirmwareStatusNotification
 {
@@ -11,7 +11,7 @@ abstract class PublishFirmwareStatusNotification
 	 * This contains the progress status of the publishfirmware
 	 * installation.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\PublishFirmwareStatus $status;
 
 	/**
 	 * Required if status is Published. Can be multiple URI’s, if the Local Controller supports e.g. HTTP, HTTPS, and FTP.

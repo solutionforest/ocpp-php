@@ -13,6 +13,10 @@ abstract class SchemaProcessor
 {
     public string $basepath;
 
+    public string $version;
+
+    public string $baseNamespace = "SolutionForest\OocpPhp\\";
+
     public function main(): void
     {
         $this->readVersion();
@@ -37,13 +41,14 @@ abstract class SchemaProcessor
         }
 
         $this->basepath = "/../" . $version;
+        $this->version = $version;
     }
 
 
     protected function generateDataClass(ClassType|EnumType $class, string $filepath): void
     {
         $subnamespace = ucfirst($filepath);
-        $namespace = new PhpNamespace("SolutionForest\OocpPhp\\" . $subnamespace);
+        $namespace = new PhpNamespace($this->baseNamespace  . $this->version . '\\' . $subnamespace);
         $filename = $class->getName();
         $printer = new Printer;
         $class = $printer->printClass($class, $namespace);

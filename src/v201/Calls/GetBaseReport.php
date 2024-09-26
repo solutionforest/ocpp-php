@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class GetBaseReport
 {
@@ -15,5 +15,5 @@ abstract class GetBaseReport
 	/**
 	 * This field specifies the report base.
 	 */
-	public string $reportBase;
+	public string|\SolutionForest\OocpPhp\v201\Enums\ReportBase $reportBase;
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Enums;
+namespace SolutionForest\OocpPhp\v16\Enums;
 
 /**
  * Values of the CertificateUse field of a value in GetInstalledCertificateIds , InstallCertificate.

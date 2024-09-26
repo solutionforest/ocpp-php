@@ -5,6 +5,7 @@ namespace SolutionForest\OocpPhp\Scripts;
 require_once __DIR__ . "/../../vendor/autoload.php";
 
 use Nette\PhpGenerator\ClassType;
+use Nette\PhpGenerator\Type;
 
 class SchemaToDataclass extends SchemaProcessor
 {
@@ -53,6 +54,7 @@ class SchemaToDataclass extends SchemaProcessor
         }
 
         foreach ($schemaContent["properties"] as $property => $definition) {
+            $enumName = null;
             // if ($property === "customData") {
             //     $class->addProperty($property)->setType('mixed')->setInitialized();
             //     continue;
@@ -61,22 +63,29 @@ class SchemaToDataclass extends SchemaProcessor
             $required = isset($schemaContent["required"]) && in_array($property, $schemaContent["required"]);
             $description = "";
 
-            if (isset($definition["type"])) {
+            if (isset($definition["\$ref"])) {
+                $ref = explode("/", $definition["\$ref"]);
+                $ref = end($ref);
+
+                $type = $schemaContent["definitions"][$ref]["type"];
+                $description = $schemaContent["definitions"][$ref]["description"] ?? "";
+
+                if (str_contains($ref, "EnumType")) {
+                    $enumName = str_replace('EnumType', '', $ref);
+                    $enumName = $this->baseNamespace . $this->version . "\Enums\\" . $enumName;
+                }
+            } elseif (isset($definition["type"])) {
                 $type = $definition["type"];
                 $description = $definition["description"] ?? "";
             } else {
-                if (isset($definition["\$ref"])) {
-                    $ref = explode("/", $definition["\$ref"]);
-                    $ref = end($ref);
-                    $type = $schemaContent["definitions"][$ref]["type"];
-                    $description = $schemaContent["definitions"][$ref]["description"] ?? "";
-                } else {
-                    $type = "any";
-                }
+                $type = "any";
             }
 
-            $type = $this->mapSchemaTypeToPhp($type, $required);
-            $class->addProperty($property)->setType($type)->setInitialized(!$required)->addComment(html_entity_decode($description));
+            $type =  $this->mapSchemaTypeToPhp($type, $enumName || $required);
+            $enumPropertyType =  ($required ? '' : 'null|') . $type . '|' . $enumName;
+            $class->addProperty($property)
+                ->setType($enumName ? $enumPropertyType : $type)
+                ->setInitialized(!$required)->addComment(html_entity_decode($description));
         }
 
         if ($call) {

@@ -1,9 +1,9 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v16\CallResults;
 
 abstract class GetInstalledCertificateIds
 {
 	public ?array $certificateHashData = null;
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v16\Enums\GetInstalledCertificateStatus $status;
 }

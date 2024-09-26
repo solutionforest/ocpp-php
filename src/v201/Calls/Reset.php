@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class Reset
 {
@@ -10,7 +10,7 @@ abstract class Reset
 	/**
 	 * This contains the type of reset that the Charging Station or EVSE should perform.
 	 */
-	public string $type;
+	public string|\SolutionForest\OocpPhp\v201\Enums\Reset $type;
 
 	/**
 	 * This contains the ID of a specific EVSE that needs to be reset, instead of the entire Charging Station.

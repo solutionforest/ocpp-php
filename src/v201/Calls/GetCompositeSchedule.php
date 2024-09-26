@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class GetCompositeSchedule
 {
@@ -15,7 +15,7 @@ abstract class GetCompositeSchedule
 	/**
 	 * Can be used to force a power or current profile.
 	 */
-	public ?string $chargingRateUnit = null;
+	public null|string|\SolutionForest\OocpPhp\v201\Enums\ChargingRateUnit $chargingRateUnit = null;
 
 	/**
 	 * The ID of the EVSE for which the schedule is requested. When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.

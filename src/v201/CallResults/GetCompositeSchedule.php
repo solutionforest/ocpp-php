@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class GetCompositeSchedule
 {
@@ -11,7 +11,7 @@ abstract class GetCompositeSchedule
 	 * The Charging Station will indicate if it was
 	 * able to process the request
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\GenericStatus $status;
 
 	/**
 	 * Element providing more information about the status.

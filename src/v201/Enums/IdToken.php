@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Enums;
+namespace SolutionForest\OocpPhp\v201\Enums;
 
 /**
  * Values of the IdToken field of a value in AuthorizeRequest , AuthorizeResponse , CustomerInformationRequest , RequestStartTransactionRequest , ReserveNowRequest , SendLocalListRequest , TransactionEventRequest , TransactionEventResponse.

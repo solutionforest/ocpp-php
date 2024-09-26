@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class CertificateSigned
 {
@@ -17,5 +17,5 @@ abstract class CertificateSigned
 	/**
 	 * Indicates the type of the signed certificate that is returned. When omitted the certificate is used for both the 15118 connection (if implemented) and the Charging Station to CSMS connection. This field is required when a typeOfCertificate was included in the <<signcertificaterequest,SignCertificateRequest>> that requested this certificate to be signed AND both the 15118 connection and the Charging Station connection are implemented.
 	 */
-	public ?string $certificateType = null;
+	public null|string|\SolutionForest\OocpPhp\v201\Enums\CertificateSigningUse $certificateType = null;
 }

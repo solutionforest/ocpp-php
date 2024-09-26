@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class UnlockConnector
 {
@@ -10,7 +10,7 @@ abstract class UnlockConnector
 	/**
 	 * This indicates whether the Charging Station has unlocked the connector.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\UnlockStatus $status;
 
 	/**
 	 * Element providing more information about the status.

@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class ReserveNow
 {
@@ -20,7 +20,7 @@ abstract class ReserveNow
 	/**
 	 * This field specifies the connector type.
 	 */
-	public ?string $connectorType = null;
+	public null|string|\SolutionForest\OocpPhp\v201\Enums\Connector $connectorType = null;
 
 	/**
 	 * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.

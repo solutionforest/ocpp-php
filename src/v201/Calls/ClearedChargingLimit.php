@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class ClearedChargingLimit
 {
@@ -10,7 +10,7 @@ abstract class ClearedChargingLimit
 	/**
 	 * Source of the charging limit.
 	 */
-	public string $chargingLimitSource;
+	public string|\SolutionForest\OocpPhp\v201\Enums\ChargingLimitSource $chargingLimitSource;
 
 	/**
 	 * EVSE Identifier.

@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Enums;
+namespace SolutionForest\OocpPhp\v16\Enums;
 
 /**
  * Values of the CertificateSignedStatus field of a value in CertificateSignedResponse.

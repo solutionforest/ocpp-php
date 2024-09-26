@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class ClearCache
 {
@@ -10,7 +10,7 @@ abstract class ClearCache
 	/**
 	 * Accepted if the Charging Station has executed the request, otherwise rejected.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\ClearCacheStatus $status;
 
 	/**
 	 * Element providing more information about the status.

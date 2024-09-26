@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class GetLog
 {
@@ -18,7 +18,7 @@ abstract class GetLog
 	 * This contains the type of log file that the Charging Station
 	 * should send.
 	 */
-	public string $logType;
+	public string|\SolutionForest\OocpPhp\v201\Enums\Log $logType;
 
 	/**
 	 * The Id of this request

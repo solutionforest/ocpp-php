@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class Get15118EVCertificate
 {
@@ -15,7 +15,7 @@ abstract class Get15118EVCertificate
 	/**
 	 * Defines whether certificate needs to be installed or updated.
 	 */
-	public string $action;
+	public string|\SolutionForest\OocpPhp\v201\Enums\CertificateAction $action;
 
 	/**
 	 * Raw CertificateInstallationReq request from EV, Base64 encoded.

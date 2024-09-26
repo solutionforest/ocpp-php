@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class ReserveNow
 {
@@ -10,7 +10,7 @@ abstract class ReserveNow
 	/**
 	 * This indicates the success or failure of the reservation.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\ReserveNowStatus $status;
 
 	/**
 	 * Element providing more information about the status.

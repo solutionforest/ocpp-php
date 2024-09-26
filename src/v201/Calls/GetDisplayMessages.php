@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class GetDisplayMessages
 {
@@ -20,10 +20,10 @@ abstract class GetDisplayMessages
 	/**
 	 * If provided the Charging Station shall return Display Messages with the given priority only.
 	 */
-	public ?string $priority = null;
+	public null|string|\SolutionForest\OocpPhp\v201\Enums\MessagePriority $priority = null;
 
 	/**
 	 * If provided the Charging Station shall return Display Messages with the given state only.
 	 */
-	public ?string $state = null;
+	public null|string|\SolutionForest\OocpPhp\v201\Enums\MessageState $state = null;
 }

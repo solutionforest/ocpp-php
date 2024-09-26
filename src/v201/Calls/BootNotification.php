@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class BootNotification
 {
@@ -17,5 +17,5 @@ abstract class BootNotification
 	/**
 	 * This contains the reason for sending this message to the CSMS.
 	 */
-	public string $reason;
+	public string|\SolutionForest\OocpPhp\v201\Enums\BootReason $reason;
 }

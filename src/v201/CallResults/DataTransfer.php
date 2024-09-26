@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class DataTransfer
 {
@@ -10,7 +10,7 @@ abstract class DataTransfer
 	/**
 	 * This indicates the success or failure of the data transfer.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\DataTransferStatus $status;
 
 	/**
 	 * Element providing more information about the status.

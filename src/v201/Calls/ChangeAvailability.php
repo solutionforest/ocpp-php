@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class ChangeAvailability
 {
@@ -17,5 +17,5 @@ abstract class ChangeAvailability
 	/**
 	 * This contains the type of availability change that the Charging Station should perform.
 	 */
-	public string $operationalStatus;
+	public string|\SolutionForest\OocpPhp\v201\Enums\OperationalStatus $operationalStatus;
 }

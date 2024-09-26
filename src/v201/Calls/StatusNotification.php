@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v201\Calls;
 
 abstract class StatusNotification
 {
@@ -15,7 +15,7 @@ abstract class StatusNotification
 	/**
 	 * This contains the current status of the Connector.
 	 */
-	public string $connectorStatus;
+	public string|\SolutionForest\OocpPhp\v201\Enums\ConnectorStatus $connectorStatus;
 
 	/**
 	 * The id of the EVSE to which the connector belongs for which the the status is reported.

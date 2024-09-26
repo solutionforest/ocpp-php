@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class InstallCertificate
 {
@@ -10,7 +10,7 @@ abstract class InstallCertificate
 	/**
 	 * Charging Station indicates if installation was successful.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\InstallCertificateStatus $status;
 
 	/**
 	 * Element providing more information about the status.

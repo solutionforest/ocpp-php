@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class GetChargingProfiles
 {
@@ -10,7 +10,7 @@ abstract class GetChargingProfiles
 	/**
 	 * This indicates whether the Charging Station is able to process this request and will send <<reportchargingprofilesrequest, ReportChargingProfilesRequest>> messages.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\GetChargingProfileStatus $status;
 
 	/**
 	 * Element providing more information about the status.

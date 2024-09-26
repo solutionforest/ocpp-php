@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class Authorize
 {
@@ -20,5 +20,5 @@ abstract class Authorize
 	 * - if all certificates are valid: return 'Accepted'.
 	 * - if one of the certificates was revoked, return 'CertificateRevoked'.
 	 */
-	public ?string $certificateStatus = null;
+	public null|string|\SolutionForest\OocpPhp\v201\Enums\AuthorizeCertificateStatus $certificateStatus = null;
 }

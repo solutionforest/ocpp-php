@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\CallResults;
+namespace SolutionForest\OocpPhp\v201\CallResults;
 
 abstract class ClearChargingProfile
 {
@@ -10,7 +10,7 @@ abstract class ClearChargingProfile
 	/**
 	 * Indicates if the Charging Station was able to execute the request.
 	 */
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v201\Enums\ClearChargingProfileStatus $status;
 
 	/**
 	 * Element providing more information about the status.

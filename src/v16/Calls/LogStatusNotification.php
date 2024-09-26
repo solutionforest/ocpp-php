@@ -1,9 +1,9 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Calls;
+namespace SolutionForest\OocpPhp\v16\Calls;
 
 abstract class LogStatusNotification
 {
-	public string $status;
+	public string|\SolutionForest\OocpPhp\v16\Enums\UploadLogStatus $status;
 	public ?int $requestId = null;
 }
