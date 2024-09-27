@@ -10,7 +10,7 @@ abstract class ComponentVariableType
 	/**
 	 * A physical or logical component
 	 */
-	public ?array $component = null;
+	public array $component;
 
 	/**
 	 * Reference key to a component-variable.

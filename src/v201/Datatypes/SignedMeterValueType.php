@@ -10,20 +10,20 @@ abstract class SignedMeterValueType
 	/**
 	 * Base64 encoded, contains the signed data which might contain more then just the meter value. It can contain information like timestamps, reference to a customer etc.
 	 */
-	public ?string $signedMeterData = null;
+	public string $signedMeterData;
 
 	/**
 	 * Method used to create the digital signature.
 	 */
-	public ?string $signingMethod = null;
+	public string $signingMethod;
 
 	/**
 	 * Method used to encode the meter values before applying the digital signature algorithm.
 	 */
-	public ?string $encodingMethod = null;
+	public string $encodingMethod;
 
 	/**
 	 * Base64 encoded, sending depends on configuration variable _PublicKeyWithSignedMeterValue_.
 	 */
-	public ?string $publicKey = null;
+	public string $publicKey;
 }

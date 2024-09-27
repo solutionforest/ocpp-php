@@ -12,7 +12,7 @@ abstract class MessageContentType
 	 * urn:x-enexis:ecdm:uid:1:570848
 	 * Format of the message.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\MessageFormat $format = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\MessageFormat $format;
 
 	/**
 	 * Message_ Content. Language. Language_ Code
@@ -26,5 +26,5 @@ abstract class MessageContentType
 	 * urn:x-enexis:ecdm:uid:1:570852
 	 * Message contents.
 	 */
-	public ?string $content = null;
+	public string $content;
 }

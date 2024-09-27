@@ -12,28 +12,28 @@ abstract class ChargingProfileType
 	 * urn:x-enexis:ecdm:uid:1:569198
 	 * Id of ChargingProfile.
 	 */
-	public ?int $id = null;
+	public int $id;
 
 	/**
 	 * Charging_ Profile. Stack_ Level. Counter
 	 * urn:x-oca:ocpp:uid:1:569230
 	 * Value determining level in hierarchy stack of profiles. Higher values have precedence over lower values. Lowest level is 0.
 	 */
-	public ?int $stackLevel = null;
+	public int $stackLevel;
 
 	/**
 	 * Charging_ Profile. Charging_ Profile_ Purpose. Charging_ Profile_ Purpose_ Code
 	 * urn:x-oca:ocpp:uid:1:569231
 	 * Defines the purpose of the schedule transferred by this profile
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\ChargingProfilePurpose $chargingProfilePurpose = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\ChargingProfilePurpose $chargingProfilePurpose;
 
 	/**
 	 * Charging_ Profile. Charging_ Profile_ Kind. Charging_ Profile_ Kind_ Code
 	 * urn:x-oca:ocpp:uid:1:569232
 	 * Indicates the kind of schedule.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\ChargingProfileKind $chargingProfileKind = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\ChargingProfileKind $chargingProfileKind;
 
 	/**
 	 * Charging_ Profile. Recurrency_ Kind. Recurrency_ Kind_ Code
@@ -55,7 +55,7 @@ abstract class ChargingProfileType
 	 * Point in time at which the profile stops to be valid. If absent, the profile is valid until it is replaced by another profile.
 	 */
 	public ?string $validTo = null;
-	public ?array $chargingSchedule = null;
+	public array $chargingSchedule;
 
 	/**
 	 * SHALL only be included if ChargingProfilePurpose is set to TxProfile. The transactionId is used to match the profile to a specific transaction.

@@ -12,6 +12,6 @@ abstract class ConsumptionCostType
 	 * urn:x-oca:ocpp:uid:1:569246
 	 * The lowest level of consumption that defines the starting point of this consumption block. The block interval extends to the start of the next interval.
 	 */
-	public ?int $startValue = null;
-	public ?array $cost = null;
+	public int $startValue;
+	public array $cost;
 }

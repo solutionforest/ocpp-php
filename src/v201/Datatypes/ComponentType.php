@@ -17,7 +17,7 @@ abstract class ComponentType
 	/**
 	 * Name of the component. Name should be taken from the list of standardized component names whenever possible. Case Insensitive. strongly advised to use Camel Case.
 	 */
-	public ?string $name = null;
+	public string $name;
 
 	/**
 	 * Name of instance in case the component exists as multiple instances. Case Insensitive. strongly advised to use Camel Case.

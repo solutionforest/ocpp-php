@@ -12,7 +12,7 @@ abstract class ChargingLimitType
 	 * urn:x-enexis:ecdm:uid:1:570845
 	 * Represents the source of the charging limit.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\ChargingLimitSource $chargingLimitSource = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\ChargingLimitSource $chargingLimitSource;
 
 	/**
 	 * Charging_ Limit. Is_ Grid_ Critical. Indicator

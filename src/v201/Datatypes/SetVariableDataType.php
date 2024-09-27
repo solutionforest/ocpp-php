@@ -17,15 +17,15 @@ abstract class SetVariableDataType
 	 *
 	 * The Configuration Variable <<configkey-configuration-value-size,ConfigurationValueSize>> can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valueList. The max size of these values will always remain equal.
 	 */
-	public ?string $attributeValue = null;
+	public string $attributeValue;
 
 	/**
 	 * A physical or logical component
 	 */
-	public ?array $component = null;
+	public array $component;
 
 	/**
 	 * Reference key to a component-variable.
 	 */
-	public ?array $variable = null;
+	public array $variable;
 }

@@ -10,7 +10,7 @@ abstract class ChargingScheduleType
 	/**
 	 * Identifies the ChargingSchedule.
 	 */
-	public ?int $id = null;
+	public int $id;
 
 	/**
 	 * Charging_ Schedule. Start_ Schedule. Date_ Time
@@ -31,8 +31,8 @@ abstract class ChargingScheduleType
 	 * urn:x-oca:ocpp:uid:1:569238
 	 * The unit of measure Limit is expressed in.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\ChargingRateUnit $chargingRateUnit = null;
-	public ?array $chargingSchedulePeriod = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\ChargingRateUnit $chargingRateUnit;
+	public array $chargingSchedulePeriod;
 
 	/**
 	 * Charging_ Schedule. Min_ Charging_ Rate. Numeric

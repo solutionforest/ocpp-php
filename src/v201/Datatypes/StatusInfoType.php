@@ -10,7 +10,7 @@ abstract class StatusInfoType
 	/**
 	 * A predefined code for the reason why the status is returned in this response. The string is case-insensitive.
 	 */
-	public ?string $reasonCode = null;
+	public string $reasonCode;
 
 	/**
 	 * Additional text to provide detailed information.

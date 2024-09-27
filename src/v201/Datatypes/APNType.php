@@ -12,7 +12,7 @@ abstract class APNType
 	 * urn:x-oca:ocpp:uid:1:568814
 	 * The Access Point Name as an URL.
 	 */
-	public ?string $apn = null;
+	public string $apn;
 
 	/**
 	 * APN. APN. User_ Name
@@ -55,5 +55,5 @@ abstract class APNType
 	 * urn:x-oca:ocpp:uid:1:568828
 	 * Authentication method.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\APNAuthentication $apnAuthentication = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\APNAuthentication $apnAuthentication;
 }

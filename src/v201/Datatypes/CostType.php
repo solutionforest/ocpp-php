@@ -12,14 +12,14 @@ abstract class CostType
 	 * urn:x-oca:ocpp:uid:1:569243
 	 * The kind of cost referred to in the message element amount
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\CostKind $costKind = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\CostKind $costKind;
 
 	/**
 	 * Cost. Amount. Amount
 	 * urn:x-oca:ocpp:uid:1:569244
 	 * The estimated or actual cost per kWh
 	 */
-	public ?int $amount = null;
+	public int $amount;
 
 	/**
 	 * Cost. Amount_ Multiplier. Integer

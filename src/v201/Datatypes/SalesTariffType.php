@@ -12,7 +12,7 @@ abstract class SalesTariffType
 	 * urn:x-enexis:ecdm:uid:1:569198
 	 * SalesTariff identifier used to identify one sales tariff. An SAID remains a unique identifier for one schedule throughout a charging session.
 	 */
-	public ?int $id = null;
+	public int $id;
 
 	/**
 	 * Sales_ Tariff. Sales. Tariff_ Description
@@ -27,5 +27,5 @@ abstract class SalesTariffType
 	 * Defines the overall number of distinct price levels used across all provided SalesTariff elements.
 	 */
 	public ?int $numEPriceLevels = null;
-	public ?array $salesTariffEntry = null;
+	public array $salesTariffEntry;
 }

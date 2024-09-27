@@ -10,10 +10,10 @@ abstract class AdditionalInfoType
 	/**
 	 * This field specifies the additional IdToken.
 	 */
-	public ?string $additionalIdToken = null;
+	public string $additionalIdToken;
 
 	/**
 	 * This defines the type of the additionalIdToken. This is a custom type, so the implementation needs to be agreed upon by all involved parties.
 	 */
-	public ?string $type = null;
+	public string $type;
 }

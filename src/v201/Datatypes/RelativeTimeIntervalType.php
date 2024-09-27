@@ -12,7 +12,7 @@ abstract class RelativeTimeIntervalType
 	 * urn:x-oca:ocpp:uid:1:569279
 	 * Start of the interval, in seconds from NOW.
 	 */
-	public ?int $start = null;
+	public int $start;
 
 	/**
 	 * Relative_ Timer_ Interval. Duration. Elapsed_ Time

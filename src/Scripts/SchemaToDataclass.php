@@ -53,7 +53,7 @@ class SchemaToDataclass extends SchemaProcessor
             return ['calls' => $calls, 'callResults' => $callResults];
         }
 
-        $class = $this->mapPropertiesToClass($schemaContent["properties"], $title, $schemaContent);
+        $class = $this->mapPropertiesToClass($schemaContent, $title, $schemaContent);
 
         if ($call) {
             $calls[] = $class;

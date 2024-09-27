@@ -10,7 +10,7 @@ abstract class TransactionType
 	/**
 	 * This contains the Id of the transaction.
 	 */
-	public ?string $transactionId = null;
+	public string $transactionId;
 
 	/**
 	 * Transaction. State. Transaction_ State_ Code

@@ -17,14 +17,14 @@ abstract class MessageInfoType
 	 * urn:x-enexis:ecdm:uid:1:569198
 	 * Master resource identifier, unique within an exchange context. It is defined within the OCPP context as a positive Integer value (greater or equal to zero).
 	 */
-	public ?int $id = null;
+	public int $id;
 
 	/**
 	 * Message_ Info. Priority. Message_ Priority_ Code
 	 * urn:x-enexis:ecdm:uid:1:569253
 	 * With what priority should this message be shown
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\MessagePriority $priority = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\MessagePriority $priority;
 
 	/**
 	 * Message_ Info. State. Message_ State_ Code

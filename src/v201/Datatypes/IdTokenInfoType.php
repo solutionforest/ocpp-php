@@ -12,7 +12,7 @@ abstract class IdTokenInfoType
 	 * urn:x-oca:ocpp:uid:1:569372
 	 * Current status of the ID Token.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\AuthorizationStatus $status = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\AuthorizationStatus $status;
 
 	/**
 	 * ID_ Token. Expiry. Date_ Time

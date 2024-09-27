@@ -12,14 +12,14 @@ abstract class ChargingSchedulePeriodType
 	 * urn:x-oca:ocpp:uid:1:569240
 	 * Start of the period, in seconds from the start of schedule. The value of StartPeriod also defines the stop time of the previous period.
 	 */
-	public ?int $startPeriod = null;
+	public int $startPeriod;
 
 	/**
 	 * Charging_ Schedule_ Period. Limit. Measure
 	 * urn:x-oca:ocpp:uid:1:569241
 	 * Charging rate limit during the schedule period, in the applicable chargingRateUnit, for example in Amperes (A) or Watts (W). Accepts at most one digit fraction (e.g. 8.1).
 	 */
-	public ?int $limit = null;
+	public int $limit;
 
 	/**
 	 * Charging_ Schedule_ Period. Number_ Phases. Counter

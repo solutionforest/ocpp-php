@@ -12,7 +12,7 @@ abstract class LogParametersType
 	 * urn:x-enexis:ecdm:uid:1:569484
 	 * The URL of the location at the remote system where the log should be stored.
 	 */
-	public ?string $remoteLocation = null;
+	public string $remoteLocation;
 
 	/**
 	 * Log. Oldest_ Timestamp. Date_ Time

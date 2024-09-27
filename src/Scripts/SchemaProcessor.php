@@ -79,14 +79,14 @@ abstract class SchemaProcessor
         $class = new ClassType($className);
         $class->setAbstract();
 
-        foreach ($propertyArray as $property => $definition) {
+        foreach ($propertyArray["properties"] as $property => $definition) {
             $enumName = null;
             // if ($property === "customData") {
             //     $class->addProperty($property)->setType('mixed')->setInitialized();
             //     continue;
             // }
 
-            $required = isset($schemaContent["required"]) && in_array($property, $schemaContent["required"]);
+            $required = isset($propertyArray["required"]) && in_array($property, $propertyArray["required"]);
             $description = "";
 
             // get property type from ref or type

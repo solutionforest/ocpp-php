@@ -26,7 +26,7 @@ abstract class ChargingNeedsType
 	 * urn:x-oca:ocpp:uid:1:569209
 	 * Mode of energy transfer requested by the EV.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\EnergyTransferMode $requestedEnergyTransfer = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\EnergyTransferMode $requestedEnergyTransfer;
 
 	/**
 	 * Charging_ Needs. Departure_ Time. Date_ Time

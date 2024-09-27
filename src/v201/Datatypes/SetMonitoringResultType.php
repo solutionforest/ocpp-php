@@ -20,22 +20,22 @@ abstract class SetMonitoringResultType
 	/**
 	 * Status is OK if a value could be returned. Otherwise this will indicate the reason why a value could not be returned.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\SetMonitoringStatus $status = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\SetMonitoringStatus $status;
 
 	/**
 	 * The type of this monitor, e.g. a threshold, delta or periodic monitor.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\Monitor $type = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\Monitor $type;
 
 	/**
 	 * A physical or logical component
 	 */
-	public ?array $component = null;
+	public array $component;
 
 	/**
 	 * Reference key to a component-variable.
 	 */
-	public ?array $variable = null;
+	public array $variable;
 
 	/**
 	 * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
@@ -62,5 +62,5 @@ abstract class SetMonitoringResultType
 	 * *9-Debug* +
 	 * Indicates information useful to developers for debugging, not useful during operations.
 	 */
-	public ?int $severity = null;
+	public int $severity;
 }

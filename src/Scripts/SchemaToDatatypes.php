@@ -33,7 +33,7 @@ class SchemaToDatatypes extends SchemaProcessor
                 continue;
             }
 
-            $class = $this->mapPropertiesToClass($definition["properties"], $name, $schemaContent);
+            $class = $this->mapPropertiesToClass($definition, $name, $schemaContent);
 
             $datatypes[] = $class;
         }

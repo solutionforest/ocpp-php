@@ -12,7 +12,7 @@ abstract class EVSEType
 	 * urn:x-enexis:ecdm:uid:1:569198
 	 * EVSE Identifier. This contains a number (> 0) designating an EVSE of the Charging Station.
 	 */
-	public ?int $id = null;
+	public int $id;
 
 	/**
 	 * An id to designate a specific connector (on an EVSE) by connector index number.

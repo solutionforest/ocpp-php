@@ -10,25 +10,25 @@ abstract class OCSPRequestDataType
 	/**
 	 * Used algorithms for the hashes provided.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\HashAlgorithm $hashAlgorithm = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\HashAlgorithm $hashAlgorithm;
 
 	/**
 	 * Hashed value of the Issuer DN (Distinguished Name).
 	 */
-	public ?string $issuerNameHash = null;
+	public string $issuerNameHash;
 
 	/**
 	 * Hashed value of the issuers public key
 	 */
-	public ?string $issuerKeyHash = null;
+	public string $issuerKeyHash;
 
 	/**
 	 * The serial number of the certificate.
 	 */
-	public ?string $serialNumber = null;
+	public string $serialNumber;
 
 	/**
 	 * This contains the responder URL (Case insensitive).
 	 */
-	public ?string $responderURL = null;
+	public string $responderURL;
 }

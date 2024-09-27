@@ -12,26 +12,26 @@ abstract class ACChargingParametersType
 	 * urn:x-oca:ocpp:uid:1:569211
 	 * Amount of energy requested (in Wh). This includes energy required for preconditioning.
 	 */
-	public ?int $energyAmount = null;
+	public int $energyAmount;
 
 	/**
 	 * AC_ Charging_ Parameters. EV_ Min. Current
 	 * urn:x-oca:ocpp:uid:1:569212
 	 * Minimum current (amps) supported by the electric vehicle (per phase).
 	 */
-	public ?int $evMinCurrent = null;
+	public int $evMinCurrent;
 
 	/**
 	 * AC_ Charging_ Parameters. EV_ Max. Current
 	 * urn:x-oca:ocpp:uid:1:569213
 	 * Maximum current (amps) supported by the electric vehicle (per phase). Includes cable capacity.
 	 */
-	public ?int $evMaxCurrent = null;
+	public int $evMaxCurrent;
 
 	/**
 	 * AC_ Charging_ Parameters. EV_ Max. Voltage
 	 * urn:x-oca:ocpp:uid:1:569214
 	 * Maximum voltage supported by the electric vehicle
 	 */
-	public ?int $evMaxVoltage = null;
+	public int $evMaxVoltage;
 }

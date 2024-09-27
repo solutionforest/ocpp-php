@@ -15,7 +15,7 @@ abstract class VariableCharacteristicsType
 	/**
 	 * Data type of this variable.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\Data $dataType = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\Data $dataType;
 
 	/**
 	 * Minimum possible value of this variable.
@@ -45,5 +45,5 @@ abstract class VariableCharacteristicsType
 	/**
 	 * Flag indicating if this variable supports monitoring.
 	 */
-	public ?bool $supportsMonitoring = null;
+	public bool $supportsMonitoring;
 }

@@ -10,11 +10,11 @@ abstract class MonitoringDataType
 	/**
 	 * A physical or logical component
 	 */
-	public ?array $component = null;
+	public array $component;
 
 	/**
 	 * Reference key to a component-variable.
 	 */
-	public ?array $variable = null;
-	public ?array $variableMonitoring = null;
+	public array $variable;
+	public array $variableMonitoring;
 }

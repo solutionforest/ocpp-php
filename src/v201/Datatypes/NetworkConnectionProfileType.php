@@ -21,38 +21,38 @@ abstract class NetworkConnectionProfileType
 	 * urn:x-oca:ocpp:uid:1:569355
 	 * Defines the OCPP version used for this communication function.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\OCPPVersion $ocppVersion = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\OCPPVersion $ocppVersion;
 
 	/**
 	 * Communication_ Function. OCPP_ Transport. OCPP_ Transport_ Code
 	 * urn:x-oca:ocpp:uid:1:569356
 	 * Defines the transport protocol (e.g. SOAP or JSON). Note: SOAP is not supported in OCPP 2.0, but is supported by other versions of OCPP.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\OCPPTransport $ocppTransport = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\OCPPTransport $ocppTransport;
 
 	/**
 	 * Communication_ Function. OCPP_ Central_ System_ URL. URI
 	 * urn:x-oca:ocpp:uid:1:569357
 	 * URL of the CSMS(s) that this Charging Station  communicates with.
 	 */
-	public ?string $ocppCsmsUrl = null;
+	public string $ocppCsmsUrl;
 
 	/**
 	 * Duration in seconds before a message send by the Charging Station via this network connection times-out.
 	 * The best setting depends on the underlying network and response times of the CSMS.
 	 * If you are looking for a some guideline: use 30 seconds as a starting point.
 	 */
-	public ?int $messageTimeout = null;
+	public int $messageTimeout;
 
 	/**
 	 * This field specifies the security profile used when connecting to the CSMS with this NetworkConnectionProfile.
 	 */
-	public ?int $securityProfile = null;
+	public int $securityProfile;
 
 	/**
 	 * Applicable Network Interface.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\OCPPInterface $ocppInterface = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\OCPPInterface $ocppInterface;
 
 	/**
 	 * VPN

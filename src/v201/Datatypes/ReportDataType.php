@@ -10,13 +10,13 @@ abstract class ReportDataType
 	/**
 	 * A physical or logical component
 	 */
-	public ?array $component = null;
+	public array $component;
 
 	/**
 	 * Reference key to a component-variable.
 	 */
-	public ?array $variable = null;
-	public ?array $variableAttribute = null;
+	public array $variable;
+	public array $variableAttribute;
 
 	/**
 	 * Fixed read-only parameters of a variable.

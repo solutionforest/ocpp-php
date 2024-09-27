@@ -15,7 +15,7 @@ abstract class GetVariableResultType
 	/**
 	 * Result status of getting the variable.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\GetVariableStatus $attributeStatus = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\GetVariableStatus $attributeStatus;
 
 	/**
 	 * Attribute type for which value is requested. When absent, default Actual is assumed.
@@ -32,10 +32,10 @@ abstract class GetVariableResultType
 	/**
 	 * A physical or logical component
 	 */
-	public ?array $component = null;
+	public array $component;
 
 	/**
 	 * Reference key to a component-variable.
 	 */
-	public ?array $variable = null;
+	public array $variable;
 }

@@ -15,10 +15,10 @@ abstract class GetVariableDataType
 	/**
 	 * A physical or logical component
 	 */
-	public ?array $component = null;
+	public array $component;
 
 	/**
 	 * Reference key to a component-variable.
 	 */
-	public ?array $variable = null;
+	public array $variable;
 }

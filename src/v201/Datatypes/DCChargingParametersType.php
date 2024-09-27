@@ -12,14 +12,14 @@ abstract class DCChargingParametersType
 	 * urn:x-oca:ocpp:uid:1:569215
 	 * Maximum current (amps) supported by the electric vehicle. Includes cable capacity.
 	 */
-	public ?int $evMaxCurrent = null;
+	public int $evMaxCurrent;
 
 	/**
 	 * DC_ Charging_ Parameters. EV_ Max. Voltage
 	 * urn:x-oca:ocpp:uid:1:569216
 	 * Maximum voltage supported by the electric vehicle
 	 */
-	public ?int $evMaxVoltage = null;
+	public int $evMaxVoltage;
 
 	/**
 	 * DC_ Charging_ Parameters. Energy_ Amount. Energy_ Amount

@@ -10,12 +10,12 @@ abstract class ClearMonitoringResultType
 	/**
 	 * Result of the clear request for this monitor, identified by its Id.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\ClearMonitoringStatus $status = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\ClearMonitoringStatus $status;
 
 	/**
 	 * Id of the monitor of which a clear was requested.
 	 */
-	public ?int $id = null;
+	public int $id;
 
 	/**
 	 * Element providing more information about the status.

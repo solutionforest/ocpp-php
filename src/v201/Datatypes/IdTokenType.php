@@ -11,10 +11,10 @@ abstract class IdTokenType
 	/**
 	 * IdToken is case insensitive. Might hold the hidden id of an RFID tag, but can for example also contain a UUID.
 	 */
-	public ?string $idToken = null;
+	public string $idToken;
 
 	/**
 	 * Enumeration of possible idToken types.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\IdToken $type = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\IdToken $type;
 }

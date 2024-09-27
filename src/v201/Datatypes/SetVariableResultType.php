@@ -15,7 +15,7 @@ abstract class SetVariableResultType
 	/**
 	 * Result status of setting the variable.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\SetVariableStatus $attributeStatus = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\SetVariableStatus $attributeStatus;
 
 	/**
 	 * Element providing more information about the status.
@@ -25,10 +25,10 @@ abstract class SetVariableResultType
 	/**
 	 * A physical or logical component
 	 */
-	public ?array $component = null;
+	public array $component;
 
 	/**
 	 * Reference key to a component-variable.
 	 */
-	public ?array $variable = null;
+	public array $variable;
 }

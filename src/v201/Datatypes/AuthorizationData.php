@@ -10,7 +10,7 @@ abstract class AuthorizationData
 	/**
 	 * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
 	 */
-	public ?array $idToken = null;
+	public array $idToken;
 
 	/**
 	 * ID_ Token

@@ -12,14 +12,14 @@ abstract class VPNType
 	 * urn:x-oca:ocpp:uid:1:569272
 	 * VPN Server Address
 	 */
-	public ?string $server = null;
+	public string $server;
 
 	/**
 	 * VPN. User. User_ Name
 	 * urn:x-oca:ocpp:uid:1:569273
 	 * VPN User
 	 */
-	public ?string $user = null;
+	public string $user;
 
 	/**
 	 * VPN. Group. Group_ Name
@@ -33,19 +33,19 @@ abstract class VPNType
 	 * urn:x-oca:ocpp:uid:1:569275
 	 * VPN Password.
 	 */
-	public ?string $password = null;
+	public string $password;
 
 	/**
 	 * VPN. Key. VPN_ Key
 	 * urn:x-oca:ocpp:uid:1:569276
 	 * VPN shared secret.
 	 */
-	public ?string $key = null;
+	public string $key;
 
 	/**
 	 * VPN. Type. VPN_ Code
 	 * urn:x-oca:ocpp:uid:1:569277
 	 * Type of VPN
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\VPN $type = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\VPN $type;
 }

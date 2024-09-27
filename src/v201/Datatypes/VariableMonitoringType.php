@@ -10,23 +10,23 @@ abstract class VariableMonitoringType
 	/**
 	 * Identifies the monitor.
 	 */
-	public ?int $id = null;
+	public int $id;
 
 	/**
 	 * Monitor only active when a transaction is ongoing on a component relevant to this transaction.
 	 */
-	public ?bool $transaction = null;
+	public bool $transaction;
 
 	/**
 	 * Value for threshold or delta monitoring.
 	 * For Periodic or PeriodicClockAligned this is the interval in seconds.
 	 */
-	public ?int $value = null;
+	public int $value;
 
 	/**
 	 * The type of this monitor, e.g. a threshold, delta or periodic monitor.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\Monitor $type = null;
+	public string|\SolutionForest\OocpPhp\v201\Enums\Monitor $type;
 
 	/**
 	 * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
@@ -53,5 +53,5 @@ abstract class VariableMonitoringType
 	 * *9-Debug* +
 	 * Indicates information useful to developers for debugging, not useful during operations.
 	 */
-	public ?int $severity = null;
+	public int $severity;
 }

@@ -12,7 +12,7 @@ abstract class SampledValueType
 	 * urn:x-oca:ocpp:uid:1:569260
 	 * Indicates the measured value.
 	 */
-	public ?int $value = null;
+	public int $value;
 
 	/**
 	 * Sampled_ Value. Context. Reading_ Context_ Code

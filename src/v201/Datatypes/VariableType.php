@@ -10,7 +10,7 @@ abstract class VariableType
 	/**
 	 * Name of the variable. Name should be taken from the list of standardized variable names whenever possible. Case Insensitive. strongly advised to use Camel Case.
 	 */
-	public ?string $name = null;
+	public string $name;
 
 	/**
 	 * Name of instance in case the variable exists as multiple instances. Case Insensitive. strongly advised to use Camel Case.

@@ -11,7 +11,7 @@ abstract class SalesTariffEntryType
 	 * Relative_ Timer_ Interval
 	 * urn:x-oca:ocpp:uid:2:233270
 	 */
-	public ?array $relativeTimeInterval = null;
+	public array $relativeTimeInterval;
 
 	/**
 	 * Sales_ Tariff_ Entry. E_ Price_ Level. Unsigned_ Integer

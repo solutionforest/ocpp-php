@@ -12,14 +12,14 @@ abstract class FirmwareType
 	 * urn:x-enexis:ecdm:uid:1:569460
 	 * URI defining the origin of the firmware.
 	 */
-	public ?string $location = null;
+	public string $location;
 
 	/**
 	 * Firmware. Retrieve. Date_ Time
 	 * urn:x-enexis:ecdm:uid:1:569461
 	 * Date and time at which the firmware shall be retrieved.
 	 */
-	public ?string $retrieveDateTime = null;
+	public string $retrieveDateTime;
 
 	/**
 	 * Firmware. Install. Date_ Time

@@ -19,7 +19,7 @@ abstract class ChargingStationType
 	 * urn:x-oca:ocpp:uid:1:569325
 	 * Defines the model of the device.
 	 */
-	public ?string $model = null;
+	public string $model;
 
 	/**
 	 * Wireless_ Communication_ Module
@@ -31,7 +31,7 @@ abstract class ChargingStationType
 	/**
 	 * Identifies the vendor (not necessarily in a unique manner).
 	 */
-	public ?string $vendorName = null;
+	public string $vendorName;
 
 	/**
 	 * This contains the firmware version of the Charging Station.
