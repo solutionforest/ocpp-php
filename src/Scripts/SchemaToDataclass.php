@@ -53,40 +53,7 @@ class SchemaToDataclass extends SchemaProcessor
             return ['calls' => $calls, 'callResults' => $callResults];
         }
 
-        foreach ($schemaContent["properties"] as $property => $definition) {
-            $enumName = null;
-            // if ($property === "customData") {
-            //     $class->addProperty($property)->setType('mixed')->setInitialized();
-            //     continue;
-            // }
-
-            $required = isset($schemaContent["required"]) && in_array($property, $schemaContent["required"]);
-            $description = "";
-
-            if (isset($definition["\$ref"])) {
-                $ref = explode("/", $definition["\$ref"]);
-                $ref = end($ref);
-
-                $type = $schemaContent["definitions"][$ref]["type"];
-                $description = $schemaContent["definitions"][$ref]["description"] ?? "";
-
-                if (str_contains($ref, "EnumType")) {
-                    $enumName = str_replace('EnumType', '', $ref);
-                    $enumName = $this->baseNamespace . $this->version . "\Enums\\" . $enumName;
-                }
-            } elseif (isset($definition["type"])) {
-                $type = $definition["type"];
-                $description = $definition["description"] ?? "";
-            } else {
-                $type = "any";
-            }
-
-            $type =  $this->mapSchemaTypeToPhp($type, $enumName || $required);
-            $enumPropertyType =  ($required ? '' : 'null|') . $type . '|' . $enumName;
-            $class->addProperty($property)
-                ->setType($enumName ? $enumPropertyType : $type)
-                ->setInitialized(!$required)->addComment(html_entity_decode($description));
-        }
+        $class = $this->mapPropertiesToClass($schemaContent["properties"], $title, $schemaContent);
 
         if ($call) {
             $calls[] = $class;
@@ -95,24 +62,5 @@ class SchemaToDataclass extends SchemaProcessor
         }
 
         return ['calls' => $calls, 'callResults' => $callResults];
-    }
-
-
-    function mapSchemaTypeToPhp(string $type, bool $required)
-    {
-        $map = [
-            "object" => "array",
-            "array" => "array",
-            "integer" => "int",
-            "string" => "string",
-            "number" => "int",
-            "boolean" => "bool",
-            "any" => "mixed",
-        ];
-
-        $type = strtolower(preg_replace('/([a-z0-9])([A-Z])/', '$1_$2', $type));
-        $type = $map[$type] ?? 'mixed';
-        $type = $required ? $type : "?" . $type;
-        return $type;
     }
 }

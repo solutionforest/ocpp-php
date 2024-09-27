@@ -74,6 +74,72 @@ abstract class SchemaProcessor
         return $title;
     }
 
+    protected function mapPropertiesToClass(array $propertyArray, string $className, array $schemaContent): ClassType
+    {
+        $class = new ClassType($className);
+        $class->setAbstract();
+
+        foreach ($propertyArray as $property => $definition) {
+            $enumName = null;
+            // if ($property === "customData") {
+            //     $class->addProperty($property)->setType('mixed')->setInitialized();
+            //     continue;
+            // }
+
+            $required = isset($schemaContent["required"]) && in_array($property, $schemaContent["required"]);
+            $description = "";
+
+            // get property type from ref or type
+            if (isset($definition["\$ref"])) {
+                $ref = explode("/", $definition["\$ref"]);
+                $ref = end($ref);
+                
+                $type = $schemaContent["definitions"][$ref]["type"] ?? null;
+                $description = $schemaContent["definitions"][$ref]["description"] ?? "";
+
+                if (str_contains($ref, "EnumType")) {
+                    $enumName = str_replace('EnumType', '', $ref);
+                    $enumName = $this->baseNamespace . $this->version . "\Enums\\" . $enumName;
+                }
+            } elseif (isset($definition["type"])) {
+                $type = $definition["type"];
+                $description = $definition["description"] ?? "";
+            } else {
+                $type = "any";
+            }
+
+            $type =  $this->mapSchemaTypeToPhp($type, $enumName || $required);
+            $enumPropertyType =  ($required ? '' : 'null|') . ($type ? $type . '|' : '') . $enumName;
+            $class->addProperty($property)
+                ->setType($enumName ? $enumPropertyType : $type)
+                ->setInitialized(!$required)->addComment(html_entity_decode($description));
+        }
+
+        return $class;
+    }
+
+    protected function mapSchemaTypeToPhp(?string $type, bool $required)
+    {
+        if (!$type) {
+            return null;
+        }
+
+        $map = [
+            "object" => "array",
+            "array" => "array",
+            "integer" => "int",
+            "string" => "string",
+            "number" => "int",
+            "boolean" => "bool",
+            "any" => "mixed",
+        ];
+
+        $type = strtolower(preg_replace('/([a-z0-9])([A-Z])/', '$1_$2', $type));
+        $type = $map[$type] ?? 'mixed';
+        $type = $required ? $type : "?" . $type;
+        return $type;
+    }
+
     abstract protected function processClasses(array $classes): void;
 
     abstract protected function parseSchema(string $schema): array;
