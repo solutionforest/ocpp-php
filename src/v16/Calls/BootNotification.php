@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-abstract class BootNotification
+class BootNotification
 {
 	public string $chargePointVendor;
 	public string $chargePointModel;

@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-abstract class SignedUpdateFirmware
+class SignedUpdateFirmware
 {
 	public ?int $retries = null;
 	public ?int $retryInterval = null;

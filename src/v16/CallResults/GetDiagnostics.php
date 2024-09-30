@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-abstract class GetDiagnostics
+class GetDiagnostics
 {
 	public ?string $fileName = null;
 }

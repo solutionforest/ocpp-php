@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-abstract class ChangeConfiguration
+class ChangeConfiguration
 {
 	public string $key;
 	public string $value;

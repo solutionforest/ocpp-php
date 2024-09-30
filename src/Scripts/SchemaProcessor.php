@@ -77,15 +77,11 @@ abstract class SchemaProcessor
     protected function mapPropertiesToClass(array $propertyArray, string $className, array $schemaContent): ClassType
     {
         $class = new ClassType($className);
-        $class->setAbstract();
+        // $class->setAbstract();
 
         foreach ($propertyArray["properties"] as $property => $definition) {
             $enumName = null;
-            // if ($property === "customData") {
-            //     $class->addProperty($property)->setType('mixed')->setInitialized();
-            //     continue;
-            // }
-
+            
             $required = isset($propertyArray["required"]) && in_array($property, $propertyArray["required"]);
             $description = "";
 

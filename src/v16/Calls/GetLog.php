@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-abstract class GetLog
+class GetLog
 {
 	public array $log;
 	public string|\SolutionForest\OocpPhp\v16\Enums\Log $logType;

@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-abstract class RemoteStartTransaction
+class RemoteStartTransaction
 {
 	public string $status;
 }

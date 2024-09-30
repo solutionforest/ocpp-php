@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-abstract class GetConfiguration
+class GetConfiguration
 {
 	public ?array $key = null;
 }

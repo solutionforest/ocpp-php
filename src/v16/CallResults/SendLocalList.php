@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-abstract class SendLocalList
+class SendLocalList
 {
 	public string $status;
 }

@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-abstract class GetDiagnostics
+class GetDiagnostics
 {
 	public string $location;
 	public ?int $retries = null;

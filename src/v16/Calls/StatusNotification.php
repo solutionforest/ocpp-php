@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-abstract class StatusNotification
+class StatusNotification
 {
 	public int $connectorId;
 	public string $errorCode;

@@ -2,9 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\Datatypes;
 
-abstract class LogParametersType
+class LogParametersType
 {
-	public ?string $remoteLocation = null;
+	public string $remoteLocation;
 	public ?string $oldestTimestamp = null;
 	public ?string $latestTimestamp = null;
 }

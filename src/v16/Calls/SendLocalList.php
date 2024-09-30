@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-abstract class SendLocalList
+class SendLocalList
 {
 	public int $listVersion;
 	public ?array $localAuthorizationList = null;

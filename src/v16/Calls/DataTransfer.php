@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-abstract class DataTransfer
+class DataTransfer
 {
 	public string $vendorId;
 	public ?string $messageId = null;

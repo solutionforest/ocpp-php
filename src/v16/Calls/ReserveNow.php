@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-abstract class ReserveNow
+class ReserveNow
 {
 	public int $connectorId;
 	public string $expiryDate;

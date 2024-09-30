@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-abstract class ChangeAvailability
+class ChangeAvailability
 {
 	public string $status;
 }

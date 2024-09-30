@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-abstract class ReserveNow
+class ReserveNow
 {
 	public string $status;
 }

@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-abstract class StopTransaction
+class StopTransaction
 {
 	public ?string $idTag = null;
 	public int $meterStop;

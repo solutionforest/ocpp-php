@@ -41,19 +41,11 @@ class SchemaToDataclass extends SchemaProcessor
             $call = true;
         }
 
-        $class = new ClassType($title);
-        $class->setAbstract();
-
         if (!isset($schemaContent["properties"])) {
-            if ($call) {
-                $calls[] = $class;
-            } elseif ($callResult) {
-                $callResults[] = $class;
-            }
-            return ['calls' => $calls, 'callResults' => $callResults];
+            $class = new ClassType($title);
+        } else {
+            $class = $this->mapPropertiesToClass($schemaContent, $title, $schemaContent);
         }
-
-        $class = $this->mapPropertiesToClass($schemaContent, $title, $schemaContent);
 
         if ($call) {
             $calls[] = $class;

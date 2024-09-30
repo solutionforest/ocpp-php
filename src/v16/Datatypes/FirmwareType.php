@@ -2,11 +2,11 @@
 
 namespace SolutionForest\OocpPhp\v16\Datatypes;
 
-abstract class FirmwareType
+class FirmwareType
 {
-	public ?string $location = null;
-	public ?string $retrieveDateTime = null;
+	public string $location;
+	public string $retrieveDateTime;
 	public ?string $installDateTime = null;
-	public ?string $signingCertificate = null;
-	public ?string $signature = null;
+	public string $signingCertificate;
+	public string $signature;
 }

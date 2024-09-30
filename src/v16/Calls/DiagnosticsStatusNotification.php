@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-abstract class DiagnosticsStatusNotification
+class DiagnosticsStatusNotification
 {
 	public string $status;
 }

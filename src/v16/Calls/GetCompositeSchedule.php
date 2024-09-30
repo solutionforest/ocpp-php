@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-abstract class GetCompositeSchedule
+class GetCompositeSchedule
 {
 	public int $connectorId;
 	public int $duration;

@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-abstract class FirmwareStatusNotification
+class FirmwareStatusNotification
 {
 	public string $status;
 }

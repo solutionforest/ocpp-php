@@ -2,6 +2,6 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-abstract class DiagnosticsStatusNotification
+class DiagnosticsStatusNotification
 {
 }

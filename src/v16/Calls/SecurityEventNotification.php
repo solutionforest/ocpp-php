@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-abstract class SecurityEventNotification
+class SecurityEventNotification
 {
 	public string $type;
 	public string $timestamp;

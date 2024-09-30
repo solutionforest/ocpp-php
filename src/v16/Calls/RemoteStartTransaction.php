@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-abstract class RemoteStartTransaction
+class RemoteStartTransaction
 {
 	public ?int $connectorId = null;
 	public string $idTag;
