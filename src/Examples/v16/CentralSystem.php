@@ -41,7 +41,7 @@ $socket->on('connection', function (ConnectionInterface $connection) {
 
         $call = $message['action'];
 
-        $callResult = 'SolutionForest\OocpPhp\v16\CallResults\\' . $call;
+        $callResult = 'SolutionForest\OocpPhp\v16\Messages\CallResults\\' . $call;
 
         if (!class_exists($callResult)) {
             $connection->write('{"error": "Unknown call"}' . "\n\n");

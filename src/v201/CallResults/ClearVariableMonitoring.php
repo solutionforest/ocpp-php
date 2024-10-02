@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v201\CallResults;
 
-use SolutionForest\OocpPhp\CallResult;
+use SolutionForest\OocpPhp\Messages\CallResult;
 
 class ClearVariableMonitoring extends CallResult
 {

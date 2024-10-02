@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v201\Calls;
 
-use SolutionForest\OocpPhp\Call;
+use SolutionForest\OocpPhp\Messages\Call;
 
 class NotifyDisplayMessages extends Call
 {

@@ -8,8 +8,8 @@ use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\EnumType;
 use Nette\PhpGenerator\PhpNamespace;
 use Nette\PhpGenerator\Printer;
-use SolutionForest\OocpPhp\Call;
-use SolutionForest\OocpPhp\CallResult;
+use SolutionForest\OocpPhp\Messages\Call;
+use SolutionForest\OocpPhp\Messages\CallResult;
 
 abstract class SchemaProcessor
 {

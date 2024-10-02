@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp;
+namespace SolutionForest\OocpPhp\Messages;
 
 use Ramsey\Uuid\Uuid;
 

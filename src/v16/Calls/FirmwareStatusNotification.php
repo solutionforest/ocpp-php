@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-use SolutionForest\OocpPhp\Call;
+use SolutionForest\OocpPhp\Messages\Call;
 
 class FirmwareStatusNotification extends Call
 {

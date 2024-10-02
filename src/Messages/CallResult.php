@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp;
+namespace SolutionForest\OocpPhp\Messages;
 
 abstract class CallResult extends Message
 {
