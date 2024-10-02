@@ -2,6 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v201\Datatypes;
 
+use SolutionForest\OocpPhp\v201\Enums\Monitor;
+use SolutionForest\OocpPhp\v201\Enums\SetMonitoringStatus;
+
 class SetMonitoringResultType
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
@@ -20,12 +23,12 @@ class SetMonitoringResultType
 	/**
 	 * Status is OK if a value could be returned. Otherwise this will indicate the reason why a value could not be returned.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\SetMonitoringStatus $status;
+	public string|SetMonitoringStatus $status;
 
 	/**
 	 * The type of this monitor, e.g. a threshold, delta or periodic monitor.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\Monitor $type;
+	public string|Monitor $type;
 
 	/**
 	 * A physical or logical component

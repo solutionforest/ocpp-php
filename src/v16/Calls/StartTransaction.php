@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-class StartTransaction
+use SolutionForest\OocpPhp\Call;
+
+class StartTransaction extends Call
 {
 	public int $connectorId;
 	public string $idTag;

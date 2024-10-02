@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-class TriggerMessage
+use SolutionForest\OocpPhp\Call;
+
+class TriggerMessage extends Call
 {
 	public string $requestedMessage;
 	public ?int $connectorId = null;

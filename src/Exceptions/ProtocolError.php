@@ -2,10 +2,10 @@
 
 namespace SolutionForest\OocpPhp\Exceptions;
 
-use OCPPError;
+use SolutionForest\OocpPhp\CallError;
 
-class ProtocolError extends OCPPError
+class ProtocolError extends CallError
 {
-    protected $code = "ProtocolError";
-    protected $defaultDescription = "Payload for Action is incomplete";
+    public string $errorCode = "ProtocolError";
+    public string $errorDescription = "Payload for Action is incomplete";
 }

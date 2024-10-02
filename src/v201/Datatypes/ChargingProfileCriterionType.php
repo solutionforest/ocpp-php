@@ -2,6 +2,8 @@
 
 namespace SolutionForest\OocpPhp\v201\Datatypes;
 
+use SolutionForest\OocpPhp\v201\Enums\ChargingProfilePurpose;
+
 class ChargingProfileCriterionType
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
@@ -12,7 +14,7 @@ class ChargingProfileCriterionType
 	 * urn:x-oca:ocpp:uid:1:569231
 	 * Defines the purpose of the schedule transferred by this profile
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\ChargingProfilePurpose $chargingProfilePurpose = null;
+	public null|string|ChargingProfilePurpose $chargingProfilePurpose = null;
 
 	/**
 	 * Charging_ Profile. Stack_ Level. Counter

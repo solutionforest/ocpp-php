@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\Calls;
 
-class SetMonitoringBase
+use SolutionForest\OocpPhp\Call;
+use SolutionForest\OocpPhp\v201\Enums\MonitoringBase;
+
+class SetMonitoringBase extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -10,5 +13,5 @@ class SetMonitoringBase
 	/**
 	 * Specify which monitoring base will be set
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\MonitoringBase $monitoringBase;
+	public string|MonitoringBase $monitoringBase;
 }

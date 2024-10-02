@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-class DeleteCertificate
+use SolutionForest\OocpPhp\CallResult;
+use SolutionForest\OocpPhp\v16\Enums\DeleteCertificateStatus;
+
+class DeleteCertificate extends CallResult
 {
-	public string|\SolutionForest\OocpPhp\v16\Enums\DeleteCertificateStatus $status;
+	public string|DeleteCertificateStatus $status;
 }

@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-class BootNotification
+use SolutionForest\OocpPhp\CallResult;
+
+class BootNotification extends CallResult
 {
 	public string $status;
 	public string $currentTime;

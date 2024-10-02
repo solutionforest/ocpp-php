@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\Exceptions;
 
-use OCPPError;
+use SolutionForest\OocpPhp\CallError;
 
 /**
  *   Not strict OCPP 1.6 - see OccurenceConstraintViolationError
@@ -10,8 +10,8 @@ use OCPPError;
  *  Valid in OCPP 2.1
  **/
 
-class OccurrenceConstraintViolationError extends OCPPError
+class OccurrenceConstraintViolationError extends CallError
 {
-    protected $code = "OccurrenceConstraintViolation";
-    protected $defaultDescription = "Payload for Action is syntactically correct but at least one of the fields violates occurence constraints";
+    public string $errorCode = "OccurrenceConstraintViolation";
+    public string $errorDescription = "Payload for Action is syntactically correct but at least one of the fields violates occurence constraints";
 }

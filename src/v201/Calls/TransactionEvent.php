@@ -2,7 +2,11 @@
 
 namespace SolutionForest\OocpPhp\v201\Calls;
 
-class TransactionEvent
+use SolutionForest\OocpPhp\Call;
+use SolutionForest\OocpPhp\v201\Enums\TransactionEvent;
+use SolutionForest\OocpPhp\v201\Enums\TriggerReason;
+
+class TransactionEvent extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -11,7 +15,7 @@ class TransactionEvent
 	 * This contains the type of this event.
 	 * The first TransactionEvent of a transaction SHALL contain: "Started" The last TransactionEvent of a transaction SHALL contain: "Ended" All others SHALL contain: "Updated"
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\TransactionEvent $eventType;
+	public string|TransactionEvent $eventType;
 	public ?array $meterValue = null;
 
 	/**
@@ -22,7 +26,7 @@ class TransactionEvent
 	/**
 	 * Reason the Charging Station sends this message to the CSMS
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\TriggerReason $triggerReason;
+	public string|TriggerReason $triggerReason;
 
 	/**
 	 * Incremental sequence number, helps with determining if all messages of a transaction have been received.

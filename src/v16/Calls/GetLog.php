@@ -2,10 +2,13 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-class GetLog
+use SolutionForest\OocpPhp\Call;
+use SolutionForest\OocpPhp\v16\Enums\Log;
+
+class GetLog extends Call
 {
 	public array $log;
-	public string|\SolutionForest\OocpPhp\v16\Enums\Log $logType;
+	public string|Log $logType;
 	public int $requestId;
 	public ?int $retries = null;
 	public ?int $retryInterval = null;

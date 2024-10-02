@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-class ClearChargingProfile
+use SolutionForest\OocpPhp\CallResult;
+
+class ClearChargingProfile extends CallResult
 {
 	public string $status;
 }

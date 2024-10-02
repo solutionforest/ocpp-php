@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\CallResults;
 
-class SetDisplayMessage
+use SolutionForest\OocpPhp\CallResult;
+use SolutionForest\OocpPhp\v201\Enums\DisplayMessageStatus;
+
+class SetDisplayMessage extends CallResult
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -10,7 +13,7 @@ class SetDisplayMessage
 	/**
 	 * This indicates whether the Charging Station is able to display the message.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\DisplayMessageStatus $status;
+	public string|DisplayMessageStatus $status;
 
 	/**
 	 * Element providing more information about the status.

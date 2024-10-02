@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\Calls;
 
-class InstallCertificate
+use SolutionForest\OocpPhp\Call;
+use SolutionForest\OocpPhp\v201\Enums\InstallCertificateUse;
+
+class InstallCertificate extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -10,7 +13,7 @@ class InstallCertificate
 	/**
 	 * Indicates the certificate type that is sent.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\InstallCertificateUse $certificateType;
+	public string|InstallCertificateUse $certificateType;
 
 	/**
 	 * A PEM encoded X.509 certificate.

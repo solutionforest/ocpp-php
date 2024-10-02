@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-class ChangeAvailability
+use SolutionForest\OocpPhp\Call;
+
+class ChangeAvailability extends Call
 {
 	public int $connectorId;
 	public string $type;

@@ -2,14 +2,14 @@
 
 namespace SolutionForest\OocpPhp\Exceptions;
 
-use OCPPError;
+use SolutionForest\OocpPhp\CallError;
 
 /**
  * Not strict OCPP 1.6 - see FormationViolationError
  * Valid OCPP 2.0.1
  */
-class FormatViolationError extends OCPPError
+class FormatViolationError extends CallError
 {
-    protected $code = "FormatViolation";
-    protected $defaultDescription = "Payload for Action is syntactically incorrect or \" \" structure for Action";
+    public string $errorCode = "FormatViolation";
+    public string $errorDescription = "Payload for Action is syntactically incorrect or \" \" structure for Action";
 }

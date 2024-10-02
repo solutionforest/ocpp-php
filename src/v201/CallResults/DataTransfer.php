@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\CallResults;
 
-class DataTransfer
+use SolutionForest\OocpPhp\CallResult;
+use SolutionForest\OocpPhp\v201\Enums\DataTransferStatus;
+
+class DataTransfer extends CallResult
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -10,7 +13,7 @@ class DataTransfer
 	/**
 	 * This indicates the success or failure of the data transfer.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\DataTransferStatus $status;
+	public string|DataTransferStatus $status;
 
 	/**
 	 * Element providing more information about the status.

@@ -2,6 +2,8 @@
 
 namespace SolutionForest\OocpPhp\v201\Datatypes;
 
+use SolutionForest\OocpPhp\v201\Enums\CostKind;
+
 class CostType
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
@@ -12,7 +14,7 @@ class CostType
 	 * urn:x-oca:ocpp:uid:1:569243
 	 * The kind of cost referred to in the message element amount
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\CostKind $costKind;
+	public string|CostKind $costKind;
 
 	/**
 	 * Cost. Amount. Amount

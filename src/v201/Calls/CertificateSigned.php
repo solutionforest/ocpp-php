@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\Calls;
 
-class CertificateSigned
+use SolutionForest\OocpPhp\Call;
+use SolutionForest\OocpPhp\v201\Enums\CertificateSigningUse;
+
+class CertificateSigned extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -17,5 +20,5 @@ class CertificateSigned
 	/**
 	 * Indicates the type of the signed certificate that is returned. When omitted the certificate is used for both the 15118 connection (if implemented) and the Charging Station to CSMS connection. This field is required when a typeOfCertificate was included in the <<signcertificaterequest,SignCertificateRequest>> that requested this certificate to be signed AND both the 15118 connection and the Charging Station connection are implemented.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\CertificateSigningUse $certificateType = null;
+	public null|string|CertificateSigningUse $certificateType = null;
 }

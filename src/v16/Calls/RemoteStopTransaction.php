@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-class RemoteStopTransaction
+use SolutionForest\OocpPhp\Call;
+
+class RemoteStopTransaction extends Call
 {
 	public int $transactionId;
 }

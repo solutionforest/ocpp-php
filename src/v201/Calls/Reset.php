@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\Calls;
 
-class Reset
+use SolutionForest\OocpPhp\Call;
+use SolutionForest\OocpPhp\v201\Enums\Reset;
+
+class Reset extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -10,7 +13,7 @@ class Reset
 	/**
 	 * This contains the type of reset that the Charging Station or EVSE should perform.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\Reset $type;
+	public string|Reset $type;
 
 	/**
 	 * This contains the ID of a specific EVSE that needs to be reset, instead of the entire Charging Station.

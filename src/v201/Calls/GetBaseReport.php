@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\Calls;
 
-class GetBaseReport
+use SolutionForest\OocpPhp\Call;
+use SolutionForest\OocpPhp\v201\Enums\ReportBase;
+
+class GetBaseReport extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -15,5 +18,5 @@ class GetBaseReport
 	/**
 	 * This field specifies the report base.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\ReportBase $reportBase;
+	public string|ReportBase $reportBase;
 }

@@ -2,10 +2,10 @@
 
 namespace SolutionForest\OocpPhp\Exceptions;
 
-use OCPPError;
+use SolutionForest\OocpPhp\CallError;
 
-class SecurityError extends OCPPError
+class SecurityError extends CallError
 {
-    protected $code = "SecurityError";
-    protected $defaultDescription = "During the processing of Action a security issue occurred preventing receiver from completing the Action successfully";
+    public string $errorCode = "SecurityError";
+    public string $errorDescription = "During the processing of Action a security issue occurred preventing receiver from completing the Action successfully";
 }

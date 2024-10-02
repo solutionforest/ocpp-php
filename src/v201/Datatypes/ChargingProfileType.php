@@ -2,6 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\Datatypes;
 
+use SolutionForest\OocpPhp\v201\Enums\ChargingProfileKind;
+use SolutionForest\OocpPhp\v201\Enums\ChargingProfilePurpose;
+use SolutionForest\OocpPhp\v201\Enums\RecurrencyKind;
+
 class ChargingProfileType
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
@@ -26,21 +30,21 @@ class ChargingProfileType
 	 * urn:x-oca:ocpp:uid:1:569231
 	 * Defines the purpose of the schedule transferred by this profile
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\ChargingProfilePurpose $chargingProfilePurpose;
+	public string|ChargingProfilePurpose $chargingProfilePurpose;
 
 	/**
 	 * Charging_ Profile. Charging_ Profile_ Kind. Charging_ Profile_ Kind_ Code
 	 * urn:x-oca:ocpp:uid:1:569232
 	 * Indicates the kind of schedule.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\ChargingProfileKind $chargingProfileKind;
+	public string|ChargingProfileKind $chargingProfileKind;
 
 	/**
 	 * Charging_ Profile. Recurrency_ Kind. Recurrency_ Kind_ Code
 	 * urn:x-oca:ocpp:uid:1:569233
 	 * Indicates the start point of a recurrence.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\RecurrencyKind $recurrencyKind = null;
+	public null|string|RecurrencyKind $recurrencyKind = null;
 
 	/**
 	 * Charging_ Profile. Valid_ From. Date_ Time

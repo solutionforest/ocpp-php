@@ -14,6 +14,7 @@
     ],
     "require": {
         "react/socket": "^1.16",
-        "nette/php-generator": "^4.1"
+        "nette/php-generator": "^4.1",
+        "ramsey/uuid": "^4.7"
     }
 }

@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-class Authorize
+use SolutionForest\OocpPhp\Call;
+
+class Authorize extends Call
 {
 	public string $idTag;
 }

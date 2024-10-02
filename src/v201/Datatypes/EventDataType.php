@@ -2,6 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v201\Datatypes;
 
+use SolutionForest\OocpPhp\v201\Enums\EventNotification;
+use SolutionForest\OocpPhp\v201\Enums\EventTrigger;
+
 class EventDataType
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
@@ -20,7 +23,7 @@ class EventDataType
 	/**
 	 * Type of monitor that triggered this event, e.g. exceeding a threshold value.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\EventTrigger $trigger;
+	public string|EventTrigger $trigger;
 
 	/**
 	 * Refers to the Id of an event that is considered to be the cause for this event.
@@ -67,7 +70,7 @@ class EventDataType
 	/**
 	 * Specifies the event notification type of the message.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\EventNotification $eventNotificationType;
+	public string|EventNotification $eventNotificationType;
 
 	/**
 	 * Reference key to a component-variable.

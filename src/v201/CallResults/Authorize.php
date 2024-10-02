@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\CallResults;
 
-class Authorize
+use SolutionForest\OocpPhp\CallResult;
+use SolutionForest\OocpPhp\v201\Enums\AuthorizeCertificateStatus;
+
+class Authorize extends CallResult
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -20,5 +23,5 @@ class Authorize
 	 * - if all certificates are valid: return 'Accepted'.
 	 * - if one of the certificates was revoked, return 'CertificateRevoked'.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\AuthorizeCertificateStatus $certificateStatus = null;
+	public null|string|AuthorizeCertificateStatus $certificateStatus = null;
 }

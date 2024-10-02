@@ -2,8 +2,11 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-class ExtendedTriggerMessage
+use SolutionForest\OocpPhp\Call;
+use SolutionForest\OocpPhp\v16\Enums\MessageTrigger;
+
+class ExtendedTriggerMessage extends Call
 {
-	public string|\SolutionForest\OocpPhp\v16\Enums\MessageTrigger $requestedMessage;
+	public string|MessageTrigger $requestedMessage;
 	public ?int $connectorId = null;
 }

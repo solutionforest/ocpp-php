@@ -2,6 +2,8 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-class DiagnosticsStatusNotification
+use SolutionForest\OocpPhp\CallResult;
+
+class DiagnosticsStatusNotification extends CallResult
 {
 }

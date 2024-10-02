@@ -8,6 +8,8 @@ use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\EnumType;
 use Nette\PhpGenerator\PhpNamespace;
 use Nette\PhpGenerator\Printer;
+use SolutionForest\OocpPhp\Call;
+use SolutionForest\OocpPhp\CallResult;
 
 abstract class SchemaProcessor
 {
@@ -49,8 +51,14 @@ abstract class SchemaProcessor
     {
         $subnamespace = ucfirst($filepath);
         $namespace = new PhpNamespace($this->baseNamespace  . $this->version . '\\' . $subnamespace);
+
+        if ($class instanceof ClassType) {
+            $namespace = $this->handleUseStatements($namespace, $class);
+        }
+
         $filename = $class->getName();
         $printer = new Printer;
+        $printer->setTypeResolving(false);
         $class = $printer->printClass($class, $namespace);
         $namespace = $printer->printNamespace($namespace);
 
@@ -81,7 +89,7 @@ abstract class SchemaProcessor
 
         foreach ($propertyArray["properties"] as $property => $definition) {
             $enumName = null;
-            
+
             $required = isset($propertyArray["required"]) && in_array($property, $propertyArray["required"]);
             $description = "";
 
@@ -89,13 +97,14 @@ abstract class SchemaProcessor
             if (isset($definition["\$ref"])) {
                 $ref = explode("/", $definition["\$ref"]);
                 $ref = end($ref);
-                
+
                 $type = $schemaContent["definitions"][$ref]["type"] ?? null;
                 $description = $schemaContent["definitions"][$ref]["description"] ?? "";
 
                 if (str_contains($ref, "EnumType")) {
                     $enumName = str_replace('EnumType', '', $ref);
                     $enumName = $this->baseNamespace . $this->version . "\Enums\\" . $enumName;
+                    // $enumName = "Enums\\" . $enumName;
                 }
             } elseif (isset($definition["type"])) {
                 $type = $definition["type"];
@@ -106,12 +115,41 @@ abstract class SchemaProcessor
 
             $type =  $this->mapSchemaTypeToPhp($type, $enumName || $required);
             $enumPropertyType =  ($required ? '' : 'null|') . ($type ? $type . '|' : '') . $enumName;
+
             $class->addProperty($property)
                 ->setType($enumName ? $enumPropertyType : $type)
                 ->setInitialized(!$required)->addComment(html_entity_decode($description));
         }
 
         return $class;
+    }
+
+    protected function handleUseStatements(PhpNamespace $namespace, ClassType $class): PhpNamespace
+    {
+        // Map Enums to use statements
+        foreach ($class->getProperties() as $property) {
+            if (str_contains($property->getType(), 'Enums')) {
+                $types = explode('|', $property->getType());
+                foreach ($types as $key => $type) {
+                    if (str_contains($type, 'Enums')) {
+                        $namespace->addUse($type);
+                        $types[$key] = substr(strrchr($type, "\\"), 1);
+                    } else {
+                        $types[$key] = $type;
+                    }
+                }
+                $class->getProperty($property->getName())->setType(implode('|', $types));
+            }
+        }
+
+        // Add use statements for Call and CallResult
+        if ($class->getExtends() === 'Call') {
+            $namespace->addUse(Call::class);
+        } elseif ($class->getExtends() === 'CallResult') {
+            $namespace->addUse(CallResult::class);
+        }
+
+        return $namespace;
     }
 
     protected function mapSchemaTypeToPhp(?string $type, bool $required)

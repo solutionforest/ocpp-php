@@ -2,6 +2,8 @@
 
 namespace SolutionForest\OocpPhp\v201\Datatypes;
 
+use SolutionForest\OocpPhp\v201\Enums\GetCertificateIdUse;
+
 class CertificateHashDataChainType
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
@@ -11,6 +13,6 @@ class CertificateHashDataChainType
 	/**
 	 * Indicates the type of the requested certificate(s).
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\GetCertificateIdUse $certificateType;
+	public string|GetCertificateIdUse $certificateType;
 	public ?array $childCertificateHashData = null;
 }

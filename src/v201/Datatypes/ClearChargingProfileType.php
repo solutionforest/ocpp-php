@@ -2,6 +2,8 @@
 
 namespace SolutionForest\OocpPhp\v201\Datatypes;
 
+use SolutionForest\OocpPhp\v201\Enums\ChargingProfilePurpose;
+
 class ClearChargingProfileType
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
@@ -19,7 +21,7 @@ class ClearChargingProfileType
 	 * urn:x-oca:ocpp:uid:1:569231
 	 * Specifies to purpose of the charging profiles that will be cleared, if they meet the other criteria in the request.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\ChargingProfilePurpose $chargingProfilePurpose = null;
+	public null|string|ChargingProfilePurpose $chargingProfilePurpose = null;
 
 	/**
 	 * Charging_ Profile. Stack_ Level. Counter

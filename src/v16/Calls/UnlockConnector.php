@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-class UnlockConnector
+use SolutionForest\OocpPhp\Call;
+
+class UnlockConnector extends Call
 {
 	public int $connectorId;
 }

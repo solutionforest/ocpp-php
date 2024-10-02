@@ -2,8 +2,11 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-class GetInstalledCertificateIds
+use SolutionForest\OocpPhp\CallResult;
+use SolutionForest\OocpPhp\v16\Enums\GetInstalledCertificateStatus;
+
+class GetInstalledCertificateIds extends CallResult
 {
 	public ?array $certificateHashData = null;
-	public string|\SolutionForest\OocpPhp\v16\Enums\GetInstalledCertificateStatus $status;
+	public string|GetInstalledCertificateStatus $status;
 }

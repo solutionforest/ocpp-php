@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\CallResults;
 
-class GetInstalledCertificateIds
+use SolutionForest\OocpPhp\CallResult;
+use SolutionForest\OocpPhp\v201\Enums\GetInstalledCertificateStatus;
+
+class GetInstalledCertificateIds extends CallResult
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -10,7 +13,7 @@ class GetInstalledCertificateIds
 	/**
 	 * Charging Station indicates if it can process the request.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\GetInstalledCertificateStatus $status;
+	public string|GetInstalledCertificateStatus $status;
 
 	/**
 	 * Element providing more information about the status.

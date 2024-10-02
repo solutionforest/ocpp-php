@@ -2,6 +2,8 @@
 
 namespace SolutionForest\OocpPhp\v201\Datatypes;
 
+use SolutionForest\OocpPhp\v201\Enums\ChargingRateUnit;
+
 class CompositeScheduleType
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
@@ -32,5 +34,5 @@ class CompositeScheduleType
 	 * The unit of measure Limit is
 	 * expressed in.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\ChargingRateUnit $chargingRateUnit;
+	public string|ChargingRateUnit $chargingRateUnit;
 }

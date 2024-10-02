@@ -2,10 +2,10 @@
 
 namespace SolutionForest\OocpPhp\Exceptions;
 
-use OCPPError;
+use SolutionForest\OocpPhp\CallError;
 
-class NotImplementedError extends OCPPError
+class NotImplementedError extends CallError
 {
-    protected $code = "NotImplemented";
-    protected $defaultDescription = "Request Action is recognized but not supported by the receiver";
+    public string $errorCode = "NotImplemented";
+    public string $errorDescription = "Request Action is recognized but not supported by the receiver";
 }

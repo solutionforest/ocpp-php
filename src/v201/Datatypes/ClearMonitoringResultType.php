@@ -2,6 +2,8 @@
 
 namespace SolutionForest\OocpPhp\v201\Datatypes;
 
+use SolutionForest\OocpPhp\v201\Enums\ClearMonitoringStatus;
+
 class ClearMonitoringResultType
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
@@ -10,7 +12,7 @@ class ClearMonitoringResultType
 	/**
 	 * Result of the clear request for this monitor, identified by its Id.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\ClearMonitoringStatus $status;
+	public string|ClearMonitoringStatus $status;
 
 	/**
 	 * Id of the monitor of which a clear was requested.

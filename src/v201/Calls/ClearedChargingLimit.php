@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\Calls;
 
-class ClearedChargingLimit
+use SolutionForest\OocpPhp\Call;
+use SolutionForest\OocpPhp\v201\Enums\ChargingLimitSource;
+
+class ClearedChargingLimit extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -10,7 +13,7 @@ class ClearedChargingLimit
 	/**
 	 * Source of the charging limit.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\ChargingLimitSource $chargingLimitSource;
+	public string|ChargingLimitSource $chargingLimitSource;
 
 	/**
 	 * EVSE Identifier.

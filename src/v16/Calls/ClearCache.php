@@ -2,6 +2,8 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-class ClearCache
+use SolutionForest\OocpPhp\Call;
+
+class ClearCache extends Call
 {
 }

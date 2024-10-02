@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-class RemoteStopTransaction
+use SolutionForest\OocpPhp\CallResult;
+
+class RemoteStopTransaction extends CallResult
 {
 	public string $status;
 }

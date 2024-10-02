@@ -2,7 +2,11 @@
 
 namespace SolutionForest\OocpPhp\v201\Calls;
 
-class GetDisplayMessages
+use SolutionForest\OocpPhp\Call;
+use SolutionForest\OocpPhp\v201\Enums\MessagePriority;
+use SolutionForest\OocpPhp\v201\Enums\MessageState;
+
+class GetDisplayMessages extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -20,10 +24,10 @@ class GetDisplayMessages
 	/**
 	 * If provided the Charging Station shall return Display Messages with the given priority only.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\MessagePriority $priority = null;
+	public null|string|MessagePriority $priority = null;
 
 	/**
 	 * If provided the Charging Station shall return Display Messages with the given state only.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\MessageState $state = null;
+	public null|string|MessageState $state = null;
 }

@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-class UpdateFirmware
+use SolutionForest\OocpPhp\Call;
+
+class UpdateFirmware extends Call
 {
 	public string $location;
 	public ?int $retries = null;

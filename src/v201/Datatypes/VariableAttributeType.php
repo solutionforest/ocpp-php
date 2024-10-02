@@ -2,6 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v201\Datatypes;
 
+use SolutionForest\OocpPhp\v201\Enums\Attribute;
+use SolutionForest\OocpPhp\v201\Enums\Mutability;
+
 class VariableAttributeType
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
@@ -11,7 +14,7 @@ class VariableAttributeType
 	 * Attribute: Actual, MinSet, MaxSet, etc.
 	 * Defaults to Actual if absent.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\Attribute $type = null;
+	public null|string|Attribute $type = null;
 
 	/**
 	 * Value of the attribute. May only be omitted when mutability is set to 'WriteOnly'.
@@ -23,7 +26,7 @@ class VariableAttributeType
 	/**
 	 * Defines the mutability of this attribute. Default is ReadWrite when omitted.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\Mutability $mutability = null;
+	public null|string|Mutability $mutability = null;
 
 	/**
 	 * If true, value will be persistent across system reboots or power down. Default when omitted is false.

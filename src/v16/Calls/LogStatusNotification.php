@@ -2,8 +2,11 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-class LogStatusNotification
+use SolutionForest\OocpPhp\Call;
+use SolutionForest\OocpPhp\v16\Enums\UploadLogStatus;
+
+class LogStatusNotification extends Call
 {
-	public string|\SolutionForest\OocpPhp\v16\Enums\UploadLogStatus $status;
+	public string|UploadLogStatus $status;
 	public ?int $requestId = null;
 }

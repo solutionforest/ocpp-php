@@ -2,6 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v201\Datatypes;
 
+use SolutionForest\OocpPhp\v201\Enums\MessagePriority;
+use SolutionForest\OocpPhp\v201\Enums\MessageState;
+
 class MessageInfoType
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
@@ -24,14 +27,14 @@ class MessageInfoType
 	 * urn:x-enexis:ecdm:uid:1:569253
 	 * With what priority should this message be shown
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\MessagePriority $priority;
+	public string|MessagePriority $priority;
 
 	/**
 	 * Message_ Info. State. Message_ State_ Code
 	 * urn:x-enexis:ecdm:uid:1:569254
 	 * During what state should this message be shown. When omitted this message should be shown in any state of the Charging Station.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\MessageState $state = null;
+	public null|string|MessageState $state = null;
 
 	/**
 	 * Message_ Info. Start. Date_ Time

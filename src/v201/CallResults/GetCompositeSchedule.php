@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\CallResults;
 
-class GetCompositeSchedule
+use SolutionForest\OocpPhp\CallResult;
+use SolutionForest\OocpPhp\v201\Enums\GenericStatus;
+
+class GetCompositeSchedule extends CallResult
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -11,7 +14,7 @@ class GetCompositeSchedule
 	 * The Charging Station will indicate if it was
 	 * able to process the request
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\GenericStatus $status;
+	public string|GenericStatus $status;
 
 	/**
 	 * Element providing more information about the status.

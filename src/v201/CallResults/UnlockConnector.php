@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\CallResults;
 
-class UnlockConnector
+use SolutionForest\OocpPhp\CallResult;
+use SolutionForest\OocpPhp\v201\Enums\UnlockStatus;
+
+class UnlockConnector extends CallResult
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -10,7 +13,7 @@ class UnlockConnector
 	/**
 	 * This indicates whether the Charging Station has unlocked the connector.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\UnlockStatus $status;
+	public string|UnlockStatus $status;
 
 	/**
 	 * Element providing more information about the status.

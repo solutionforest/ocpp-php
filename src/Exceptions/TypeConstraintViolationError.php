@@ -2,10 +2,10 @@
 
 namespace SolutionForest\OocpPhp\Exceptions;
 
-use OCPPError;
+use SolutionForest\OocpPhp\CallError;
 
-class TypeConstraintViolationError extends OCPPError
+class TypeConstraintViolationError extends CallError
 {
-    protected $code = "TypeConstraintViolation";
-    protected $defaultDescription = "Payload for Action is syntactically correct but at least one of the fields violates data type constraints (e.g. “somestring”: 12)";
+    public string $errorCode = "TypeConstraintViolation";
+    public string $errorDescription = "Payload for Action is syntactically correct but at least one of the fields violates data type constraints (e.g. “somestring”: 12)";
 }

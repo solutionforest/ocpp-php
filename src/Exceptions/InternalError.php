@@ -2,10 +2,10 @@
 
 namespace SolutionForest\OocpPhp\Exceptions;
 
-use OCPPError;
+use SolutionForest\OocpPhp\CallError;
 
-class InternalError extends OCPPError
+class InternalError extends CallError
 {
-    protected $code = "InternalError";
-    protected $defaultDescription = "An internal error occurred and the receiver was able to process the requested Action successfully";
+    public string $errorCode = "InternalError";
+    public string $errorDescription = "An internal error occurred and the receiver was able to process the requested Action successfully";
 }

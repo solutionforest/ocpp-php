@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-class CertificateSigned
+use SolutionForest\OocpPhp\Call;
+
+class CertificateSigned extends Call
 {
 	public string $certificateChain;
 }

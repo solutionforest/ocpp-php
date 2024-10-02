@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-class UnlockConnector
+use SolutionForest\OocpPhp\CallResult;
+
+class UnlockConnector extends CallResult
 {
 	public string $status;
 }

@@ -2,6 +2,8 @@
 
 namespace SolutionForest\OocpPhp\v201\Datatypes;
 
+use SolutionForest\OocpPhp\v201\Enums\IdToken;
+
 class IdTokenType
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
@@ -16,5 +18,5 @@ class IdTokenType
 	/**
 	 * Enumeration of possible idToken types.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\IdToken $type;
+	public string|IdToken $type;
 }

@@ -2,6 +2,8 @@
 
 namespace SolutionForest\OocpPhp\v201\Datatypes;
 
+use SolutionForest\OocpPhp\v201\Enums\ChargingLimitSource;
+
 class ChargingLimitType
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
@@ -12,7 +14,7 @@ class ChargingLimitType
 	 * urn:x-enexis:ecdm:uid:1:570845
 	 * Represents the source of the charging limit.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\ChargingLimitSource $chargingLimitSource;
+	public string|ChargingLimitSource $chargingLimitSource;
 
 	/**
 	 * Charging_ Limit. Is_ Grid_ Critical. Indicator

@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-class SetChargingProfile
+use SolutionForest\OocpPhp\Call;
+
+class SetChargingProfile extends Call
 {
 	public int $connectorId;
 	public array $csChargingProfiles;

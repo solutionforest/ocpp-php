@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\Calls;
 
-class ChangeAvailability
+use SolutionForest\OocpPhp\Call;
+use SolutionForest\OocpPhp\v201\Enums\OperationalStatus;
+
+class ChangeAvailability extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -17,5 +20,5 @@ class ChangeAvailability
 	/**
 	 * This contains the type of availability change that the Charging Station should perform.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\OperationalStatus $operationalStatus;
+	public string|OperationalStatus $operationalStatus;
 }

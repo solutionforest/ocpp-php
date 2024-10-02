@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-class Authorize
+use SolutionForest\OocpPhp\CallResult;
+
+class Authorize extends CallResult
 {
 	public array $idTagInfo;
 }

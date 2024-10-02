@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\CallResults;
 
-class SetNetworkProfile
+use SolutionForest\OocpPhp\CallResult;
+use SolutionForest\OocpPhp\v201\Enums\SetNetworkProfileStatus;
+
+class SetNetworkProfile extends CallResult
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -10,7 +13,7 @@ class SetNetworkProfile
 	/**
 	 * Result of operation.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\SetNetworkProfileStatus $status;
+	public string|SetNetworkProfileStatus $status;
 
 	/**
 	 * Element providing more information about the status.

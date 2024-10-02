@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\Exceptions;
 
-use OCPPError;
+use SolutionForest\OocpPhp\CallError;
 
 /**
  *  To allow for strict OCPP 1.6 compliance
@@ -10,8 +10,8 @@ use OCPPError;
  *     5.2. Page 14, par 4.2.3. CallError: incorrect name in enum: FormationViolation
  *     Incorrect name in enum: FormationViolation
  */
-class FormationViolationError extends OCPPError
+class FormationViolationError extends CallError
 {
-    protected $code = "FormationViolation";
-    protected $defaultDescription = "Payload for Action is syntactically incorrect or structure for Action";
+    public string $errorCode = "FormationViolation";
+    public string $errorDescription = "Payload for Action is syntactically incorrect or structure for Action";
 }

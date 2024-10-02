@@ -2,6 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v201\Datatypes;
 
+use SolutionForest\OocpPhp\v201\Enums\Attribute;
+use SolutionForest\OocpPhp\v201\Enums\SetVariableStatus;
+
 class SetVariableResultType
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
@@ -10,12 +13,12 @@ class SetVariableResultType
 	/**
 	 * Type of attribute: Actual, Target, MinSet, MaxSet. Default is Actual when omitted.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\Attribute $attributeType = null;
+	public null|string|Attribute $attributeType = null;
 
 	/**
 	 * Result status of setting the variable.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\SetVariableStatus $attributeStatus;
+	public string|SetVariableStatus $attributeStatus;
 
 	/**
 	 * Element providing more information about the status.

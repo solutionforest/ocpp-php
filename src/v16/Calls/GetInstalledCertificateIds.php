@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-class GetInstalledCertificateIds
+use SolutionForest\OocpPhp\Call;
+use SolutionForest\OocpPhp\v16\Enums\CertificateUse;
+
+class GetInstalledCertificateIds extends Call
 {
-	public string|\SolutionForest\OocpPhp\v16\Enums\CertificateUse $certificateType;
+	public string|CertificateUse $certificateType;
 }

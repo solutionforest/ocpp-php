@@ -2,10 +2,10 @@
 
 namespace SolutionForest\OocpPhp\Exceptions;
 
-use OCPPError;
+use SolutionForest\OocpPhp\CallError;
 
-class GenericError extends OCPPError
+class GenericError extends CallError
 {
-    protected $code = "GenericError";
-    protected $defaultDescription = "Any other error not all other OCPP defined errors";
+    public string $errorCode = "GenericError";
+    public string $errorDescription = "Any other error not all other OCPP defined errors";
 }

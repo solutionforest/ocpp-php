@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\CallResults;
 
-class ClearDisplayMessage
+use SolutionForest\OocpPhp\CallResult;
+use SolutionForest\OocpPhp\v201\Enums\ClearMessageStatus;
+
+class ClearDisplayMessage extends CallResult
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -10,7 +13,7 @@ class ClearDisplayMessage
 	/**
 	 * Returns whether the Charging Station has been able to remove the message.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\ClearMessageStatus $status;
+	public string|ClearMessageStatus $status;
 
 	/**
 	 * Element providing more information about the status.

@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\Calls;
 
-class GetCompositeSchedule
+use SolutionForest\OocpPhp\Call;
+use SolutionForest\OocpPhp\v201\Enums\ChargingRateUnit;
+
+class GetCompositeSchedule extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -15,7 +18,7 @@ class GetCompositeSchedule
 	/**
 	 * Can be used to force a power or current profile.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\ChargingRateUnit $chargingRateUnit = null;
+	public null|string|ChargingRateUnit $chargingRateUnit = null;
 
 	/**
 	 * The ID of the EVSE for which the schedule is requested. When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.

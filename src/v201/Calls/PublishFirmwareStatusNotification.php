@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\Calls;
 
-class PublishFirmwareStatusNotification
+use SolutionForest\OocpPhp\Call;
+use SolutionForest\OocpPhp\v201\Enums\PublishFirmwareStatus;
+
+class PublishFirmwareStatusNotification extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -11,7 +14,7 @@ class PublishFirmwareStatusNotification
 	 * This contains the progress status of the publishfirmware
 	 * installation.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\PublishFirmwareStatus $status;
+	public string|PublishFirmwareStatus $status;
 
 	/**
 	 * Required if status is Published. Can be multiple URI’s, if the Local Controller supports e.g. HTTP, HTTPS, and FTP.

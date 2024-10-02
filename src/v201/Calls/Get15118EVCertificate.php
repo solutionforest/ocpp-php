@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\Calls;
 
-class Get15118EVCertificate
+use SolutionForest\OocpPhp\Call;
+use SolutionForest\OocpPhp\v201\Enums\CertificateAction;
+
+class Get15118EVCertificate extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -15,7 +18,7 @@ class Get15118EVCertificate
 	/**
 	 * Defines whether certificate needs to be installed or updated.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\CertificateAction $action;
+	public string|CertificateAction $action;
 
 	/**
 	 * Raw CertificateInstallationReq request from EV, Base64 encoded.

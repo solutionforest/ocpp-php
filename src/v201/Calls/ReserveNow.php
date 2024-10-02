@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\Calls;
 
-class ReserveNow
+use SolutionForest\OocpPhp\Call;
+use SolutionForest\OocpPhp\v201\Enums\Connector;
+
+class ReserveNow extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -20,7 +23,7 @@ class ReserveNow
 	/**
 	 * This field specifies the connector type.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\Connector $connectorType = null;
+	public null|string|Connector $connectorType = null;
 
 	/**
 	 * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.

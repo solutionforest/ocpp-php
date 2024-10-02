@@ -2,6 +2,8 @@
 
 namespace SolutionForest\OocpPhp\v201\Datatypes;
 
+use SolutionForest\OocpPhp\v201\Enums\Monitor;
+
 class VariableMonitoringType
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
@@ -26,7 +28,7 @@ class VariableMonitoringType
 	/**
 	 * The type of this monitor, e.g. a threshold, delta or periodic monitor.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\Monitor $type;
+	public string|Monitor $type;
 
 	/**
 	 * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.

@@ -2,6 +2,8 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-class SecurityEventNotification
+use SolutionForest\OocpPhp\CallResult;
+
+class SecurityEventNotification extends CallResult
 {
 }

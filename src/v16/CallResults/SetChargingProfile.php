@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-class SetChargingProfile
+use SolutionForest\OocpPhp\CallResult;
+
+class SetChargingProfile extends CallResult
 {
 	public string $status;
 }

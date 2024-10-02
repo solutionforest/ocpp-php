@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-class TriggerMessage
+use SolutionForest\OocpPhp\CallResult;
+
+class TriggerMessage extends CallResult
 {
 	public string $status;
 }

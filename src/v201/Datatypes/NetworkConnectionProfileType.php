@@ -2,6 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\Datatypes;
 
+use SolutionForest\OocpPhp\v201\Enums\OCPPInterface;
+use SolutionForest\OocpPhp\v201\Enums\OCPPTransport;
+use SolutionForest\OocpPhp\v201\Enums\OCPPVersion;
+
 class NetworkConnectionProfileType
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
@@ -21,14 +25,14 @@ class NetworkConnectionProfileType
 	 * urn:x-oca:ocpp:uid:1:569355
 	 * Defines the OCPP version used for this communication function.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\OCPPVersion $ocppVersion;
+	public string|OCPPVersion $ocppVersion;
 
 	/**
 	 * Communication_ Function. OCPP_ Transport. OCPP_ Transport_ Code
 	 * urn:x-oca:ocpp:uid:1:569356
 	 * Defines the transport protocol (e.g. SOAP or JSON). Note: SOAP is not supported in OCPP 2.0, but is supported by other versions of OCPP.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\OCPPTransport $ocppTransport;
+	public string|OCPPTransport $ocppTransport;
 
 	/**
 	 * Communication_ Function. OCPP_ Central_ System_ URL. URI
@@ -52,7 +56,7 @@ class NetworkConnectionProfileType
 	/**
 	 * Applicable Network Interface.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\OCPPInterface $ocppInterface;
+	public string|OCPPInterface $ocppInterface;
 
 	/**
 	 * VPN

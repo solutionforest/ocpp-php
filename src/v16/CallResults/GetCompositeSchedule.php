@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-class GetCompositeSchedule
+use SolutionForest\OocpPhp\CallResult;
+
+class GetCompositeSchedule extends CallResult
 {
 	public string $status;
 	public ?int $connectorId = null;

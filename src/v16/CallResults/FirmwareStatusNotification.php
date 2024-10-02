@@ -2,6 +2,8 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-class FirmwareStatusNotification
+use SolutionForest\OocpPhp\CallResult;
+
+class FirmwareStatusNotification extends CallResult
 {
 }

@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-class ReserveNow
+use SolutionForest\OocpPhp\CallResult;
+
+class ReserveNow extends CallResult
 {
 	public string $status;
 }

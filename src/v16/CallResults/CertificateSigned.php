@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-class CertificateSigned
+use SolutionForest\OocpPhp\CallResult;
+use SolutionForest\OocpPhp\v16\Enums\CertificateSignedStatus;
+
+class CertificateSigned extends CallResult
 {
-	public string|\SolutionForest\OocpPhp\v16\Enums\CertificateSignedStatus $status;
+	public string|CertificateSignedStatus $status;
 }

@@ -2,6 +2,8 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-class MeterValues
+use SolutionForest\OocpPhp\CallResult;
+
+class MeterValues extends CallResult
 {
 }

@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-class InstallCertificate
+use SolutionForest\OocpPhp\CallResult;
+use SolutionForest\OocpPhp\v16\Enums\InstallCertificateStatus;
+
+class InstallCertificate extends CallResult
 {
-	public string|\SolutionForest\OocpPhp\v16\Enums\InstallCertificateStatus $status;
+	public string|InstallCertificateStatus $status;
 }

@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-class ClearChargingProfile
+use SolutionForest\OocpPhp\Call;
+
+class ClearChargingProfile extends Call
 {
 	public ?int $id = null;
 	public ?int $connectorId = null;

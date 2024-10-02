@@ -2,6 +2,8 @@
 
 namespace SolutionForest\OocpPhp\v201\Datatypes;
 
+use SolutionForest\OocpPhp\v201\Enums\HashAlgorithm;
+
 class CertificateHashDataType
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
@@ -10,7 +12,7 @@ class CertificateHashDataType
 	/**
 	 * Used algorithms for the hashes provided.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\HashAlgorithm $hashAlgorithm;
+	public string|HashAlgorithm $hashAlgorithm;
 
 	/**
 	 * Hashed value of the Issuer DN (Distinguished Name).

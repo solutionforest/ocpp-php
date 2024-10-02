@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-class MeterValues
+use SolutionForest\OocpPhp\Call;
+
+class MeterValues extends Call
 {
 	public int $connectorId;
 	public ?int $transactionId = null;

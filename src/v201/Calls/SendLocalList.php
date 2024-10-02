@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\Calls;
 
-class SendLocalList
+use SolutionForest\OocpPhp\Call;
+use SolutionForest\OocpPhp\v201\Enums\Update;
+
+class SendLocalList extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -16,5 +19,5 @@ class SendLocalList
 	/**
 	 * This contains the type of update (full or differential) of this request.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\Update $updateType;
+	public string|Update $updateType;
 }

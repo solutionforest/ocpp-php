@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\CallResults;
 
-class Get15118EVCertificate
+use SolutionForest\OocpPhp\CallResult;
+use SolutionForest\OocpPhp\v201\Enums\Iso15118EVCertificateStatus;
+
+class Get15118EVCertificate extends CallResult
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -10,7 +13,7 @@ class Get15118EVCertificate
 	/**
 	 * Indicates whether the message was processed properly.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\Iso15118EVCertificateStatus $status;
+	public string|Iso15118EVCertificateStatus $status;
 
 	/**
 	 * Element providing more information about the status.

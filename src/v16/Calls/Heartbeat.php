@@ -2,6 +2,8 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-class Heartbeat
+use SolutionForest\OocpPhp\Call;
+
+class Heartbeat extends Call
 {
 }

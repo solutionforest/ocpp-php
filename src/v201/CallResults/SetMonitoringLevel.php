@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\CallResults;
 
-class SetMonitoringLevel
+use SolutionForest\OocpPhp\CallResult;
+use SolutionForest\OocpPhp\v201\Enums\GenericStatus;
+
+class SetMonitoringLevel extends CallResult
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -10,7 +13,7 @@ class SetMonitoringLevel
 	/**
 	 * Indicates whether the Charging Station was able to accept the request.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\GenericStatus $status;
+	public string|GenericStatus $status;
 
 	/**
 	 * Element providing more information about the status.

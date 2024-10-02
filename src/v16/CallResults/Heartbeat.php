@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\CallResults;
 
-class Heartbeat
+use SolutionForest\OocpPhp\CallResult;
+
+class Heartbeat extends CallResult
 {
 	public string $currentTime;
 }

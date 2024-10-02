@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-class GetCompositeSchedule
+use SolutionForest\OocpPhp\Call;
+
+class GetCompositeSchedule extends Call
 {
 	public int $connectorId;
 	public int $duration;

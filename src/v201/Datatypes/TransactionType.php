@@ -2,6 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v201\Datatypes;
 
+use SolutionForest\OocpPhp\v201\Enums\ChargingState;
+use SolutionForest\OocpPhp\v201\Enums\Reason;
+
 class TransactionType
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
@@ -18,7 +21,7 @@ class TransactionType
 	 * Current charging state, is required when state
 	 * has changed.
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\ChargingState $chargingState = null;
+	public null|string|ChargingState $chargingState = null;
 
 	/**
 	 * Transaction. Time_ Spent_ Charging. Elapsed_ Time
@@ -32,7 +35,7 @@ class TransactionType
 	 * urn:x-oca:ocpp:uid:1:569413
 	 * This contains the reason why the transaction was stopped. MAY only be omitted when Reason is "Local".
 	 */
-	public null|string|\SolutionForest\OocpPhp\v201\Enums\Reason $stoppedReason = null;
+	public null|string|Reason $stoppedReason = null;
 
 	/**
 	 * The ID given to remote start request (<<requeststarttransactionrequest, RequestStartTransactionRequest>>. This enables to CSMS to match the started transaction to the given start request.

@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-class CancelReservation
+use SolutionForest\OocpPhp\Call;
+
+class CancelReservation extends Call
 {
 	public int $reservationId;
 }

@@ -5,7 +5,6 @@ namespace SolutionForest\OocpPhp\Scripts;
 require_once __DIR__ . "/../../vendor/autoload.php";
 
 use Nette\PhpGenerator\ClassType;
-use Nette\PhpGenerator\Type;
 
 class SchemaToDataclass extends SchemaProcessor
 {
@@ -46,6 +45,8 @@ class SchemaToDataclass extends SchemaProcessor
         } else {
             $class = $this->mapPropertiesToClass($schemaContent, $title, $schemaContent);
         }
+
+        $class->setExtends($call ? 'Call' : 'CallResult');
 
         if ($call) {
             $calls[] = $class;

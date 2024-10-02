@@ -2,6 +2,8 @@
 
 namespace SolutionForest\OocpPhp\v201\Datatypes;
 
+use SolutionForest\OocpPhp\v201\Enums\MessageFormat;
+
 class MessageContentType
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
@@ -12,7 +14,7 @@ class MessageContentType
 	 * urn:x-enexis:ecdm:uid:1:570848
 	 * Format of the message.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\MessageFormat $format;
+	public string|MessageFormat $format;
 
 	/**
 	 * Message_ Content. Language. Language_ Code

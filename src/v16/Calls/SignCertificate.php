@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-class SignCertificate
+use SolutionForest\OocpPhp\Call;
+
+class SignCertificate extends Call
 {
 	public string $csr;
 }

@@ -2,6 +2,8 @@
 
 namespace SolutionForest\OocpPhp\v201\Datatypes;
 
+use SolutionForest\OocpPhp\v201\Enums\AuthorizationStatus;
+
 class IdTokenInfoType
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
@@ -12,7 +14,7 @@ class IdTokenInfoType
 	 * urn:x-oca:ocpp:uid:1:569372
 	 * Current status of the ID Token.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\AuthorizationStatus $status;
+	public string|AuthorizationStatus $status;
 
 	/**
 	 * ID_ Token. Expiry. Date_ Time

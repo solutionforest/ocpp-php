@@ -2,6 +2,8 @@
 
 namespace SolutionForest\OocpPhp\v16\Calls;
 
-class GetLocalListVersion
+use SolutionForest\OocpPhp\Call;
+
+class GetLocalListVersion extends Call
 {
 }

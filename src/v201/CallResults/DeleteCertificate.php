@@ -2,7 +2,10 @@
 
 namespace SolutionForest\OocpPhp\v201\CallResults;
 
-class DeleteCertificate
+use SolutionForest\OocpPhp\CallResult;
+use SolutionForest\OocpPhp\v201\Enums\DeleteCertificateStatus;
+
+class DeleteCertificate extends CallResult
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
 	public ?array $customData = null;
@@ -10,7 +13,7 @@ class DeleteCertificate
 	/**
 	 * Charging Station indicates if it can process the request.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\DeleteCertificateStatus $status;
+	public string|DeleteCertificateStatus $status;
 
 	/**
 	 * Element providing more information about the status.

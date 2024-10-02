@@ -2,6 +2,8 @@
 
 namespace SolutionForest\OocpPhp\v201\Datatypes;
 
+use SolutionForest\OocpPhp\v201\Enums\Data;
+
 class VariableCharacteristicsType
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
@@ -15,7 +17,7 @@ class VariableCharacteristicsType
 	/**
 	 * Data type of this variable.
 	 */
-	public string|\SolutionForest\OocpPhp\v201\Enums\Data $dataType;
+	public string|Data $dataType;
 
 	/**
 	 * Minimum possible value of this variable.
