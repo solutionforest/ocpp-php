@@ -55,7 +55,6 @@ $connector->connect('127.0.0.1:8080')
 
         $message = $messages[rand(0, count($messages) - 1)];
 
-        $message = new Calls\CancelReservation();
         $message = $message->toArray();
 
         echo "Charge Point: Sending message: " . json_encode($message) . "\n\n";
