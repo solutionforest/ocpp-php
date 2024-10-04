@@ -1,10 +1,10 @@
 <?php
 
-namespace SolutionForest\OocpPhp\v201\Datatypes;
+namespace SolutionForest\OcppPhp\v201\Datatypes;
 
-use SolutionForest\OocpPhp\v201\Enums\ChargingProfileKind;
-use SolutionForest\OocpPhp\v201\Enums\ChargingProfilePurpose;
-use SolutionForest\OocpPhp\v201\Enums\RecurrencyKind;
+use SolutionForest\OcppPhp\v201\Enums\ChargingProfileKind;
+use SolutionForest\OcppPhp\v201\Enums\ChargingProfilePurpose;
+use SolutionForest\OcppPhp\v201\Enums\RecurrencyKind;
 
 class ChargingProfileType
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace SolutionForest\OocpPhp\v201\Calls;
+namespace SolutionForest\OcppPhp\v201\Calls;
 
-use SolutionForest\OocpPhp\Messages\Call;
+use SolutionForest\OcppPhp\Messages\Call;
 
 class SetVariables extends Call
 {

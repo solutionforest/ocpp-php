@@ -7,7 +7,7 @@ use React\Socket\ConnectionInterface;
 use React\EventLoop\Factory;
 use React\EventLoop\Loop;
 use React\Socket\SocketServer;
-use SolutionForest\OocpPhp\v16\Calls;
+use SolutionForest\OcppPhp\v16\Calls;
 
 $loop = Loop::get();
 $connector = new \React\Socket\Connector($loop);

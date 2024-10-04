@@ -1,8 +1,8 @@
 <?php
 
-namespace SolutionForest\OocpPhp\v16\CallResults;
+namespace SolutionForest\OcppPhp\v16\CallResults;
 
-use SolutionForest\OocpPhp\Messages\CallResult;
+use SolutionForest\OcppPhp\Messages\CallResult;
 
 class Reset extends CallResult
 {

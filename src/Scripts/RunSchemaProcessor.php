@@ -2,9 +2,9 @@
 
 require_once __DIR__ . "/../../vendor/autoload.php";
 
-use SolutionForest\OocpPhp\Scripts\SchemaToDataclass;
-use SolutionForest\OocpPhp\Scripts\SchemaToDatatypes;
-use SolutionForest\OocpPhp\Scripts\SchemaToEnum;
+use SolutionForest\OcppPhp\Scripts\SchemaToDataclass;
+use SolutionForest\OcppPhp\Scripts\SchemaToDatatypes;
+use SolutionForest\OcppPhp\Scripts\SchemaToEnum;
 
 echo "Which type should be generated? Select an option: (dataclass/enum/datatype): ";
 $handle = fopen("php://stdin", "r");

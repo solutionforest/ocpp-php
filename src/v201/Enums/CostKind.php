@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\v201\Enums;
+namespace SolutionForest\OcppPhp\v201\Enums;
 
 /**
  * Values of the CostKind field of a value in NotifyChargingLimitRequest , NotifyEVChargingScheduleRequest , ReportChargingProfilesRequest , RequestStartTransactionRequest , SetChargingProfileRequest.

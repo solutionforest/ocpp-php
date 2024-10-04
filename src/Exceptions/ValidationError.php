@@ -1,8 +1,8 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Exceptions;
+namespace SolutionForest\OcppPhp\Exceptions;
 
-use SolutionForest\OocpPhp\Messages\CallError;
+use SolutionForest\OcppPhp\Messages\CallError;
 
 /**
  * ValidationError should be raised if validation a message payload fails.

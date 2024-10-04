@@ -1,9 +1,9 @@
 <?php
 
-namespace SolutionForest\OocpPhp\v201\CallResults;
+namespace SolutionForest\OcppPhp\v201\CallResults;
 
-use SolutionForest\OocpPhp\Messages\CallResult;
-use SolutionForest\OocpPhp\v201\Enums\GetInstalledCertificateStatus;
+use SolutionForest\OcppPhp\Messages\CallResult;
+use SolutionForest\OcppPhp\v201\Enums\GetInstalledCertificateStatus;
 
 class GetInstalledCertificateIds extends CallResult
 {

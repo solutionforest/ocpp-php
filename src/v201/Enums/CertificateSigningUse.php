@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\v201\Enums;
+namespace SolutionForest\OcppPhp\v201\Enums;
 
 /**
  * Values of the CertificateSigningUse field of a value in CertificateSignedRequest , SignCertificateRequest.

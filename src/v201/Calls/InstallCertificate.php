@@ -1,9 +1,9 @@
 <?php
 
-namespace SolutionForest\OocpPhp\v201\Calls;
+namespace SolutionForest\OcppPhp\v201\Calls;
 
-use SolutionForest\OocpPhp\Messages\Call;
-use SolutionForest\OocpPhp\v201\Enums\InstallCertificateUse;
+use SolutionForest\OcppPhp\Messages\Call;
+use SolutionForest\OcppPhp\v201\Enums\InstallCertificateUse;
 
 class InstallCertificate extends Call
 {

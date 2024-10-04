@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\v16\Datatypes;
+namespace SolutionForest\OcppPhp\v16\Datatypes;
 
 class LogParametersType
 {

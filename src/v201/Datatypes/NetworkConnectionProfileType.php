@@ -1,10 +1,10 @@
 <?php
 
-namespace SolutionForest\OocpPhp\v201\Datatypes;
+namespace SolutionForest\OcppPhp\v201\Datatypes;
 
-use SolutionForest\OocpPhp\v201\Enums\OCPPInterface;
-use SolutionForest\OocpPhp\v201\Enums\OCPPTransport;
-use SolutionForest\OocpPhp\v201\Enums\OCPPVersion;
+use SolutionForest\OcppPhp\v201\Enums\OCPPInterface;
+use SolutionForest\OcppPhp\v201\Enums\OCPPTransport;
+use SolutionForest\OcppPhp\v201\Enums\OCPPVersion;
 
 class NetworkConnectionProfileType
 {

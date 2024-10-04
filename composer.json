@@ -1,15 +1,15 @@
 {
-    "name": "solution-forest/oocp-php",
+    "name": "solution-forest/ocpp-php",
     "type": "library",
     "autoload": {
         "psr-4": {
-            "SolutionForest\\OocpPhp\\": "src/"
+            "SolutionForest\\OcppPhp\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "kelseylee",
-            "email": "kelsey.lee@solutionforest.net"
+            "name": "solution-forest",
+            "email": "info+package@solutionforest.net"
         }
     ],
     "require": {

@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\v201\Enums;
+namespace SolutionForest\OcppPhp\v201\Enums;
 
 /**
  * Values of the Attribute field of a value in GetVariablesRequest , GetVariablesResponse , NotifyReportRequest , SetVariablesRequest , SetVariablesResponse.

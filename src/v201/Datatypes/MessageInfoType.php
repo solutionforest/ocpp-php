@@ -1,9 +1,9 @@
 <?php
 
-namespace SolutionForest\OocpPhp\v201\Datatypes;
+namespace SolutionForest\OcppPhp\v201\Datatypes;
 
-use SolutionForest\OocpPhp\v201\Enums\MessagePriority;
-use SolutionForest\OocpPhp\v201\Enums\MessageState;
+use SolutionForest\OcppPhp\v201\Enums\MessagePriority;
+use SolutionForest\OcppPhp\v201\Enums\MessageState;
 
 class MessageInfoType
 {

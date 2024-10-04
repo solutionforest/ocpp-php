@@ -1,8 +1,8 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Exceptions;
+namespace SolutionForest\OcppPhp\Exceptions;
 
-use SolutionForest\OocpPhp\Messages\CallError;
+use SolutionForest\OcppPhp\Messages\CallError;
 
 /**
  *  To allow for strict OCPP 1.6 compliance

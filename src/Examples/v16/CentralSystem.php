@@ -6,9 +6,9 @@ use React\EventLoop\Factory;
 use React\EventLoop\Loop;
 use React\Socket\SocketServer;
 use React\Socket\ConnectionInterface;
-use SolutionForest\OocpPhp\Exceptions\NotImplementedError;
-use SolutionForest\OocpPhp\v16\Calls;
-use SolutionForest\OocpPhp\v16\CallResults;
+use SolutionForest\OcppPhp\Exceptions\NotImplementedError;
+use SolutionForest\OcppPhp\v16\Calls;
+use SolutionForest\OcppPhp\v16\CallResults;
 
 // Helper function to parse JSON messages (very basic)
 function parseJsonMessage($data)
@@ -41,7 +41,7 @@ $socket->on('connection', function (ConnectionInterface $connection) {
 
         $call = $message['action'];
 
-        $callResult = 'SolutionForest\OocpPhp\v16\Messages\CallResults\\' . $call;
+        $callResult = 'SolutionForest\OcppPhp\v16\Messages\CallResults\\' . $call;
 
         if (!class_exists($callResult)) {
             $connection->write('{"error": "Unknown call"}' . "\n\n");

@@ -1,9 +1,9 @@
 <?php
 
-namespace SolutionForest\OocpPhp\v16\CallResults;
+namespace SolutionForest\OcppPhp\v16\CallResults;
 
-use SolutionForest\OocpPhp\Messages\CallResult;
-use SolutionForest\OocpPhp\v16\Enums\CertificateSignedStatus;
+use SolutionForest\OcppPhp\Messages\CallResult;
+use SolutionForest\OcppPhp\v16\Enums\CertificateSignedStatus;
 
 class CertificateSigned extends CallResult
 {

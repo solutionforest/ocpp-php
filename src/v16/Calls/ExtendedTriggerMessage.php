@@ -1,9 +1,9 @@
 <?php
 
-namespace SolutionForest\OocpPhp\v16\Calls;
+namespace SolutionForest\OcppPhp\v16\Calls;
 
-use SolutionForest\OocpPhp\Messages\Call;
-use SolutionForest\OocpPhp\v16\Enums\MessageTrigger;
+use SolutionForest\OcppPhp\Messages\Call;
+use SolutionForest\OcppPhp\v16\Enums\MessageTrigger;
 
 class ExtendedTriggerMessage extends Call
 {

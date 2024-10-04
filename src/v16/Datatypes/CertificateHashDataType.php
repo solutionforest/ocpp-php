@@ -1,8 +1,8 @@
 <?php
 
-namespace SolutionForest\OocpPhp\v16\Datatypes;
+namespace SolutionForest\OcppPhp\v16\Datatypes;
 
-use SolutionForest\OocpPhp\v16\Enums\HashAlgorithm;
+use SolutionForest\OcppPhp\v16\Enums\HashAlgorithm;
 
 class CertificateHashDataType
 {

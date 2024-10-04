@@ -1,9 +1,9 @@
 <?php
 
-namespace SolutionForest\OocpPhp\v201\Datatypes;
+namespace SolutionForest\OcppPhp\v201\Datatypes;
 
-use SolutionForest\OocpPhp\v201\Enums\EventNotification;
-use SolutionForest\OocpPhp\v201\Enums\EventTrigger;
+use SolutionForest\OcppPhp\v201\Enums\EventNotification;
+use SolutionForest\OcppPhp\v201\Enums\EventTrigger;
 
 class EventDataType
 {

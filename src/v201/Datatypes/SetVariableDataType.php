@@ -1,8 +1,8 @@
 <?php
 
-namespace SolutionForest\OocpPhp\v201\Datatypes;
+namespace SolutionForest\OcppPhp\v201\Datatypes;
 
-use SolutionForest\OocpPhp\v201\Enums\Attribute;
+use SolutionForest\OcppPhp\v201\Enums\Attribute;
 
 class SetVariableDataType
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OocpPhp\Scripts;
+namespace SolutionForest\OcppPhp\Scripts;
 
 require_once __DIR__ . "/../../vendor/autoload.php";
 
