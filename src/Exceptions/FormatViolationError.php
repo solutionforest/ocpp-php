@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\Exceptions;
 
-use SolutionForest\OocpPhp\CallError;
+use SolutionForest\OocpPhp\Messages\CallError;
 
 /**
  * Not strict OCPP 1.6 - see FormationViolationError

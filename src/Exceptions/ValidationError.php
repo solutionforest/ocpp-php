@@ -2,7 +2,7 @@
 
 namespace SolutionForest\OocpPhp\Exceptions;
 
-use SolutionForest\OocpPhp\CallError;
+use SolutionForest\OocpPhp\Messages\CallError;
 
 /**
  * ValidationError should be raised if validation a message payload fails.

@@ -19,7 +19,7 @@ $connector->connect('127.0.0.1:8080')
         });
 
         $connection->on('end', function () {
-            echo "Central System: ended\n\n";
+            echo "Charge Point: ended\n\n";
         });
 
         $connection->on('error', function (Exception $e) {
@@ -27,7 +27,7 @@ $connector->connect('127.0.0.1:8080')
         });
 
         $connection->on('close', function () {
-            echo "Central System: Connection closed\n\n";
+            echo "Charge Point: Connection closed\n\n";
         });
 
 
