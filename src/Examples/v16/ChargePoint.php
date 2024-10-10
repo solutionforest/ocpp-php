@@ -1,12 +1,11 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../../../vendor/autoload.php';
 
 
 use React\Socket\ConnectionInterface;
-use React\EventLoop\Factory;
 use React\EventLoop\Loop;
-use React\Socket\SocketServer;
+use SolutionForest\OcppPhp\JsonSchemaValidator;
 use SolutionForest\OcppPhp\v16\Calls;
 
 $loop = Loop::get();
@@ -42,6 +41,7 @@ $connector->connect('127.0.0.1:8080')
         $statusNotification = new Calls\StatusNotification();
         $statusNotification->connectorId = 1;
         $statusNotification->status = 'Available';
+        $statusNotification->errorCode = 'NoError';
 
         $notImplemented = new Calls\ClearCache();
 
@@ -55,6 +55,7 @@ $connector->connect('127.0.0.1:8080')
 
         $message = $messages[rand(0, count($messages) - 1)];
 
+        JsonSchemaValidator::validate($message, 'v1.6');
         $message = $message->toArray();
 
         echo "Charge Point: Sending message: " . json_encode($message) . "\n\n";

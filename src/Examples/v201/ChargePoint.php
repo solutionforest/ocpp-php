@@ -1,13 +1,12 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
-
+require __DIR__ . '/../../../vendor/autoload.php';
 
 use React\Socket\ConnectionInterface;
-use React\EventLoop\Factory;
 use React\EventLoop\Loop;
-use React\Socket\SocketServer;
+use SolutionForest\OcppPhp\JsonSchemaValidator;
 use SolutionForest\OcppPhp\v201\Calls;
+use SolutionForest\OcppPhp\v201\Enums\BootReason;
 
 $loop = Loop::get();
 $connector = new \React\Socket\Connector($loop);
@@ -34,8 +33,11 @@ $connector->connect('127.0.0.1:8080')
         echo "Charge Point: Connected to Central System\n\n";
 
         $boot = new Calls\BootNotification();
-        $boot->chargingStation = [];
-        $boot->reason = 'Testing';
+        $boot->chargingStation = (object) [
+            'model' => 'MyModel',
+            'vendorName' => 'MyVendor'
+        ];
+        $boot->reason = BootReason::ApplicationReset->value;
 
         $heartbeat = new Calls\Heartbeat();
 
@@ -57,7 +59,7 @@ $connector->connect('127.0.0.1:8080')
 
         $message = $messages[rand(0, count($messages) - 1)];
 
-        $message = new Calls\CancelReservation();
+        JsonSchemaValidator::validate($message, 'v2.0.1');
         $message = $message->toArray();
 
         echo "Charge Point: Sending message: " . json_encode($message) . "\n\n";

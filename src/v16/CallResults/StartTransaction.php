@@ -6,6 +6,6 @@ use SolutionForest\OcppPhp\Messages\CallResult;
 
 class StartTransaction extends CallResult
 {
-	public array $idTagInfo;
+	public object $idTagInfo;
 	public int $transactionId;
 }

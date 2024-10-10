@@ -8,5 +8,5 @@ class SecurityEventNotification extends Call
 {
 	public string $type;
 	public string $timestamp;
-	public ?string $techInfo = null;
+	public ?string $techInfo;
 }

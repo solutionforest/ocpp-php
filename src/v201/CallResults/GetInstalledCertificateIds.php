@@ -8,7 +8,7 @@ use SolutionForest\OcppPhp\v201\Enums\GetInstalledCertificateStatus;
 class GetInstalledCertificateIds extends CallResult
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData;
 
 	/**
 	 * Charging Station indicates if it can process the request.
@@ -18,6 +18,6 @@ class GetInstalledCertificateIds extends CallResult
 	/**
 	 * Element providing more information about the status.
 	 */
-	public ?array $statusInfo = null;
-	public ?array $certificateHashDataChain = null;
+	public ?object $statusInfo;
+	public ?array $certificateHashDataChain;
 }

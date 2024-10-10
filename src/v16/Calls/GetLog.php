@@ -7,9 +7,9 @@ use SolutionForest\OcppPhp\v16\Enums\Log;
 
 class GetLog extends Call
 {
-	public array $log;
+	public object $log;
 	public string|Log $logType;
 	public int $requestId;
-	public ?int $retries = null;
-	public ?int $retryInterval = null;
+	public ?int $retries;
+	public ?int $retryInterval;
 }

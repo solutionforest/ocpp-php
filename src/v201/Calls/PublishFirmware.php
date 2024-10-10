@@ -7,7 +7,7 @@ use SolutionForest\OcppPhp\Messages\Call;
 class PublishFirmware extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData;
 
 	/**
 	 * This contains a string containing a URI pointing to a
@@ -20,7 +20,7 @@ class PublishFirmware extends Call
 	 * to download the firmware before giving up. If this field is not
 	 * present, it is left to Charging Station to decide how many times it wants to retry.
 	 */
-	public ?int $retries = null;
+	public ?int $retries;
 
 	/**
 	 * The MD5 checksum over the entire firmware file as a hexadecimal string of length 32.
@@ -40,5 +40,5 @@ class PublishFirmware extends Call
 	 * Station to decide how long to wait
 	 * between attempts.
 	 */
-	public ?int $retryInterval = null;
+	public ?int $retryInterval;
 }

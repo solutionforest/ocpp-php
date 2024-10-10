@@ -7,6 +7,6 @@ use SolutionForest\OcppPhp\Messages\Call;
 class SetVariableMonitoring extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData;
 	public array $setMonitoringData;
 }

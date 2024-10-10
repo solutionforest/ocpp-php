@@ -7,7 +7,7 @@ use SolutionForest\OcppPhp\Messages\Call;
 class SecurityEventNotification extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData;
 
 	/**
 	 * Type of the security event. This value should be taken from the Security events list.
@@ -22,5 +22,5 @@ class SecurityEventNotification extends Call
 	/**
 	 * Additional information about the occurred security event.
 	 */
-	public ?string $techInfo = null;
+	public ?string $techInfo;
 }

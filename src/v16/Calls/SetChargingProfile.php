@@ -7,5 +7,5 @@ use SolutionForest\OcppPhp\Messages\Call;
 class SetChargingProfile extends Call
 {
 	public int $connectorId;
-	public array $csChargingProfiles;
+	public object $csChargingProfiles;
 }

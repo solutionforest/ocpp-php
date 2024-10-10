@@ -8,7 +8,7 @@ use SolutionForest\OcppPhp\v201\Enums\SetNetworkProfileStatus;
 class SetNetworkProfile extends CallResult
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData;
 
 	/**
 	 * Result of operation.
@@ -18,5 +18,5 @@ class SetNetworkProfile extends CallResult
 	/**
 	 * Element providing more information about the status.
 	 */
-	public ?array $statusInfo = null;
+	public ?object $statusInfo;
 }

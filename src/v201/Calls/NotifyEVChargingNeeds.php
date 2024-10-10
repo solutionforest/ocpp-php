@@ -7,18 +7,18 @@ use SolutionForest\OcppPhp\Messages\Call;
 class NotifyEVChargingNeeds extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData;
 
 	/**
 	 * Contains the maximum schedule tuples the car supports per schedule.
 	 */
-	public ?int $maxScheduleTuples = null;
+	public ?int $maxScheduleTuples;
 
 	/**
 	 * Charging_ Needs
 	 * urn:x-oca:ocpp:uid:2:233249
 	 */
-	public array $chargingNeeds;
+	public object $chargingNeeds;
 
 	/**
 	 * Defines the EVSE and connector to which the EV is connected. EvseId may not be 0.

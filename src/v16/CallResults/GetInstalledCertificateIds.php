@@ -7,6 +7,6 @@ use SolutionForest\OcppPhp\v16\Enums\GetInstalledCertificateStatus;
 
 class GetInstalledCertificateIds extends CallResult
 {
-	public ?array $certificateHashData = null;
+	public ?array $certificateHashData;
 	public string|GetInstalledCertificateStatus $status;
 }

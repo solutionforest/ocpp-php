@@ -7,6 +7,6 @@ use SolutionForest\OcppPhp\Messages\Call;
 class MeterValues extends Call
 {
 	public int $connectorId;
-	public ?int $transactionId = null;
+	public ?int $transactionId;
 	public array $meterValue;
 }

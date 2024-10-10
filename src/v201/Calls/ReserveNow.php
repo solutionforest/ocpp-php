@@ -8,7 +8,7 @@ use SolutionForest\OcppPhp\v201\Enums\Connector;
 class ReserveNow extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData;
 
 	/**
 	 * Id of reservation.
@@ -23,20 +23,20 @@ class ReserveNow extends Call
 	/**
 	 * This field specifies the connector type.
 	 */
-	public null|string|Connector $connectorType = null;
+	public null|string|Connector $connectorType;
 
 	/**
 	 * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
 	 */
-	public array $idToken;
+	public object $idToken;
 
 	/**
 	 * This contains ID of the evse to be reserved.
 	 */
-	public ?int $evseId = null;
+	public ?int $evseId;
 
 	/**
 	 * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
 	 */
-	public ?array $groupIdToken = null;
+	public ?object $groupIdToken;
 }

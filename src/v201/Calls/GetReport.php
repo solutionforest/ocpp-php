@@ -7,8 +7,8 @@ use SolutionForest\OcppPhp\Messages\Call;
 class GetReport extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
-	public ?array $componentVariable = null;
+	public ?object $customData;
+	public ?array $componentVariable;
 
 	/**
 	 * The Id of the request.
@@ -18,5 +18,5 @@ class GetReport extends Call
 	/**
 	 * This field contains criteria for components for which a report is requested
 	 */
-	public ?array $componentCriteria = null;
+	public ?array $componentCriteria;
 }

@@ -118,7 +118,7 @@ abstract class SchemaProcessor
 
             $class->addProperty($property)
                 ->setType($enumName ? $enumPropertyType : $type)
-                ->setInitialized(!$required)->addComment(html_entity_decode($description));
+                ->addComment(html_entity_decode($description));
         }
 
         return $class;
@@ -159,7 +159,7 @@ abstract class SchemaProcessor
         }
 
         $map = [
-            "object" => "array",
+            "object" => "object",
             "array" => "array",
             "integer" => "int",
             "string" => "string",

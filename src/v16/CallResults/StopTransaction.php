@@ -6,5 +6,5 @@ use SolutionForest\OcppPhp\Messages\CallResult;
 
 class StopTransaction extends CallResult
 {
-	public ?array $idTagInfo = null;
+	public ?object $idTagInfo;
 }

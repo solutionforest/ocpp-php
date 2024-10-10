@@ -8,7 +8,7 @@ use SolutionForest\OcppPhp\v201\Enums\NotifyEVChargingNeedsStatus;
 class NotifyEVChargingNeeds extends CallResult
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData;
 
 	/**
 	 * Returns whether the CSMS has been able to process the message successfully. It does not imply that the evChargingNeeds can be met with the current charging profile.
@@ -18,5 +18,5 @@ class NotifyEVChargingNeeds extends CallResult
 	/**
 	 * Element providing more information about the status.
 	 */
-	public ?array $statusInfo = null;
+	public ?object $statusInfo;
 }

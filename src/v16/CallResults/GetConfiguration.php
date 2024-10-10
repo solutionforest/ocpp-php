@@ -6,6 +6,6 @@ use SolutionForest\OcppPhp\Messages\CallResult;
 
 class GetConfiguration extends CallResult
 {
-	public ?array $configurationKey = null;
-	public ?array $unknownKey = null;
+	public ?array $configurationKey;
+	public ?array $unknownKey;
 }

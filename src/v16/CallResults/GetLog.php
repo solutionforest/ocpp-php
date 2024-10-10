@@ -8,5 +8,5 @@ use SolutionForest\OcppPhp\v16\Enums\LogStatus;
 class GetLog extends CallResult
 {
 	public string|LogStatus $status;
-	public ?string $filename = null;
+	public ?string $filename;
 }

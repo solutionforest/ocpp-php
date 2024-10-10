@@ -8,5 +8,5 @@ use SolutionForest\OcppPhp\v16\Enums\MessageTrigger;
 class ExtendedTriggerMessage extends Call
 {
 	public string|MessageTrigger $requestedMessage;
-	public ?int $connectorId = null;
+	public ?int $connectorId;
 }

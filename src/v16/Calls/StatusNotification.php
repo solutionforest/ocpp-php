@@ -8,9 +8,9 @@ class StatusNotification extends Call
 {
 	public int $connectorId;
 	public string $errorCode;
-	public ?string $info = null;
+	public ?string $info;
 	public string $status;
-	public ?string $timestamp = null;
-	public ?string $vendorId = null;
-	public ?string $vendorErrorCode = null;
+	public ?string $timestamp;
+	public ?string $vendorId;
+	public ?string $vendorErrorCode;
 }

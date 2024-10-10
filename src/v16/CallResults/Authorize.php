@@ -6,5 +6,5 @@ use SolutionForest\OcppPhp\Messages\CallResult;
 
 class Authorize extends CallResult
 {
-	public array $idTagInfo;
+	public object $idTagInfo;
 }

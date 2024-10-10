@@ -7,6 +7,6 @@ use SolutionForest\OcppPhp\Messages\Call;
 class SendLocalList extends Call
 {
 	public int $listVersion;
-	public ?array $localAuthorizationList = null;
+	public ?array $localAuthorizationList;
 	public string $updateType;
 }

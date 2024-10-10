@@ -9,6 +9,6 @@ class ReserveNow extends Call
 	public int $connectorId;
 	public string $expiryDate;
 	public string $idTag;
-	public ?string $parentIdTag = null;
+	public ?string $parentIdTag;
 	public int $reservationId;
 }

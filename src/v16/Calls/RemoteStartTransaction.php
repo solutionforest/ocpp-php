@@ -6,7 +6,7 @@ use SolutionForest\OcppPhp\Messages\Call;
 
 class RemoteStartTransaction extends Call
 {
-	public ?int $connectorId = null;
+	public ?int $connectorId;
 	public string $idTag;
-	public ?array $chargingProfile = null;
+	public ?object $chargingProfile;
 }

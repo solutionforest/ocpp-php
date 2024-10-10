@@ -7,5 +7,5 @@ use SolutionForest\OcppPhp\Messages\Call;
 class TriggerMessage extends Call
 {
 	public string $requestedMessage;
-	public ?int $connectorId = null;
+	public ?int $connectorId;
 }

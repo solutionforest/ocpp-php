@@ -6,5 +6,5 @@ use SolutionForest\OcppPhp\Messages\Call;
 
 class DeleteCertificate extends Call
 {
-	public array $certificateHashData;
+	public object $certificateHashData;
 }

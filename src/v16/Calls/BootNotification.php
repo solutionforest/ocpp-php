@@ -8,11 +8,11 @@ class BootNotification extends Call
 {
 	public string $chargePointVendor;
 	public string $chargePointModel;
-	public ?string $chargePointSerialNumber = null;
-	public ?string $chargeBoxSerialNumber = null;
-	public ?string $firmwareVersion = null;
-	public ?string $iccid = null;
-	public ?string $imsi = null;
-	public ?string $meterType = null;
-	public ?string $meterSerialNumber = null;
+	public ?string $chargePointSerialNumber;
+	public ?string $chargeBoxSerialNumber;
+	public ?string $firmwareVersion;
+	public ?string $iccid;
+	public ?string $imsi;
+	public ?string $meterType;
+	public ?string $meterSerialNumber;
 }

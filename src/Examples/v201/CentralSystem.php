@@ -1,13 +1,13 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../../../vendor/autoload.php';
 
-use React\EventLoop\Factory;
 use React\EventLoop\Loop;
 use React\Socket\SocketServer;
 use React\Socket\ConnectionInterface;
 use SolutionForest\OcppPhp\Exceptions\NotImplementedError;
-use SolutionForest\OcppPhp\v201\Calls;
+use SolutionForest\OcppPhp\JsonSchemaValidator;
+use SolutionForest\OcppPhp\Messages\CallResult;
 use SolutionForest\OcppPhp\v201\CallResults;
 
 // Helper function to parse JSON messages (very basic)
@@ -66,6 +66,10 @@ $socket->on('connection', function (ConnectionInterface $connection) {
                 break;
         }
 
+
+        if ($callResult instanceof CallResult) {
+            JsonSchemaValidator::validate($callResult, 'v2.0.1');
+        }
         $response = $callResult->toArray();
         echo "Central System: Sending response: " . json_encode($response) . "\n\n";
 

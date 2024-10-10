@@ -8,7 +8,7 @@ use SolutionForest\OcppPhp\v201\Enums\ReportBase;
 class GetBaseReport extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData;
 
 	/**
 	 * The Id of the request.

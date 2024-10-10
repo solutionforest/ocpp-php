@@ -6,10 +6,10 @@ use SolutionForest\OcppPhp\Messages\Call;
 
 class StopTransaction extends Call
 {
-	public ?string $idTag = null;
+	public ?string $idTag;
 	public int $meterStop;
 	public string $timestamp;
 	public int $transactionId;
-	public ?string $reason = null;
-	public ?array $transactionData = null;
+	public ?string $reason;
+	public ?array $transactionData;
 }
