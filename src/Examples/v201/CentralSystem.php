@@ -5,10 +5,10 @@ require __DIR__ . '/../../../vendor/autoload.php';
 use React\EventLoop\Loop;
 use React\Socket\SocketServer;
 use React\Socket\ConnectionInterface;
-use SolutionForest\OcppPhp\Exceptions\NotImplementedError;
-use SolutionForest\OcppPhp\JsonSchemaValidator;
-use SolutionForest\OcppPhp\Messages\CallResult;
-use SolutionForest\OcppPhp\v201\CallResults;
+use SolutionForest\OcppPhp\Ocpp\Exceptions\NotImplementedError;
+use SolutionForest\OcppPhp\Ocpp\JsonSchemaValidator;
+use SolutionForest\OcppPhp\Ocpp\Messages\CallResult;
+use SolutionForest\OcppPhp\Ocpp\v201\CallResults;
 
 // Helper function to parse JSON messages (very basic)
 function parseJsonMessage($data)
@@ -41,7 +41,7 @@ $socket->on('connection', function (ConnectionInterface $connection) {
 
         $call = $message['action'];
 
-        $callResult = 'SolutionForest\OcppPhp\v201\CallResults\\' . $call;
+        $callResult = 'SolutionForest\OcppPhp\Ocpp\v201\CallResults\\' . $call;
 
         if (!class_exists($callResult)) {
             $connection->write('{"error": "Unknown call"}' . "\n\n");

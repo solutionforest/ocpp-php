@@ -5,8 +5,8 @@ require __DIR__ . '/../../../vendor/autoload.php';
 
 use React\Socket\ConnectionInterface;
 use React\EventLoop\Loop;
-use SolutionForest\OcppPhp\JsonSchemaValidator;
-use SolutionForest\OcppPhp\v16\Calls;
+use SolutionForest\OcppPhp\Ocpp\JsonSchemaValidator;
+use SolutionForest\OcppPhp\Ocpp\v16\Calls;
 
 $loop = Loop::get();
 $connector = new \React\Socket\Connector($loop);

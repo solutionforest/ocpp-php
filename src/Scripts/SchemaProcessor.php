@@ -1,6 +1,6 @@
 <?php
 
-namespace SolutionForest\OcppPhp\Scripts;
+namespace SolutionForest\OcppPhp\Ocpp\Scripts;
 
 require_once __DIR__ . "/../../vendor/autoload.php";
 
@@ -8,8 +8,8 @@ use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\EnumType;
 use Nette\PhpGenerator\PhpNamespace;
 use Nette\PhpGenerator\Printer;
-use SolutionForest\OcppPhp\Messages\Call;
-use SolutionForest\OcppPhp\Messages\CallResult;
+use SolutionForest\OcppPhp\Ocpp\Messages\Call;
+use SolutionForest\OcppPhp\Ocpp\Messages\CallResult;
 
 abstract class SchemaProcessor
 {
@@ -17,7 +17,7 @@ abstract class SchemaProcessor
 
     public string $version;
 
-    public string $baseNamespace = "SolutionForest\OcppPhp\\";
+    public string $baseNamespace = "SolutionForest\OcppPhp\Ocpp\\";
 
     public function main(): void
     {
