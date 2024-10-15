@@ -5,8 +5,6 @@ namespace SolutionForest\OcppPhp\Ocpp;
 use SolutionForest\OcppPhp\Ocpp\Messages\Call;
 use SolutionForest\OcppPhp\Ocpp\Messages\CallResult;
 
-require __DIR__ . '/../vendor/autoload.php';
-
 class JsonSchemaValidator
 {
     public static function validate(Call|CallResult $message, string $version): bool

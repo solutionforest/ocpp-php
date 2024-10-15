@@ -2,8 +2,6 @@
 
 namespace SolutionForest\OcppPhp\Ocpp;
 
-require __DIR__ . '/../vendor/autoload.php';
-
 use React\Socket\ConnectionInterface;
 use SolutionForest\OcppPhp\Ocpp\Messages;
 use SolutionForest\OcppPhp\Ocpp\Messages\Call;
