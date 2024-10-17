@@ -9,8 +9,23 @@ class JsonSchemaRegistry
 {
     private $schemaDirs = ['v1.6', 'v2.0.1'];
 
-    public function getSchema(Call|CallResult $message, string $version): array
+    public function getSchema(Call|CallResult|array $message, string $version): array
     {
+        if (is_array($message)) {
+            $filename = $message['action'] ? $message['action'] . '.json' : '';
+            $type = $message['messageTypeID'];
+            switch ($type) {
+                case 2:
+                    $type = 'Calls';
+                    break;
+                case 3:
+                    $type = 'CallResults';
+                    break;
+                default:
+                    throw new \Exception("Unvalid message type for validation: {$type}");
+            }
+            return $this->loadSchema($filename, $type, $version);
+        }
         $type = $message instanceof Call ? 'Calls' : 'CallResults';
         $filename = (new \ReflectionClass($message))->getShortName() . '.json';
 
