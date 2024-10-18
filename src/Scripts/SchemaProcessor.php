@@ -1,11 +1,12 @@
 <?php
 
-namespace SolutionForest\OcppPhp\Ocpp\Scripts;
+namespace SolutionForest\OcppPhp\Scripts;
 
 require_once __DIR__ . "/../../vendor/autoload.php";
 
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\EnumType;
+use Nette\PhpGenerator\InterfaceType;
 use Nette\PhpGenerator\PhpNamespace;
 use Nette\PhpGenerator\Printer;
 use SolutionForest\OcppPhp\Ocpp\Messages\Call;
@@ -42,12 +43,12 @@ abstract class SchemaProcessor
             exit(1);
         }
 
-        $this->basepath = "/../" . $version;
+        $this->basepath = "/../Ocpp/" . $version;
         $this->version = $version;
     }
 
 
-    protected function generateDataClass(ClassType|EnumType $class, string $filepath): void
+    protected function generateDataClass(ClassType|EnumType|InterfaceType $class, string $filepath): void
     {
         $subnamespace = ucfirst($filepath);
         $namespace = new PhpNamespace($this->baseNamespace  . $this->version . '\\' . $subnamespace);
