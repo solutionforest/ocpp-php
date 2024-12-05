@@ -16,7 +16,8 @@
         "react/socket": "^1.16",
         "nette/php-generator": "^4.1",
         "ramsey/uuid": "^4.7",
-        "justinrainbow/json-schema": "^6.0"
+        "justinrainbow/json-schema": "^6.0",
+        "phrity/websocket": "^3.2"
     },
     "bin": [
         "bin/ocpp-php"
