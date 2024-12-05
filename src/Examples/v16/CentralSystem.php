@@ -1,5 +1,11 @@
 <?php
 
+use SolutionForest\OcppPhp\Ocpp\Exceptions\NotImplementedError;
+use SolutionForest\OcppPhp\Ocpp\JsonSchemaValidator;
+use SolutionForest\OcppPhp\Ocpp\v16\CallResults\Heartbeat;
+use SolutionForest\OcppPhp\Ocpp\v16\CallResults\StatusNotification;
+use SolutionForest\OcppPhp\Ocpp\v16\CallResults\BootNotification;
+
 require __DIR__ . '/../../../vendor/autoload.php';
 
 
@@ -33,15 +39,15 @@ function centralCallBack( $data , $connection ) {
         $callResult = new $callResult($message['messageId']);
 
         switch ($callResult::class) {
-            case CallResults\BootNotification::class:
+            case BootNotification::class:
                 $callResult->status = 'Accepted';
                 $callResult->currentTime = date('c');
                 $callResult->interval = 60;
                 break;
-            case CallResults\Heartbeat::class:
+            case Heartbeat::class:
                 $callResult->currentTime = date('c');
                 break;
-            case CallResults\StatusNotification::class:
+            case StatusNotification::class:
                 break;
             default:
                 $callResult = new NotImplementedError($message['messageId']);
