@@ -2,6 +2,7 @@
 
 use SolutionForest\OcppPhp\Ocpp\Exceptions\NotImplementedError;
 use SolutionForest\OcppPhp\Ocpp\JsonSchemaValidator;
+use SolutionForest\OcppPhp\Ocpp\Messages\CallResult;
 use SolutionForest\OcppPhp\Ocpp\v16\CallResults\Heartbeat;
 use SolutionForest\OcppPhp\Ocpp\v16\CallResults\StatusNotification;
 use SolutionForest\OcppPhp\Ocpp\v16\CallResults\BootNotification;
