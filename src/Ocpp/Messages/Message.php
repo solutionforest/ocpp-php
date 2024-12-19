@@ -29,4 +29,9 @@ abstract class Message
         return (object) $payload;
     }
 
+    public function getMessageId(): string
+    {
+        return $this->messageId;
+    }
+
 }
