@@ -10,9 +10,13 @@ abstract class Call extends Message
 
     public function __construct()
     {
-        $this->messageId = Uuid::uuid4()->toString();
+        if (getenv('OCPP_MESSAGE_UUID', false)) {
+            $this->messageId = Uuid::uuid4()->toString();
+        } else {
+            $this->messageId = mt_rand(9999999, 9999999999);
+        }
     }
-    
+
     public function toArray(): array
     {
         $payload = $this->getPayload();
