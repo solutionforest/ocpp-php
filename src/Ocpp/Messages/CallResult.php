@@ -10,4 +10,16 @@ abstract class CallResult extends Message
     {
         $this->messageId = $messageId;
     }
+    
+    public function toArray(): array
+    {
+        $payload = $this->getPayload();
+
+        return [
+            $this->messageTypeID,
+            $this->messageId,
+            $payload,
+        ];
+    }
+
 }

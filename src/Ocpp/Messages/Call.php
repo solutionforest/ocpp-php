@@ -12,12 +12,17 @@ abstract class Call extends Message
     {
         $this->messageId = Uuid::uuid4()->toString();
     }
-
+    
     public function toArray(): array
     {
-        $array = parent::toArray();
-        $array['action'] = (new \ReflectionClass($this))->getShortName();
+        $payload = $this->getPayload();
+        $action = (new \ReflectionClass($this))->getShortName();
 
-        return $array;
+        return [
+            $this->messageTypeID,
+            $this->messageId,
+            $action,
+            $payload,
+        ];
     }
 }

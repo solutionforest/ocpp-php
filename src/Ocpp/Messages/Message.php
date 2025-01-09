@@ -8,17 +8,6 @@ abstract class Message
 
     public string $messageId;
 
-    public function toArray(): array
-    {
-        $payload = $this->getPayload();
-
-        return [
-            'messageTypeID' => $this->messageTypeID,
-            'messageId' => $this->messageId,
-            'payload' => $payload,
-        ];
-    }
-
     public function getPayload(): object
     {
         $payload = (array) $this;
@@ -33,5 +22,4 @@ abstract class Message
     {
         return $this->messageId;
     }
-
 }

@@ -30,11 +30,11 @@ abstract class CallError extends Message
     public function toArray(): array
     {
         return [
-            'messageTypeID' => $this->messageTypeID,
-            'messageId' => $this->messageId,
-            'errorCode' => $this->errorCode,
-            'errorDescription' => $this->errorDescription,
-            'errorDetails' => (object) $this->errorDetails,
+            $this->messageTypeID,
+            $this->messageId,
+            $this->errorCode,
+            $this->errorDescription,
+            (object) $this->errorDetails,
         ];
     }
 }
