@@ -1,3 +1,7 @@
+
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/solution-forest/ocpp-php.svg?style=flat-square)](https://packagist.org/packages/solution-forest/ocpp-php)
+[![Total Downloads](https://img.shields.io/packagist/dt/solution-forest/ocpp-php.svg?style=flat-square)](https://packagist.org/packages/solution-forest/ocpp-php)
+
 # OCPP-PHP
 
 ---
