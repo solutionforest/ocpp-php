@@ -2,6 +2,10 @@
 
 require __DIR__ . '/../../../vendor/autoload.php';
 
+if (!class_exists('WebSocket\Client')) {
+    throw new Exception("phrity/websocket is required for examples. Run: composer require phrity/websocket");
+}
+
 use SolutionForest\OcppPhp\Ocpp\JsonSchemaValidator;
 use SolutionForest\OcppPhp\Ocpp\v16\Calls;
 

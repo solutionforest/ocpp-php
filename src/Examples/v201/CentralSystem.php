@@ -8,6 +8,10 @@ use SolutionForest\OcppPhp\Ocpp\v16\CallResults\BootNotification;
 
 require __DIR__ . '/../../../vendor/autoload.php';
 
+if (!class_exists('WebSocket\Server')) {
+    throw new Exception("phrity/websocket is required for examples. Run: composer require phrity/websocket");
+}
+
 
 // Helper function to parse JSON messages (very basic)
 function parseJsonMessage($data)

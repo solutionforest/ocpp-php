@@ -4,10 +4,41 @@ namespace SolutionForest\OcppPhp\Ocpp;
 
 use SolutionForest\OcppPhp\Ocpp\Messages\Call;
 use SolutionForest\OcppPhp\Ocpp\Messages\CallResult;
+use SolutionForest\OcppPhp\Ocpp\Messages\Message;
 
 class JsonSchemaRegistry
 {
     private $schemaDirs = ['v1.6', 'v2.0.1'];
+
+    /**
+     * Create a Call or CallResult object from a raw OCPP message array.
+     * 
+     * For Call messages: [2, messageId, action, payload]
+     * For CallResult messages: [3, messageId, payload] (requires action parameter)
+     * 
+     * @param array $message The raw OCPP message array
+     * @param string $version The OCPP version (e.g., 'v1.6', 'v2.0.1')
+     * @param string|null $action Required for CallResult messages (the action name this is a response to)
+     * @return Call|CallResult
+     * @throws \Exception
+     */
+    public function createFromArray(array $message, string $version, ?string $action = null): Call|CallResult
+    {
+        $messageType = $message[0] ?? null;
+
+        if ($messageType === 2) {
+            return Call::fromArray($message, $version);
+        }
+
+        if ($messageType === 3) {
+            if ($action === null) {
+                throw new \Exception("Action parameter is required for CallResult messages");
+            }
+            return CallResult::fromArray($message, $action, $version);
+        }
+
+        throw new \Exception("Invalid message type: {$messageType}. Expected 2 (Call) or 3 (CallResult)");
+    }
 
     public function getSchema(Call|CallResult|array $message, string $version): array
     {
@@ -87,5 +118,61 @@ class JsonSchemaRegistry
             return null; // Or throw an exception
         }
         return $schema;
+    }
+
+    public function createCallFromArray(array $message, string $version): Call
+    {
+        if ($message[0] !== 2) {
+            throw new \Exception("Invalid message type for Call");
+        }
+
+        $action = $message[2];
+        $messageId = $message[1];
+        $payload = $message[3];
+
+        $versionDir = str_replace('.', '', $version);
+        $class = "SolutionForest\\OcppPhp\\Ocpp\\{$versionDir}\\Calls\\{$action}";
+
+        if (!class_exists($class)) {
+            throw new \Exception("Unknown call action: {$action}");
+        }
+
+        $obj = new $class();
+        $obj->messageId = $messageId;
+
+        foreach ($payload as $key => $value) {
+            if (property_exists($obj, $key)) {
+                $obj->$key = $value;
+            }
+        }
+
+        return $obj;
+    }
+
+    public function createCallResultFromArray(array $message, string $action, string $version): CallResult
+    {
+        if ($message[0] !== 3) {
+            throw new \Exception("Invalid message type for CallResult");
+        }
+
+        $messageId = $message[1];
+        $payload = $message[2];
+
+        $versionDir = str_replace('.', '', $version);
+        $class = "SolutionForest\\OcppPhp\\Ocpp\\{$versionDir}\\CallResults\\{$action}";
+
+        if (!class_exists($class)) {
+            throw new \Exception("Unknown call result action: {$action}");
+        }
+
+        $obj = new $class($messageId);
+
+        foreach ($payload as $key => $value) {
+            if (property_exists($obj, $key)) {
+                $obj->$key = $value;
+            }
+        }
+
+        return $obj;
     }
 }

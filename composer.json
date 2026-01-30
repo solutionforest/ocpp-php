@@ -13,11 +13,15 @@
         }
     ],
     "require": {
-        "react/socket": "^1.16",
         "nette/php-generator": "^4.1",
         "ramsey/uuid": "^4.7",
-        "justinrainbow/json-schema": "^6.0",
-        "phrity/websocket": "^3.2"
+        "justinrainbow/json-schema": "^6.0"
+    },
+    "require-dev": {
+    },
+    "suggest": {
+        "react/socket": "Required for running WebSocket examples",
+        "phrity/websocket": "Required for running WebSocket examples"
     },
     "bin": [
         "bin/ocpp-php"
