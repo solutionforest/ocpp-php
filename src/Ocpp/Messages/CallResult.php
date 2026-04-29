@@ -6,9 +6,9 @@ abstract class CallResult extends Message
 {
     public int $messageTypeID = 3;
 
-    public function __construct(string $messageId, ?array $payload = null)
+    public function __construct(string $uniqueId, ?array $payload = null)
     {
-        $this->messageId = $messageId;
+        $this->uniqueId = $uniqueId;
 
         if ($payload !== null) {
             foreach ($payload as $key => $value) {
@@ -22,7 +22,7 @@ abstract class CallResult extends Message
     /**
      * Create a CallResult object from a raw OCPP message array.
      * 
-     * @param array $message The raw OCPP message [messageTypeID, messageId, payload]
+    * @param array $message The raw OCPP message [messageTypeID, UniqueId, payload]
      * @param string $action The action name this is a response to
      * @param string $version The OCPP version (e.g., 'v1.6', 'v2.0.1')
      * @return static
@@ -34,7 +34,7 @@ abstract class CallResult extends Message
             throw new \Exception("Invalid message type for CallResult, expected 3 got {$message[0]}");
         }
 
-        $messageId = $message[1];
+        $uniqueId = $message[1];
         $payload = $message[2] ?? [];
 
         $versionDir = str_replace('.', '', $version);
@@ -44,7 +44,7 @@ abstract class CallResult extends Message
             throw new \Exception("Unknown call result action: {$action}");
         }
 
-        return new $class($messageId, $payload);
+        return new $class($uniqueId, $payload);
     }
     
     public function toArray(): array
@@ -53,7 +53,7 @@ abstract class CallResult extends Message
 
         return [
             $this->messageTypeID,
-            $this->messageId,
+            $this->uniqueId,
             $payload,
         ];
     }

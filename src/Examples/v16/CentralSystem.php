@@ -13,12 +13,51 @@ if (!class_exists('WebSocket\Server')) {
     throw new Exception("phrity/websocket is required for examples. Run: composer require phrity/websocket");
 }
 
+function websocketObject(string $class, mixed ...$args): object
+{
+    if (!class_exists($class)) {
+        throw new Exception("Missing required WebSocket class: {$class}");
+    }
+
+    return new $class(...$args);
+}
+
+function sendWebSocketText($target, string $payload): void
+{
+    $target->send(websocketObject('WebSocket\\Message\\Text', $payload));
+}
+
+function sendWebSocketPing($target): void
+{
+    $target->send(websocketObject('WebSocket\\Message\\Ping'));
+}
+
+function sendWebSocketClose($target): void
+{
+    $target->send(websocketObject('WebSocket\\Message\\Close'));
+}
+
+function addWebSocketMiddleware($server, string $middlewareClass): void
+{
+    $server->addMiddleware(websocketObject($middlewareClass));
+}
+
 
 // Helper function to parse JSON messages (very basic)
 function parseJsonMessage($data)
 {
-    $data = trim($data);
-    return json_decode($data, true) ?? null;
+    $message = json_decode(trim($data), true);
+
+    if (!is_array($message) || !isset($message[0], $message[1], $message[2])) {
+        return null;
+    }
+
+    return [
+        'messageTypeID' => $message[0],
+        'uniqueId' => $message[1],
+        'action' => $message[2],
+        'payload' => $message[3] ?? [],
+    ];
 }
 
 function centralCallBack( $data , $connection ) {
@@ -28,7 +67,7 @@ function centralCallBack( $data , $connection ) {
         $message = parseJsonMessage($data);
 
         if ($message === null) {
-            $connection->send(new \WebSocket\Message\Text('{"error": "Invalid JSON"}' . "\n\n"));
+            sendWebSocketText($connection, '{"error": "Invalid JSON"}' . "\n\n");
             return;
         }
 
@@ -37,11 +76,11 @@ function centralCallBack( $data , $connection ) {
         $callResult = 'SolutionForest\OcppPhp\Ocpp\v16\CallResults\\' . $call;
 
         if (!class_exists($callResult)) {
-            $connection->send(new \WebSocket\Message\Text('{"error": "Unknown call"}' . "\n\n"));
+            sendWebSocketText($connection, '{"error": "Unknown call"}' . "\n\n");
             return;
         }
 
-        $callResult = new $callResult($message['messageId']);
+        $callResult = new $callResult($message['uniqueId']);
 
         switch ($callResult::class) {
             case BootNotification::class:
@@ -55,7 +94,7 @@ function centralCallBack( $data , $connection ) {
             case StatusNotification::class:
                 break;
             default:
-                $callResult = new NotImplementedError($message['messageId']);
+                $callResult = new NotImplementedError($message['uniqueId']);
                 break;
         }
 
@@ -65,7 +104,7 @@ function centralCallBack( $data , $connection ) {
         $response = $callResult->toArray();
         echo "Central System: Sending response: " . json_encode($response) . "\n\n";
 
-        $connection->send(new \WebSocket\Message\Text(json_encode($response)));
+        sendWebSocketText($connection, json_encode($response));
 }
 
 
@@ -79,10 +118,8 @@ $options = array_merge([
 // Initiate server.
 try {
     $server = new WebSocket\Server($options['port'], isset($options['ssl']));
-    $server
-        ->addMiddleware(new \WebSocket\Middleware\CloseHandler())
-        ->addMiddleware(new \WebSocket\Middleware\PingResponder())
-        ;
+    addWebSocketMiddleware($server, 'WebSocket\\Middleware\\CloseHandler');
+    addWebSocketMiddleware($server, 'WebSocket\\Middleware\\PingResponder');
 
     // If debug mode and logger is available
     if (isset($options['debug']) && class_exists('WebSocket\Test\EchoLog')) {
@@ -113,11 +150,11 @@ try {
             // Connection commands
             case '@close':
                 echo "< [{$connection->getRemoteName()}] Sending Close\n";
-                $connection->send(new \WebSocket\Message\Close());
+                sendWebSocketClose($connection);
                 break;
             case '@ping':
                 echo "< [{$connection->getRemoteName()}] Sending Ping\n";
-                $connection->send(new \WebSocket\Message\Ping());
+                sendWebSocketPing($connection);
                 break;
             case '@disconnect':
                 echo "< [{$connection->getRemoteName()}] Disconnecting\n";
@@ -135,7 +172,7 @@ try {
                 $msg .= "  - Timeout:     {$connection->getTimeout()}s\n";
                 $msg .= "  - Frame size:  {$connection->getFrameSize()}b\n";
                 echo "< [{$connection->getRemoteName()}] {$msg}";
-                $server->send(new \WebSocket\Message\Text($msg));
+                sendWebSocketText($server, $msg);
                 break;
 
             // Server commands
@@ -149,11 +186,11 @@ try {
                 break;
             case '@server-close':
                 echo "< [{$connection->getRemoteName()}] Broadcast Close\n";
-                $server->send(new \WebSocket\Message\Close());
+                sendWebSocketClose($server);
                 break;
             case '@server-ping':
                 echo "< [{$connection->getRemoteName()}] Broadcast Ping\n";
-                $server->send(new \WebSocket\Message\Ping());
+                sendWebSocketPing($server);
                 break;
             case '@server-disconnect':
                 echo "< [{$connection->getRemoteName()}] Disconnecting server\n";
@@ -168,7 +205,7 @@ try {
                 $msg .= "  - Timeout:     {$server->getTimeout()}s\n";
                 $msg .= "  - Frame size:  {$server->getFrameSize()}b\n";
                 echo "< [{$connection->getRemoteName()}] {$msg}";
-                $server->send(new \WebSocket\Message\Text($msg));
+                sendWebSocketText($server, $msg);
                 break;
 
             // Echo received message

@@ -11,9 +11,9 @@ abstract class Call extends Message
     public function __construct(?array $payload = null)
     {
         if (getenv('OCPP_MESSAGE_UUID', false)) {
-            $this->messageId = Uuid::uuid4()->toString();
+            $this->uniqueId = Uuid::uuid4()->toString();
         } else {
-            $this->messageId = mt_rand(9999999, 9999999999);
+            $this->uniqueId = (string) mt_rand(9999999, 9999999999);
         }
 
         if ($payload !== null) {
@@ -28,7 +28,7 @@ abstract class Call extends Message
     /**
      * Create a Call object from a raw OCPP message array.
      * 
-     * @param array $message The raw OCPP message [messageTypeID, messageId, action, payload]
+    * @param array $message The raw OCPP message [messageTypeID, UniqueId, action, payload]
      * @param string $version The OCPP version (e.g., 'v1.6', 'v2.0.1')
      * @return static
      * @throws \Exception
@@ -40,7 +40,7 @@ abstract class Call extends Message
         }
 
         $action = $message[2];
-        $messageId = $message[1];
+        $uniqueId = $message[1];
         $payload = $message[3] ?? [];
 
         $versionDir = str_replace('.', '', $version);
@@ -51,7 +51,7 @@ abstract class Call extends Message
         }
 
         $obj = new $class($payload);
-        $obj->messageId = $messageId;
+        $obj->uniqueId = $uniqueId;
 
         return $obj;
     }
@@ -63,7 +63,7 @@ abstract class Call extends Message
 
         return [
             $this->messageTypeID,
-            $this->messageId,
+            $this->uniqueId,
             $action,
             $payload,
         ];

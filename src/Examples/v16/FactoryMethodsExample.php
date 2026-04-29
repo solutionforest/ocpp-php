@@ -26,7 +26,7 @@ echo "--- Example 1: Creating Call from raw array ---\n";
 // This is how a raw OCPP Call message looks when received via WebSocket
 $rawBootNotification = [
     2,                          // messageTypeID (2 = Call)
-    "19223201",                 // messageId
+    "19223201",                 // UniqueId
     "BootNotification",         // action
     [                           // payload
         "chargePointVendor" => "VendorX",
@@ -37,13 +37,14 @@ $rawBootNotification = [
 ];
 
 // Using Call::fromArray() static method
+/** @var \SolutionForest\OcppPhp\Ocpp\v16\Calls\BootNotification $bootCall */
 $bootCall = Call::fromArray($rawBootNotification, 'v1.6');
 
 echo "Created BootNotification Call:\n";
 echo "  - Vendor: {$bootCall->chargePointVendor}\n";
 echo "  - Model: {$bootCall->chargePointModel}\n";
 echo "  - Serial: {$bootCall->chargePointSerialNumber}\n";
-echo "  - Message ID: {$bootCall->messageId}\n";
+echo "  - Unique ID: {$bootCall->uniqueId}\n";
 
 // Validate the object
 JsonSchemaValidator::validate($bootCall, 'v1.6');
@@ -63,7 +64,7 @@ $rawHeartbeat = [
 
 $heartbeatCall = $registry->createFromArray($rawHeartbeat, 'v1.6');
 echo "Created Heartbeat Call via registry\n";
-echo "  - Message ID: {$heartbeatCall->messageId}\n";
+echo "  - Unique ID: {$heartbeatCall->uniqueId}\n";
 echo "  - Type: " . get_class($heartbeatCall) . "\n\n";
 
 // ============================================
@@ -93,7 +94,7 @@ echo "--- Example 4: Creating CallResult from raw array ---\n";
 // This is how a raw OCPP CallResult message looks when received
 $rawBootResponse = [
     3,                          // messageTypeID (3 = CallResult)
-    "19223201",                 // messageId (matches the original Call)
+    "19223201",                 // UniqueId (matches the original Call)
     [                           // payload
         "status" => "Accepted",
         "currentTime" => date('c'),
@@ -102,12 +103,13 @@ $rawBootResponse = [
 ];
 
 // For CallResult, we need to specify which action this is a response to
+/** @var \SolutionForest\OcppPhp\Ocpp\v16\CallResults\BootNotification $bootResult */
 $bootResult = CallResult::fromArray($rawBootResponse, 'BootNotification', 'v1.6');
 
 echo "Created BootNotification CallResult:\n";
 echo "  - Status: {$bootResult->status}\n";
 echo "  - Interval: {$bootResult->interval}\n";
-echo "  - Message ID: {$bootResult->messageId}\n";
+echo "  - Unique ID: {$bootResult->uniqueId}\n";
 
 // Validate the object
 JsonSchemaValidator::validate($bootResult, 'v1.6');
@@ -127,6 +129,7 @@ $rawHeartbeatResponse = [
 ];
 
 // When using the registry, pass the action as third parameter
+/** @var \SolutionForest\OcppPhp\Ocpp\v16\CallResults\Heartbeat $heartbeatResult */
 $heartbeatResult = $registry->createFromArray($rawHeartbeatResponse, 'v1.6', 'Heartbeat');
 echo "Created Heartbeat CallResult via registry\n";
 echo "  - Current Time: {$heartbeatResult->currentTime}\n";

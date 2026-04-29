@@ -44,23 +44,25 @@ class JsonSchemaValidator
         if (!$validator->isValid()) {
             foreach ($validator->getErrors() as $error) {
 
-                $messageId = $message['messageId'] ?? null;
+                $uniqueId = is_array($message)
+                    ? ($message['uniqueId'] ?? $message['UniqueId'] ?? $message['messageId'] ?? $message[1] ?? null)
+                    : $message->getUniqueId();
                 $errorDetails = $error['message'];
 
 
                 switch ($error['constraint']) {
                     case 'type':
-                        return new TypeConstraintViolationError($messageId, null, null, [$errorDetails]);
+                        return new TypeConstraintViolationError($uniqueId, null, null, [$errorDetails]);
                     case 'additionalProperties':
-                        return new FormatViolationError($messageId, null, null, [$errorDetails]);
+                        return new FormatViolationError($uniqueId, null, null, [$errorDetails]);
                     case 'required':
-                        return new ProtocolError($messageId, null, null, [$errorDetails]);
+                        return new ProtocolError($uniqueId, null, null, [$errorDetails]);
                     case 'maxLength':
-                        return new TypeConstraintViolationError($messageId, null, null, [$errorDetails]);
+                        return new TypeConstraintViolationError($uniqueId, null, null, [$errorDetails]);
                     default:
                         $name = $error['property'];
                         $errorDetails = "Payload {$name} is not valid: " . $error['message'];
-                        return new FormatViolationError($messageId, null, null, [$errorDetails]);
+                        return new FormatViolationError($uniqueId, null, null, [$errorDetails]);
                 }
             }
         }

@@ -12,9 +12,9 @@ abstract class CallError extends Message
 
     public array $errorDetails = [];
 
-    public function __construct(string $messageId, ?string $errorCode = null, ?string $errorDescription = null, ?array $errorDetails = null)
+    public function __construct(string $uniqueId, ?string $errorCode = null, ?string $errorDescription = null, ?array $errorDetails = null)
     {
-        $this->messageId = $messageId;
+        $this->uniqueId = $uniqueId;
 
         if ($errorCode !== null) {
             $this->errorCode = $errorCode;
@@ -31,7 +31,7 @@ abstract class CallError extends Message
     {
         return [
             $this->messageTypeID,
-            $this->messageId,
+            $this->uniqueId,
             $this->errorCode,
             $this->errorDescription,
             (object) $this->errorDetails,

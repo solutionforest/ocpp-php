@@ -6,20 +6,20 @@ abstract class Message
 {
     public int $messageTypeID;
 
-    public string $messageId;
+    public string $uniqueId;
 
     public function getPayload(): object
     {
         $payload = (array) $this;
         $payload = array_filter($payload, function ($key) {
-            return !in_array($key, ['messageTypeID', 'messageId']);
+            return !in_array($key, ['messageTypeID', 'uniqueId']);
         }, ARRAY_FILTER_USE_KEY);
 
         return (object) $payload;
     }
 
-    public function getMessageId(): string
+    public function getUniqueId(): string
     {
-        return $this->messageId;
+        return $this->uniqueId;
     }
 }

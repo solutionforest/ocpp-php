@@ -13,8 +13,8 @@ class JsonSchemaRegistry
     /**
      * Create a Call or CallResult object from a raw OCPP message array.
      * 
-     * For Call messages: [2, messageId, action, payload]
-     * For CallResult messages: [3, messageId, payload] (requires action parameter)
+    * For Call messages: [2, UniqueId, action, payload]
+    * For CallResult messages: [3, UniqueId, payload] (requires action parameter)
      * 
      * @param array $message The raw OCPP message array
      * @param string $version The OCPP version (e.g., 'v1.6', 'v2.0.1')
@@ -127,7 +127,7 @@ class JsonSchemaRegistry
         }
 
         $action = $message[2];
-        $messageId = $message[1];
+        $uniqueId = $message[1];
         $payload = $message[3];
 
         $versionDir = str_replace('.', '', $version);
@@ -138,7 +138,7 @@ class JsonSchemaRegistry
         }
 
         $obj = new $class();
-        $obj->messageId = $messageId;
+        $obj->uniqueId = $uniqueId;
 
         foreach ($payload as $key => $value) {
             if (property_exists($obj, $key)) {
@@ -155,7 +155,7 @@ class JsonSchemaRegistry
             throw new \Exception("Invalid message type for CallResult");
         }
 
-        $messageId = $message[1];
+        $uniqueId = $message[1];
         $payload = $message[2];
 
         $versionDir = str_replace('.', '', $version);
@@ -165,7 +165,7 @@ class JsonSchemaRegistry
             throw new \Exception("Unknown call result action: {$action}");
         }
 
-        $obj = new $class($messageId);
+        $obj = new $class($uniqueId);
 
         foreach ($payload as $key => $value) {
             if (property_exists($obj, $key)) {

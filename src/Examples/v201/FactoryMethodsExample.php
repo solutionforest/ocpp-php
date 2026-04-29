@@ -26,7 +26,7 @@ echo "--- Example 1: Creating BootNotification Call from raw array ---\n";
 // This is how a raw OCPP 2.0.1 BootNotification looks
 $rawBootNotification = [
     2,                          // messageTypeID (2 = Call)
-    "boot-001",                 // messageId
+    "boot-001",                 // UniqueId
     "BootNotification",         // action
     [                           // payload (OCPP 2.0.1 format)
         "chargingStation" => [
@@ -41,7 +41,7 @@ $rawBootNotification = [
 $bootCall = Call::fromArray($rawBootNotification, 'v2.0.1');
 
 echo "Created BootNotification Call:\n";
-echo "  - Message ID: {$bootCall->messageId}\n";
+echo "  - Unique ID: {$bootCall->uniqueId}\n";
 echo "  - Type: " . get_class($bootCall) . "\n";
 
 // Validate the object
@@ -66,7 +66,7 @@ $rawHeartbeat = [
 
 $heartbeatCall = $registry->createFromArray($rawHeartbeat, 'v2.0.1');
 echo "Created Heartbeat Call via registry\n";
-echo "  - Message ID: {$heartbeatCall->messageId}\n";
+echo "  - Unique ID: {$heartbeatCall->uniqueId}\n";
 echo "  - Type: " . get_class($heartbeatCall) . "\n\n";
 
 // ============================================
@@ -76,7 +76,7 @@ echo "--- Example 3: Creating BootNotification CallResult from raw array ---\n";
 
 $rawBootResponse = [
     3,                          // messageTypeID (3 = CallResult)
-    "boot-001",                 // messageId
+    "boot-001",                 // UniqueId
     [                           // payload (OCPP 2.0.1 format)
         "status" => "Accepted",
         "currentTime" => date('c'),
@@ -85,12 +85,13 @@ $rawBootResponse = [
 ];
 
 // For CallResult, we need to specify which action this is a response to
+/** @var \SolutionForest\OcppPhp\Ocpp\v201\CallResults\BootNotification $bootResult */
 $bootResult = CallResult::fromArray($rawBootResponse, 'BootNotification', 'v2.0.1');
 
 echo "Created BootNotification CallResult:\n";
 echo "  - Status: {$bootResult->status}\n";
 echo "  - Interval: {$bootResult->interval}\n";
-echo "  - Message ID: {$bootResult->messageId}\n\n";
+echo "  - Unique ID: {$bootResult->uniqueId}\n\n";
 
 // ============================================
 // Example 4: StatusNotification (v2.0.1 format)
@@ -112,7 +113,7 @@ $rawStatusNotification = [
 $statusCall = Call::fromArray($rawStatusNotification, 'v2.0.1');
 echo "Created StatusNotification Call:\n";
 echo "  - Type: " . get_class($statusCall) . "\n";
-echo "  - Message ID: {$statusCall->messageId}\n\n";
+echo "  - Unique ID: {$statusCall->uniqueId}\n\n";
 
 // ============================================
 // Example 5: Handling unknown message types
@@ -143,7 +144,7 @@ $transactionCall = Call::fromArray($rawMessage, 'v2.0.1');
 echo "2. Parsed into: " . get_class($transactionCall) . "\n";
 
 // Step 4: Access typed properties (if they exist on the class)
-echo "3. Message ID: {$transactionCall->messageId}\n";
+echo "3. Unique ID: {$transactionCall->uniqueId}\n";
 
 // Step 5: Convert back for response
 $responseArray = $transactionCall->toArray();
