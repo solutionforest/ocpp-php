@@ -14,4 +14,5 @@ enum MessageTrigger: string
 	case MeterValues = 'MeterValues';
 	case SignChargePointCertificate = 'SignChargePointCertificate';
 	case StatusNotification = 'StatusNotification';
+	case DiagnosticsStatusNotification = 'DiagnosticsStatusNotification';
 }
