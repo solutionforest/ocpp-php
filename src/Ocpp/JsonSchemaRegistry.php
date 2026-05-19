@@ -70,12 +70,12 @@ class JsonSchemaRegistry
 
         $filePath = $this->getSchemaPath($filename, $version);
 
-        if (str_replace('.', '', $version) != "v16" && $type === 'Calls' && !str_contains($filename, $callsFilenamePostfix)) {
+        if (str_replace('.', '', $version) != "v16" && $type === 'Calls' && !str_ends_with($filename, $callsFilenamePostfix . '.json')) {
             $filename = preg_replace('/\.json$/', $callsFilenamePostfix . '.json', $filename);
             return $this->loadSchema($filename, $type, $version);
         }
 
-        if ($type === 'CallResults' && !str_contains($filename, $callResponseFilenamePostfix)) {
+        if ($type === 'CallResults' && !str_ends_with($filename, $callResponseFilenamePostfix . '.json')) {
             $filename = preg_replace('/\.json$/', $callResponseFilenamePostfix . '.json', $filename);
             return $this->loadSchema($filename, $type, $version);
         }
