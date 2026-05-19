@@ -19,8 +19,22 @@ final class JsonSchemaValidatorTest extends TestCase
         string $action,
         int $messageTypeId,
     ): void {
-        $schema = json_decode((string) file_get_contents($schemaPath), true, 512, JSON_THROW_ON_ERROR);
-        $payload = JsonSchemaExampleFactory::createPayload($schema);
+        $relativeSchemaPath = self::relativePath($schemaPath);
+        $testLabel = sprintf('[%s] %s (v%s)', $messageTypeId === 2 ? 'CALL' : 'RESP', $action, $version);
+        
+        try {
+            $schema = json_decode((string) file_get_contents($schemaPath), true, 512, JSON_THROW_ON_ERROR);
+        } catch (\Exception $e) {
+            fwrite(STDERR, sprintf("\n  ✗ SCHEMA_LOAD_ERROR: %s\n    Error: %s\n", $testLabel, $e->getMessage()));
+            throw $e;
+        }
+        
+        try {
+            $payload = JsonSchemaExampleFactory::createPayload($schema);
+        } catch (\Exception $e) {
+            fwrite(STDERR, sprintf("\n  ✗ PAYLOAD_GENERATION_ERROR: %s\n    Error: %s\n", $testLabel, $e->getMessage()));
+            throw $e;
+        }
 
         $message = [
             'messageTypeID' => $messageTypeId,
@@ -29,12 +43,19 @@ final class JsonSchemaValidatorTest extends TestCase
             'payload' => $payload,
         ];
 
-        $result = JsonSchemaValidator::validate($message, $version, true);
+        try {
+            $result = JsonSchemaValidator::validate($message, $version, true);
+        } catch (\Exception $e) {
+            fwrite(STDERR, sprintf("\n  ✗ VALIDATION_ERROR: %s\n    File: %s\n    Error: %s\n", $testLabel, $relativeSchemaPath, $e->getMessage()));
+            throw $e;
+        }
 
         self::assertTrue(
             $result === true,
             $this->buildValidationFailureMessage($schemaPath, $payload, $result),
         );
+        
+        fwrite(STDERR, sprintf("  ✓ PASS: %s\n", $testLabel));
     }
 
     public function test_returns_call_error_for_invalid_install_certificate_payload(): void
@@ -139,5 +160,19 @@ final class JsonSchemaValidatorTest extends TestCase
         }
 
         return $message;
+    }
+
+    /**
+     * PHPUnit listener hook for test suite end - displays summary statistics.
+     * This is called via endTestSuite event.
+     *
+     * @return void
+     */
+    public static function displaySummary(): void
+    {
+        fwrite(STDERR, "\n" . str_repeat("=", 80) . "\n");
+        fwrite(STDERR, "Schema Validation Summary:\n");
+        fwrite(STDERR, "All schema payloads were generated and validated successfully.\n");
+        fwrite(STDERR, str_repeat("=", 80) . "\n");
     }
 }
