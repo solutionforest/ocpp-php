@@ -219,7 +219,7 @@ final class CallErrorTest extends TestCase
         $this->assertEquals((object) ['detail' => 'extra'], $array[4]);
     }
 
-    public function test_validator_skips_call_error_objects(): void
+    public function test_validator_accepts_well_formed_call_error_objects(): void
     {
         $error = new NotImplementedError('test-id');
 
@@ -228,7 +228,7 @@ final class CallErrorTest extends TestCase
         $this->assertTrue($result);
     }
 
-    public function test_validator_skips_call_error_arrays(): void
+    public function test_validator_accepts_call_error_parsed_format(): void
     {
         $rawCallError = [
             'messageTypeID' => 4,
@@ -242,11 +242,55 @@ final class CallErrorTest extends TestCase
         $this->assertTrue($result);
     }
 
-    public function test_validator_skips_call_error_array_with_numeric_keys(): void
+    public function test_validator_accepts_call_error_wire_format(): void
     {
         $rawCallError = [4, 'test-id', 'NotImplemented', '', []];
 
         $result = JsonSchemaValidator::validate($rawCallError, 'v1.6');
+
+        $this->assertTrue($result);
+    }
+
+    public function test_validator_rejects_call_error_with_empty_error_code(): void
+    {
+        $error = new NotImplementedError('test-id');
+        // Override the errorCode to be empty — simulates a malformed CallError
+        $error->errorCode = '';
+
+        $result = JsonSchemaValidator::validate($error, 'v1.6', false);
+
+        $this->assertInstanceOf(ProtocolError::class, $result);
+        $this->assertStringContainsString('errorCode', $result->errorDetails[0]);
+    }
+
+    public function test_validator_throws_on_malformed_call_error_when_throw_enabled(): void
+    {
+        $error = new NotImplementedError('test-id');
+        $error->errorCode = '';
+
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('ProtocolError:');
+
+        JsonSchemaValidator::validate($error, 'v1.6', true);
+    }
+
+    public function test_validator_rejects_raw_array_type4_with_empty_error_code(): void
+    {
+        $raw = [4, 'test-id', '', '', []];
+
+        $result = JsonSchemaValidator::validate($raw, 'v1.6', false);
+
+        $this->assertInstanceOf(ProtocolError::class, $result);
+        $this->assertStringContainsString('errorCode', $result->errorDetails[0]);
+    }
+
+    public function test_validator_accepts_unknown_error_codes(): void
+    {
+        // Unknown error codes should still be accepted — they map to UnknownCallErrorCodeError
+        // and are structurally valid (non-empty errorCode string)
+        $raw = [4, 'test-id', 'SomeCustomError', 'Custom message', []];
+
+        $result = JsonSchemaValidator::validate($raw, 'v1.6');
 
         $this->assertTrue($result);
     }

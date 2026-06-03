@@ -22,14 +22,17 @@ class JsonSchemaValidator
     public static function validate(Call|CallResult|CallError|array $message, string $version, bool $throwException = true): bool|CallError
     {
         // CallError messages represent protocol-level error responses (e.g., NotImplemented).
-        // They have no payload to validate — the error code itself IS the message.
+        // They have no JSON schema to validate against — instead we verify they parse
+        // into a well-formed CallError with a recognized error structure.
         if ($message instanceof CallError) {
-            return true;
+            return self::validateCallErrorStructure($message, $throwException);
         }
 
-        // Raw array with messageTypeID=4 is also a CallError — skip validation.
+        // Raw array with messageTypeID=4 is a CallError. Parse it first so we validate
+        // its structure rather than blindly returning true.
         if (is_array($message) && ($message['messageTypeID'] ?? $message[0] ?? null) === 4) {
-            return true;
+            $callError = self::normalizeCallErrorArray($message);
+            return self::validateCallErrorStructure($callError, $throwException);
         }
 
         $registry = new JsonSchemaRegistry();
@@ -280,5 +283,80 @@ class JsonSchemaValidator
         }
 
         return is_array($current) ? $current : [];
+    }
+
+    /**
+     * Validate that a CallError has a well-formed structure.
+     *
+     * CallError messages don't have a JSON schema to validate against, but we
+     * verify basic structural integrity: a non-empty errorCode, a string
+     * errorDescription, and an array errorDetails.
+     */
+    private static function validateCallErrorStructure(CallError $callError, bool $throwException): bool|CallError
+    {
+        $errors = [];
+
+        if (!is_string($callError->errorCode) || $callError->errorCode === '') {
+            $errors[] = 'The property errorCode is required and must be a non-empty string';
+        }
+
+        if (isset($callError->errorDescription) && !is_string($callError->errorDescription)) {
+            $errors[] = 'The property errorDescription must be a string';
+        }
+
+        if (!is_array($callError->errorDetails)) {
+            $errors[] = 'The property errorDetails must be an array';
+        }
+
+        if ($errors !== []) {
+            $protocolError = new ProtocolError(
+                $callError->uniqueId,
+                null,
+                null,
+                $errors
+            );
+
+            if ($throwException) {
+                throw new \Exception(self::formatValidationExceptionMessage($protocolError));
+            }
+
+            return $protocolError;
+        }
+
+        return true;
+    }
+
+    /**
+     * Normalize a raw CallError array into a CallError object.
+     *
+     * Handles both the raw OCPP wire format [4, uniqueId, errorCode, ...]
+     * and the parsed message format ['messageTypeID' => 4, ...].
+     */
+    private static function normalizeCallErrorArray(array $message): CallError
+    {
+        // Raw OCPP wire format: [4, uniqueId, errorCode, errorDescription, errorDetails]
+        if (isset($message[0]) && $message[0] === 4) {
+            return CallError::fromArray($message);
+        }
+
+        // Parsed message format from parseJsonMessage:
+        // ['messageTypeID' => 4, 'uniqueId' => '...', 'action' => '...', 'payload' => [...]]
+        $uniqueId = $message['uniqueId'] ?? '';
+        $errorCode = $message['action'] ?? $message['errorCode'] ?? '';
+        $payload = $message['payload'] ?? [];
+
+        // The payload in parsed format may contain errorDescription and errorDetails
+        $errorDescription = '';
+        $errorDetails = [];
+
+        if (is_array($payload)) {
+            $errorDescription = $payload['errorDescription'] ?? '';
+            $errorDetails = $payload['errorDetails'] ?? [];
+        }
+
+        // Rebuild into raw format for CallError::fromArray
+        $raw = [4, $uniqueId, $errorCode, $errorDescription, $errorDetails];
+
+        return CallError::fromArray($raw);
     }
 }
