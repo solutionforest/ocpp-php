@@ -18,9 +18,7 @@ abstract class Call extends Message
 
         if ($payload !== null) {
             foreach ($payload as $key => $value) {
-                if (property_exists($this, $key)) {
-                    $this->$key = $value;
-                }
+                $this->setPayloadProperty($key, $value);
             }
         }
     }
