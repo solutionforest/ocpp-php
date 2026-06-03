@@ -3,26 +3,27 @@
 namespace SolutionForest\OcppPhp\Ocpp;
 
 use SolutionForest\OcppPhp\Ocpp\Messages\Call;
+use SolutionForest\OcppPhp\Ocpp\Messages\CallError;
 use SolutionForest\OcppPhp\Ocpp\Messages\CallResult;
-use SolutionForest\OcppPhp\Ocpp\Messages\Message;
 
 class JsonSchemaRegistry
 {
     private $schemaDirs = ['v1.6', 'v2.0.1'];
 
     /**
-     * Create a Call or CallResult object from a raw OCPP message array.
-     * 
+     * Create a Call, CallResult, or CallError object from a raw OCPP message array.
+     *
     * For Call messages: [2, UniqueId, action, payload]
     * For CallResult messages: [3, UniqueId, payload] (requires action parameter)
-     * 
+    * For CallError messages: [4, UniqueId, errorCode, errorDescription, errorDetails]
+     *
      * @param array $message The raw OCPP message array
      * @param string $version The OCPP version (e.g., 'v1.6', 'v2.0.1')
      * @param string|null $action Required for CallResult messages (the action name this is a response to)
-     * @return Call|CallResult
+     * @return Call|CallResult|CallError
      * @throws \Exception
      */
-    public function createFromArray(array $message, string $version, ?string $action = null): Call|CallResult
+    public function createFromArray(array $message, string $version, ?string $action = null): Call|CallResult|CallError
     {
         $messageType = $message[0] ?? null;
 
@@ -37,7 +38,11 @@ class JsonSchemaRegistry
             return CallResult::fromArray($message, $action, $version);
         }
 
-        throw new \Exception("Invalid message type: {$messageType}. Expected 2 (Call) or 3 (CallResult)");
+        if ($messageType === 4) {
+            return CallError::fromArray($message);
+        }
+
+        throw new \Exception("Invalid message type: {$messageType}. Expected 2 (Call), 3 (CallResult), or 4 (CallError)");
     }
 
     public function getSchema(Call|CallResult|array $message, string $version): array

@@ -11,8 +11,27 @@ use SolutionForest\OcppPhp\Ocpp\Messages\CallResult;
 
 class JsonSchemaValidator
 {
-    public static function validate(Call|CallResult|array $message, string $version, bool $throwException = true): bool|CallError
+    /**
+     * Validate an OCPP message payload against its JSON schema.
+     *
+     * @param Call|CallResult|CallError|array $message The message to validate
+     * @param string $version The OCPP version (e.g., 'v1.6', 'v2.0.1')
+     * @param bool $throwException Whether to throw an exception on validation failure
+     * @return bool|CallError Returns true if valid, or a CallError if invalid (when $throwException is false)
+     */
+    public static function validate(Call|CallResult|CallError|array $message, string $version, bool $throwException = true): bool|CallError
     {
+        // CallError messages represent protocol-level error responses (e.g., NotImplemented).
+        // They have no payload to validate — the error code itself IS the message.
+        if ($message instanceof CallError) {
+            return true;
+        }
+
+        // Raw array with messageTypeID=4 is also a CallError — skip validation.
+        if (is_array($message) && ($message['messageTypeID'] ?? $message[0] ?? null) === 4) {
+            return true;
+        }
+
         $registry = new JsonSchemaRegistry();
         $schema = $registry->getSchema($message, $version);
         $payload = is_array($message) ? $message['payload'] : $message->getPayload();

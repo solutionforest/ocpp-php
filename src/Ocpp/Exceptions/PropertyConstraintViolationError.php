@@ -4,8 +4,8 @@ namespace SolutionForest\OcppPhp\Ocpp\Exceptions;
 
 use SolutionForest\OcppPhp\Ocpp\Messages\CallError;
 
-class NotImplementedError extends CallError
+class PropertyConstraintViolationError extends CallError
 {
-    public string $errorCode = "NotImplemented";
-    public string $errorDescription = "Request Action is recognized but not supported by the receiver";
+    public string $errorCode = "PropertyConstraintViolation";
+    public string $errorDescription = "Payload for Action is syntactically correct but at least one of the fields violates property constraints";
 }
