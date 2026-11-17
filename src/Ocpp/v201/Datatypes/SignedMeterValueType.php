@@ -2,10 +2,12 @@
 
 namespace SolutionForest\OcppPhp\Ocpp\v201\Datatypes;
 
-class SignedMeterValueType
+use SolutionForest\OcppPhp\Ocpp\Datatype;
+
+class SignedMeterValueType extends Datatype
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData = null;
 
 	/**
 	 * Base64 encoded, contains the signed data which might contain more then just the meter value. It can contain information like timestamps, reference to a customer etc.

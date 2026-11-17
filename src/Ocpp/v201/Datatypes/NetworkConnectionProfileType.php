@@ -2,14 +2,15 @@
 
 namespace SolutionForest\OcppPhp\Ocpp\v201\Datatypes;
 
+use SolutionForest\OcppPhp\Ocpp\Datatype;
 use SolutionForest\OcppPhp\Ocpp\v201\Enums\OCPPInterface;
 use SolutionForest\OcppPhp\Ocpp\v201\Enums\OCPPTransport;
 use SolutionForest\OcppPhp\Ocpp\v201\Enums\OCPPVersion;
 
-class NetworkConnectionProfileType
+class NetworkConnectionProfileType extends Datatype
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData = null;
 
 	/**
 	 * APN
@@ -18,7 +19,7 @@ class NetworkConnectionProfileType
 	 *
 	 * NOTE: When asking a GSM modem to dial in, it is possible to specify which mobile operator should be used. This can be done with the mobile country code (MCC) in combination with a mobile network code (MNC). Example: If your preferred network is Vodafone Netherlands, the MCC=204 and the MNC=04 which means the key PreferredNetwork = 20404 Some modems allows to specify a preferred network, which means, if this network is not available, a different network is used. If you specify UseOnlyPreferredNetwork and this network is not available, the modem will not dial in.
 	 */
-	public ?array $apn = null;
+	public ?APNType $apn = null;
 
 	/**
 	 * Communication_ Function. OCPP_ Version. OCPP_ Version_ Code
@@ -63,5 +64,5 @@ class NetworkConnectionProfileType
 	 * urn:x-oca:ocpp:uid:2:233268
 	 * VPN Configuration settings
 	 */
-	public ?array $vpn = null;
+	public ?VPNType $vpn = null;
 }

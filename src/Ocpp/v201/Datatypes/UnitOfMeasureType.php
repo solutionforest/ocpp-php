@@ -2,10 +2,12 @@
 
 namespace SolutionForest\OcppPhp\Ocpp\v201\Datatypes;
 
-class UnitOfMeasureType
+use SolutionForest\OcppPhp\Ocpp\Datatype;
+
+class UnitOfMeasureType extends Datatype
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData = null;
 
 	/**
 	 * Unit of the value. Default = "Wh" if the (default) measurand is an "Energy" type.

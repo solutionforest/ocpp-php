@@ -2,13 +2,14 @@
 
 namespace SolutionForest\OcppPhp\Ocpp\v201\Datatypes;
 
+use SolutionForest\OcppPhp\Ocpp\Datatype;
 use SolutionForest\OcppPhp\Ocpp\v201\Enums\EventNotification;
 use SolutionForest\OcppPhp\Ocpp\v201\Enums\EventTrigger;
 
-class EventDataType
+class EventDataType extends Datatype
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData = null;
 
 	/**
 	 * Identifies the event. This field can be referred to as a cause by other events.
@@ -60,7 +61,7 @@ class EventDataType
 	/**
 	 * A physical or logical component
 	 */
-	public array $component;
+	public ComponentType $component;
 
 	/**
 	 * Identifies the VariableMonitoring which triggered the event.
@@ -75,5 +76,5 @@ class EventDataType
 	/**
 	 * Reference key to a component-variable.
 	 */
-	public array $variable;
+	public VariableType $variable;
 }

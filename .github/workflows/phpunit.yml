@@ -24,5 +24,17 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-interaction
 
+      - name: Check generated classes match the schemas
+        run: |
+          for version in v16 v201 v21; do
+            php src/Scripts/RunSchemaProcessor.php all "$version" > /dev/null
+          done
+          if [ -n "$(git status --porcelain -- src/Ocpp)" ]; then
+            echo "::error::Generated classes are out of date or were edited by hand. Run 'php src/Scripts/RunSchemaProcessor.php all <version>' and commit the result."
+            git status --short -- src/Ocpp
+            git --no-pager diff -- src/Ocpp
+            exit 1
+          fi
+
       - name: Run PHPUnit
         run: vendor/bin/phpunit

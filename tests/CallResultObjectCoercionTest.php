@@ -41,19 +41,20 @@ final class CallResultObjectCoercionTest extends TestCase
         $this->assertSame(1, $result->connectorId);
         $this->assertSame('2026-05-23T09:35:35Z', $result->scheduleStart);
 
-        // The key assertion: chargingSchedule should be an object, not an array
-        $this->assertIsObject($result->chargingSchedule);
-        $this->assertInstanceOf(\stdClass::class, $result->chargingSchedule);
+        // The key assertion: chargingSchedule is hydrated into its typed Datatype
+        $this->assertInstanceOf(\SolutionForest\OcppPhp\Ocpp\v16\Datatypes\ChargingSchedule::class, $result->chargingSchedule);
 
         // Nested properties should be accessible as object properties
         $this->assertSame(7200, $result->chargingSchedule->duration);
         $this->assertSame('A', $result->chargingSchedule->chargingRateUnit);
 
-        // Nested arrays (like chargingSchedulePeriod) should remain arrays
-        $this->assertIsArray($result->chargingSchedule->chargingSchedulePeriod);
+        // Nested lists are hydrated too, at every depth
         $this->assertCount(1, $result->chargingSchedule->chargingSchedulePeriod);
-        $this->assertSame(0, $result->chargingSchedule->chargingSchedulePeriod[0]['startPeriod']);
-        $this->assertSame(-1, $result->chargingSchedule->chargingSchedulePeriod[0]['limit']);
+        $period = $result->chargingSchedule->chargingSchedulePeriod[0];
+        $this->assertInstanceOf(\SolutionForest\OcppPhp\Ocpp\v16\Datatypes\ChargingSchedulePeriod::class, $period);
+        $this->assertSame(0, $period->startPeriod);
+        $this->assertSame(-1.0, $period->limit);
+        $this->assertSame(-1, $period->numberPhases);
     }
 
     public function test_start_transaction_object_coercion(): void

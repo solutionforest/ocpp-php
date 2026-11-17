@@ -9,6 +9,6 @@ class StartTransaction extends Call
 	public int $connectorId;
 	public string $idTag;
 	public int $meterStart;
-	public ?int $reservationId;
+	public ?int $reservationId = null;
 	public string $timestamp;
 }

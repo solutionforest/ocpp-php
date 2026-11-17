@@ -8,7 +8,7 @@ use SolutionForest\OcppPhp\Ocpp\v201\Enums\PublishFirmwareStatus;
 class PublishFirmwareStatusNotification extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?object $customData;
+	public ?object $customData = null;
 
 	/**
 	 * This contains the progress status of the publishfirmware
@@ -19,7 +19,7 @@ class PublishFirmwareStatusNotification extends Call
 	/**
 	 * Required if status is Published. Can be multiple URI’s, if the Local Controller supports e.g. HTTP, HTTPS, and FTP.
 	 */
-	public ?array $location;
+	public ?array $location = null;
 
 	/**
 	 * The request id that was
@@ -27,5 +27,5 @@ class PublishFirmwareStatusNotification extends Call
 	 * PublishFirmwareRequest which
 	 * triggered this action.
 	 */
-	public ?int $requestId;
+	public ?int $requestId = null;
 }

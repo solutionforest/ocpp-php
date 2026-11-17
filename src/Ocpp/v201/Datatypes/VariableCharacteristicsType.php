@@ -2,12 +2,13 @@
 
 namespace SolutionForest\OcppPhp\Ocpp\v201\Datatypes;
 
+use SolutionForest\OcppPhp\Ocpp\Datatype;
 use SolutionForest\OcppPhp\Ocpp\v201\Enums\Data;
 
-class VariableCharacteristicsType
+class VariableCharacteristicsType extends Datatype
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData = null;
 
 	/**
 	 * Unit of the variable. When the transmitted value has a unit, this field SHALL be included.
@@ -22,12 +23,12 @@ class VariableCharacteristicsType
 	/**
 	 * Minimum possible value of this variable.
 	 */
-	public ?int $minLimit = null;
+	public ?float $minLimit = null;
 
 	/**
 	 * Maximum possible value of this variable. When the datatype of this Variable is String, OptionList, SequenceList or MemberList, this field defines the maximum length of the (CSV) string.
 	 */
-	public ?int $maxLimit = null;
+	public ?float $maxLimit = null;
 
 	/**
 	 * Allowed values when variable is Option/Member/SequenceList.

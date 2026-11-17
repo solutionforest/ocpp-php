@@ -1,0 +1,35 @@
+<?php
+
+namespace SolutionForest\OcppPhp\Ocpp\v21\Datatypes;
+
+use SolutionForest\OcppPhp\Ocpp\Datatype;
+use SolutionForest\OcppPhp\Ocpp\v21\Enums\Attribute;
+
+class SetVariableDataType extends Datatype
+{
+	/**
+	 * Type of attribute: Actual, Target, MinSet, MaxSet. Default is Actual when omitted.
+	 */
+	public null|string|Attribute $attributeType = null;
+
+	/**
+	 * Value to be assigned to attribute of variable.
+	 * This value is allowed to be an empty string ("").
+	 *
+	 * The Configuration Variable <<configkey-configuration-value-size,ConfigurationValueSize>> can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valuesList. The max size of these values will always remain equal.
+	 */
+	public string $attributeValue;
+
+	/**
+	 * A physical or logical component
+	 */
+	public ComponentType $component;
+
+	/**
+	 * Reference key to a component-variable.
+	 */
+	public VariableType $variable;
+
+	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
+	public ?object $customData = null;
+}

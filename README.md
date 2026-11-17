@@ -6,7 +6,7 @@
 
 ---
 
-A PHP library for implementing the JSON version of the Open Charge Point Protocol (OCPP). This library supports **OCPP 1.6** (errata v4), **OCPP 2.0.1** (Edition 2 FINAL, 2022-12-15, and Edition 3 errata 2024-11).
+A PHP library for implementing the JSON version of the Open Charge Point Protocol (OCPP). This library supports **OCPP 1.6** (errata v4), **OCPP 2.0.1** (Edition 2 FINAL, 2022-12-15, and Edition 3 errata 2024-11) and **OCPP 2.1** (Edition 2 errata 2026-09).
 
 The purpose of this library is to provide the building blocks to construct a **charging station/charge point** and/or **charging station management system (CSMS)/central system**. It is not a complete solution but rather a flexible toolkit for developers to build OCPP-compliant systems.
 
@@ -14,7 +14,8 @@ The purpose of this library is to provide the building blocks to construct a **c
 
 ## Features
 
-- Full support for OCPP 1.6 and OCPP 2.0.1.
+- Full support for OCPP 1.6, OCPP 2.0.1 and OCPP 2.1.
+- OCPP 2.1 message types `SEND` (6) and `CALLRESULTERROR` (5), in addition to `CALL`, `CALLRESULT` and `CALLERROR`.
 - PHP implementation of essential OCPP components.
 - Modular and extensible architecture for building custom solutions.
 - WebSocket integration for real-time communication between charging stations and central systems.
@@ -22,6 +23,29 @@ The purpose of this library is to provide the building blocks to construct a **c
 ## Example
 
 Check the example here : https://github.com/solutionforest/ocpp-php/blob/main/src/Examples/
+
+Pass the version string matching the classes you use: `'v1.6'`, `'v2.0.1'` or `'v2.1'`.
+
+```php
+use SolutionForest\OcppPhp\Ocpp\JsonSchemaRegistry;
+use SolutionForest\OcppPhp\Ocpp\JsonSchemaValidator;
+
+$registry = new JsonSchemaRegistry();
+$message = $registry->createFromArray(
+    [2, 'boot-1', 'BootNotification', ['reason' => 'PowerUp', 'chargingStation' => ['model' => 'M1', 'vendorName' => 'Acme']]],
+    'v2.1'
+);
+
+JsonSchemaValidator::validate($message, 'v2.1'); // SolutionForest\OcppPhp\Ocpp\v21\Calls\BootNotification
+```
+
+## Generating classes from schemas
+
+The `Calls`, `CallResults`, `Datatypes`, `Enums` and `Interfaces` of each version are generated from the JSON schemas in `src/Ocpp/<version>/Schemas`:
+
+```bash
+php src/Scripts/RunSchemaProcessor.php all v21    # or: enum | datatype | dataclass | interface, and v16 | v201
+```
 
 ## Contribution
 

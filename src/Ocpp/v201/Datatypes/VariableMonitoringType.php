@@ -2,12 +2,13 @@
 
 namespace SolutionForest\OcppPhp\Ocpp\v201\Datatypes;
 
+use SolutionForest\OcppPhp\Ocpp\Datatype;
 use SolutionForest\OcppPhp\Ocpp\v201\Enums\Monitor;
 
-class VariableMonitoringType
+class VariableMonitoringType extends Datatype
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData = null;
 
 	/**
 	 * Identifies the monitor.
@@ -23,7 +24,7 @@ class VariableMonitoringType
 	 * Value for threshold or delta monitoring.
 	 * For Periodic or PeriodicClockAligned this is the interval in seconds.
 	 */
-	public int $value;
+	public float $value;
 
 	/**
 	 * The type of this monitor, e.g. a threshold, delta or periodic monitor.

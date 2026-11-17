@@ -7,7 +7,7 @@ use SolutionForest\OcppPhp\Ocpp\Messages\Call;
 class SetMonitoringLevel extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?object $customData;
+	public ?object $customData = null;
 
 	/**
 	 * The Charging Station SHALL only report events with a severity number lower than or equal to this severity.

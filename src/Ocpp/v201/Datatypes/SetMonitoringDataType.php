@@ -2,12 +2,13 @@
 
 namespace SolutionForest\OcppPhp\Ocpp\v201\Datatypes;
 
+use SolutionForest\OcppPhp\Ocpp\Datatype;
 use SolutionForest\OcppPhp\Ocpp\v201\Enums\Monitor;
 
-class SetMonitoringDataType
+class SetMonitoringDataType extends Datatype
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData = null;
 
 	/**
 	 * An id SHALL only be given to replace an existing monitor. The Charging Station handles the generation of id's for new monitors.
@@ -23,7 +24,7 @@ class SetMonitoringDataType
 	 * Value for threshold or delta monitoring.
 	 * For Periodic or PeriodicClockAligned this is the interval in seconds.
 	 */
-	public int $value;
+	public float $value;
 
 	/**
 	 * The type of this monitor, e.g. a threshold, delta or periodic monitor.
@@ -60,10 +61,10 @@ class SetMonitoringDataType
 	/**
 	 * A physical or logical component
 	 */
-	public array $component;
+	public ComponentType $component;
 
 	/**
 	 * Reference key to a component-variable.
 	 */
-	public array $variable;
+	public VariableType $variable;
 }

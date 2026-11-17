@@ -2,45 +2,26 @@
 
 namespace SolutionForest\OcppPhp\Ocpp\Messages;
 
+use SolutionForest\OcppPhp\Ocpp\HydratesProperties;
+
 abstract class Message
 {
+    // Payload values from json_decode(..., true) are hydrated into the typed
+    // properties: nested objects become the generated Datatype classes.
+    use HydratesProperties;
+
     public int $messageTypeID;
 
     public string $uniqueId;
 
-    /**
-     * Set a payload property value, coercing types when necessary.
-     *
-     * When json_decode is used with $assoc=true, JSON objects become PHP arrays.
-     * This method uses reflection to detect when a property is typed as `object`
-     * or `?object` and casts the array value to stdClass before assignment,
-     * preventing TypeError on PHP 8.2+.
-     */
-    protected function setPayloadProperty(string $key, mixed $value): void
-    {
-        if (!property_exists($this, $key)) {
-            return;
-        }
-
-        // If the value is an array and the property is typed as object/?object, cast it.
-        if (is_array($value)) {
-            $reflection = new \ReflectionProperty($this, $key);
-            $type = $reflection->getType();
-
-            if ($type instanceof \ReflectionNamedType && $type->getName() === 'object') {
-                $value = (object) $value;
-            }
-        }
-
-        $this->$key = $value;
-    }
-
     public function getPayload(): object
     {
         $payload = (array) $this;
-        $payload = array_filter($payload, function ($key) {
-            return !in_array($key, ['messageTypeID', 'uniqueId']);
-        }, ARRAY_FILTER_USE_KEY);
+        // Optional properties default to null; no OCPP schema allows null, so
+        // null means "absent" and is left out of the payload.
+        $payload = array_filter($payload, function ($value, $key) {
+            return !in_array($key, ['messageTypeID', 'uniqueId']) && $value !== null;
+        }, ARRAY_FILTER_USE_BOTH);
 
         return (object) $payload;
     }

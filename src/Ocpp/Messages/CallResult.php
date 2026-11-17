@@ -4,7 +4,7 @@ namespace SolutionForest\OcppPhp\Ocpp\Messages;
 
 abstract class CallResult extends Message
 {
-    public int $messageTypeID = 3;
+    public int $messageTypeID = MessageTypeId::CallResult->value;
 
     public function __construct(string $uniqueId, ?array $payload = null)
     {
@@ -28,8 +28,8 @@ abstract class CallResult extends Message
      */
     public static function fromArray(array $message, string $action, string $version): static
     {
-        if ($message[0] !== 3) {
-            throw new \Exception("Invalid message type for CallResult, expected 3 got {$message[0]}");
+        if (MessageTypeId::tryFromInt($message[0] ?? null) !== MessageTypeId::CallResult) {
+            throw new \Exception('Invalid message type for CallResult, expected 3 got ' . ($message[0] ?? 'null'));
         }
 
         $uniqueId = $message[1];

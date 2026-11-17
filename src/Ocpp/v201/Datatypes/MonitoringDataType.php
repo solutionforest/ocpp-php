@@ -2,19 +2,25 @@
 
 namespace SolutionForest\OcppPhp\Ocpp\v201\Datatypes;
 
-class MonitoringDataType
+use SolutionForest\OcppPhp\Ocpp\Attributes\ListOf;
+use SolutionForest\OcppPhp\Ocpp\Datatype;
+
+class MonitoringDataType extends Datatype
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData = null;
 
 	/**
 	 * A physical or logical component
 	 */
-	public array $component;
+	public ComponentType $component;
 
 	/**
 	 * Reference key to a component-variable.
 	 */
-	public array $variable;
+	public VariableType $variable;
+
+	/** @var list<VariableMonitoringType> */
+	#[ListOf(VariableMonitoringType::class)]
 	public array $variableMonitoring;
 }

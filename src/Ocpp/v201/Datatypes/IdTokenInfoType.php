@@ -2,12 +2,13 @@
 
 namespace SolutionForest\OcppPhp\Ocpp\v201\Datatypes;
 
+use SolutionForest\OcppPhp\Ocpp\Datatype;
 use SolutionForest\OcppPhp\Ocpp\v201\Enums\AuthorizationStatus;
 
-class IdTokenInfoType
+class IdTokenInfoType extends Datatype
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData = null;
 
 	/**
 	 * ID_ Token. Status. Authorization_ Status
@@ -43,7 +44,7 @@ class IdTokenInfoType
 	/**
 	 * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
 	 */
-	public ?array $groupIdToken = null;
+	public ?IdTokenType $groupIdToken = null;
 
 	/**
 	 * ID_ Token. Language2. Language_ Code
@@ -57,5 +58,5 @@ class IdTokenInfoType
 	 * urn:x-enexis:ecdm:uid:2:234490
 	 * Contains message details, for a message to be displayed on a Charging Station.
 	 */
-	public ?array $personalMessage = null;
+	public ?MessageContentType $personalMessage = null;
 }

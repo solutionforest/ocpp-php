@@ -3,21 +3,23 @@
 namespace SolutionForest\OcppPhp\Ocpp\v201\CallResults;
 
 use SolutionForest\OcppPhp\Ocpp\Messages\CallResult;
+use SolutionForest\OcppPhp\Ocpp\v201\Datatypes\IdTokenInfoType;
+use SolutionForest\OcppPhp\Ocpp\v201\Datatypes\MessageContentType;
 
 class TransactionEvent extends CallResult
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?object $customData;
+	public ?object $customData = null;
 
 	/**
 	 * SHALL only be sent when charging has ended. Final total cost of this transaction, including taxes. In the currency configured with the Configuration Variable: <<configkey-currency,`Currency`>>. When omitted, the transaction was NOT free. To indicate a free transaction, the CSMS SHALL send 0.00.
 	 */
-	public ?int $totalCost;
+	public ?float $totalCost = null;
 
 	/**
 	 * Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in <<transactioneventresponse,TransactionEventResponse>> is temporarily, so it may not be set in the <<cmn_idtokeninfotype,IdTokenInfoType>> afterwards. Also the chargingPriority in <<transactioneventresponse,TransactionEventResponse>> overrules the one in <<cmn_idtokeninfotype,IdTokenInfoType>>.
 	 */
-	public ?int $chargingPriority;
+	public ?int $chargingPriority = null;
 
 	/**
 	 * ID_ Token
@@ -25,12 +27,12 @@ class TransactionEvent extends CallResult
 	 * Contains status information about an identifier.
 	 * It is advised to not stop charging for a token that expires during charging, as ExpiryDate is only used for caching purposes. If ExpiryDate is not given, the status has no end date.
 	 */
-	public ?object $idTokenInfo;
+	public ?IdTokenInfoType $idTokenInfo = null;
 
 	/**
 	 * Message_ Content
 	 * urn:x-enexis:ecdm:uid:2:234490
 	 * Contains message details, for a message to be displayed on a Charging Station.
 	 */
-	public ?object $updatedPersonalMessage;
+	public ?MessageContentType $updatedPersonalMessage = null;
 }

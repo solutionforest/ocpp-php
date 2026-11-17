@@ -3,11 +3,6 @@
 namespace SolutionForest\OcppPhp\Ocpp\v201\Enums;
 
 /**
- * Values of the MessageTrigger field of a value in ExtendedTriggerMessage.
+ * @deprecated Use \SolutionForest\OcppPhp\Ocpp\Messages\MessageTypeId, shared by all OCPP versions.
  */
-enum MessageTypeId: int
-{
-    case Call = 2;
-    case CallResult = 3;
-    case CallError = 4;
-}
+class_alias(\SolutionForest\OcppPhp\Ocpp\Messages\MessageTypeId::class, MessageTypeId::class);

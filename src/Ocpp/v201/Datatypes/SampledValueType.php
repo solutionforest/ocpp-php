@@ -2,22 +2,23 @@
 
 namespace SolutionForest\OcppPhp\Ocpp\v201\Datatypes;
 
+use SolutionForest\OcppPhp\Ocpp\Datatype;
 use SolutionForest\OcppPhp\Ocpp\v201\Enums\Location;
 use SolutionForest\OcppPhp\Ocpp\v201\Enums\Measurand;
 use SolutionForest\OcppPhp\Ocpp\v201\Enums\Phase;
 use SolutionForest\OcppPhp\Ocpp\v201\Enums\ReadingContext;
 
-class SampledValueType
+class SampledValueType extends Datatype
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData = null;
 
 	/**
 	 * Sampled_ Value. Value. Measure
 	 * urn:x-oca:ocpp:uid:1:569260
 	 * Indicates the measured value.
 	 */
-	public int $value;
+	public float $value;
 
 	/**
 	 * Sampled_ Value. Context. Reading_ Context_ Code
@@ -50,10 +51,10 @@ class SampledValueType
 	/**
 	 * Represent a signed version of the meter value.
 	 */
-	public ?array $signedMeterValue = null;
+	public ?SignedMeterValueType $signedMeterValue = null;
 
 	/**
 	 * Represents a UnitOfMeasure with a multiplier
 	 */
-	public ?array $unitOfMeasure = null;
+	public ?UnitOfMeasureType $unitOfMeasure = null;
 }

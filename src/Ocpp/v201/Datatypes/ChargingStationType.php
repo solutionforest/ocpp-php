@@ -2,10 +2,12 @@
 
 namespace SolutionForest\OcppPhp\Ocpp\v201\Datatypes;
 
-class ChargingStationType
+use SolutionForest\OcppPhp\Ocpp\Datatype;
+
+class ChargingStationType extends Datatype
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData = null;
 
 	/**
 	 * Device. Serial_ Number. Serial_ Number
@@ -26,7 +28,7 @@ class ChargingStationType
 	 * urn:x-oca:ocpp:uid:2:233306
 	 * Defines parameters required for initiating and maintaining wireless communication with other devices.
 	 */
-	public ?array $modem = null;
+	public ?ModemType $modem = null;
 
 	/**
 	 * Identifies the vendor (not necessarily in a unique manner).

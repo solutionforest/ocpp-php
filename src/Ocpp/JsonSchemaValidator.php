@@ -8,6 +8,7 @@ use SolutionForest\OcppPhp\Ocpp\Exceptions\TypeConstraintViolationError;
 use SolutionForest\OcppPhp\Ocpp\Messages\Call;
 use SolutionForest\OcppPhp\Ocpp\Messages\CallError;
 use SolutionForest\OcppPhp\Ocpp\Messages\CallResult;
+use SolutionForest\OcppPhp\Ocpp\Messages\MessageTypeId;
 
 class JsonSchemaValidator
 {
@@ -28,9 +29,9 @@ class JsonSchemaValidator
             return self::validateCallErrorStructure($message, $throwException);
         }
 
-        // Raw array with messageTypeID=4 is a CallError. Parse it first so we validate
-        // its structure rather than blindly returning true.
-        if (is_array($message) && ($message['messageTypeID'] ?? $message[0] ?? null) === 4) {
+        // Raw array CallError or (OCPP 2.1) CallResultError. Parse it first so we
+        // validate its structure rather than blindly returning true.
+        if (is_array($message) && self::isErrorType($message['messageTypeID'] ?? $message[0] ?? null)) {
             $callError = self::normalizeCallErrorArray($message);
             return self::validateCallErrorStructure($callError, $throwException);
         }
@@ -138,6 +139,22 @@ class JsonSchemaValidator
 
     private static function normalizePayload(mixed $payload, array $schema, ?array $rootSchema = null): mixed
     {
+        // Enum-typed properties (e.g. BootReason::PowerUp) serialize to their backing value.
+        if ($payload instanceof \BackedEnum) {
+            return $payload->value;
+        }
+
+        // Datatypes serialize to their set properties (nulls omitted), as they go on the wire.
+        if ($payload instanceof \JsonSerializable) {
+            $payload = $payload->jsonSerialize();
+        }
+
+        // Objects (message payloads, stdClass, datatypes) are normalized like decoded arrays
+        // so nested arrays inside them are converted according to the schema too.
+        if (is_object($payload)) {
+            $payload = get_object_vars($payload);
+        }
+
         if (!is_array($payload)) {
             return $payload;
         }
@@ -285,6 +302,15 @@ class JsonSchemaValidator
         return is_array($current) ? $current : [];
     }
 
+    private static function isErrorType(mixed $messageTypeId): bool
+    {
+        return in_array(
+            MessageTypeId::tryFromInt($messageTypeId),
+            [MessageTypeId::CallError, MessageTypeId::CallResultError],
+            true,
+        );
+    }
+
     /**
      * Validate that a CallError has a well-formed structure.
      *
@@ -334,13 +360,14 @@ class JsonSchemaValidator
      */
     private static function normalizeCallErrorArray(array $message): CallError
     {
-        // Raw OCPP wire format: [4, uniqueId, errorCode, errorDescription, errorDetails]
-        if (isset($message[0]) && $message[0] === 4) {
+        // Raw OCPP wire format: [4|5, uniqueId, errorCode, errorDescription, errorDetails]
+        if (self::isErrorType($message[0] ?? null)) {
             return CallError::fromArray($message);
         }
 
         // Parsed message format from parseJsonMessage:
-        // ['messageTypeID' => 4, 'uniqueId' => '...', 'action' => '...', 'payload' => [...]]
+        // ['messageTypeID' => 4|5, 'uniqueId' => '...', 'action' => '...', 'payload' => [...]]
+        $messageTypeId = $message['messageTypeID'] ?? MessageTypeId::CallError->value;
         $uniqueId = $message['uniqueId'] ?? '';
         $errorCode = $message['action'] ?? $message['errorCode'] ?? '';
         $payload = $message['payload'] ?? [];
@@ -355,7 +382,7 @@ class JsonSchemaValidator
         }
 
         // Rebuild into raw format for CallError::fromArray
-        $raw = [4, $uniqueId, $errorCode, $errorDescription, $errorDetails];
+        $raw = [$messageTypeId, $uniqueId, $errorCode, $errorDescription, $errorDetails];
 
         return CallError::fromArray($raw);
     }

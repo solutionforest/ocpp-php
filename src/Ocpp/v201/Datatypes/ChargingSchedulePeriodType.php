@@ -2,10 +2,12 @@
 
 namespace SolutionForest\OcppPhp\Ocpp\v201\Datatypes;
 
-class ChargingSchedulePeriodType
+use SolutionForest\OcppPhp\Ocpp\Datatype;
+
+class ChargingSchedulePeriodType extends Datatype
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData = null;
 
 	/**
 	 * Charging_ Schedule_ Period. Start_ Period. Elapsed_ Time
@@ -19,7 +21,7 @@ class ChargingSchedulePeriodType
 	 * urn:x-oca:ocpp:uid:1:569241
 	 * Charging rate limit during the schedule period, in the applicable chargingRateUnit, for example in Amperes (A) or Watts (W). Accepts at most one digit fraction (e.g. 8.1).
 	 */
-	public int $limit;
+	public float $limit;
 
 	/**
 	 * Charging_ Schedule_ Period. Number_ Phases. Counter

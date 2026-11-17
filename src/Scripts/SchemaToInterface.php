@@ -15,6 +15,7 @@ class SchemaToInterface extends SchemaProcessor
     {
         $this->readVersion();
         $schemas = glob(__DIR__ . $this->basepath . "/Schemas/*.json");
+        sort($schemas);
 
         $this->interface = new InterfaceType('OcppServiceInterface');
         foreach ($schemas as $schema) {

@@ -6,5 +6,5 @@ use SolutionForest\OcppPhp\Ocpp\Messages\CallResult;
 
 class GetDiagnostics extends CallResult
 {
-	public ?string $fileName;
+	public ?string $fileName = null;
 }

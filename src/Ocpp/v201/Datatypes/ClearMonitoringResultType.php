@@ -2,12 +2,13 @@
 
 namespace SolutionForest\OcppPhp\Ocpp\v201\Datatypes;
 
+use SolutionForest\OcppPhp\Ocpp\Datatype;
 use SolutionForest\OcppPhp\Ocpp\v201\Enums\ClearMonitoringStatus;
 
-class ClearMonitoringResultType
+class ClearMonitoringResultType extends Datatype
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData = null;
 
 	/**
 	 * Result of the clear request for this monitor, identified by its Id.
@@ -22,5 +23,5 @@ class ClearMonitoringResultType
 	/**
 	 * Element providing more information about the status.
 	 */
-	public ?array $statusInfo = null;
+	public ?StatusInfoType $statusInfo = null;
 }
