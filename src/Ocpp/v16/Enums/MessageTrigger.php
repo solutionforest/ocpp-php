@@ -3,7 +3,7 @@
 namespace SolutionForest\OcppPhp\Ocpp\v16\Enums;
 
 /**
- * Values of the MessageTrigger field of a value in ExtendedTriggerMessage.
+ * Values of the MessageTrigger field of a value in ExtendedTriggerMessage , TriggerMessage.
  */
 enum MessageTrigger: string
 {

@@ -1,0 +1,17 @@
+<?php
+
+namespace SolutionForest\OcppPhp\Ocpp\v21\CallResults;
+
+use SolutionForest\OcppPhp\Ocpp\Attributes\ListOf;
+use SolutionForest\OcppPhp\Ocpp\Messages\CallResult;
+use SolutionForest\OcppPhp\Ocpp\v21\Datatypes\GetVariableResultType;
+
+class GetVariables extends CallResult
+{
+	/** @var list<GetVariableResultType> */
+	#[ListOf(GetVariableResultType::class)]
+	public array $getVariableResult;
+
+	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
+	public ?object $customData = null;
+}

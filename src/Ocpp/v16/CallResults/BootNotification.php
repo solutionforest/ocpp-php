@@ -3,10 +3,11 @@
 namespace SolutionForest\OcppPhp\Ocpp\v16\CallResults;
 
 use SolutionForest\OcppPhp\Ocpp\Messages\CallResult;
+use SolutionForest\OcppPhp\Ocpp\v16\Enums\RegistrationStatus;
 
 class BootNotification extends CallResult
 {
-	public string $status;
+	public string|RegistrationStatus $status;
 	public string $currentTime;
 	public int $interval;
 }

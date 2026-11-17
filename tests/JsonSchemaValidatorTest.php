@@ -20,7 +20,7 @@ final class JsonSchemaValidatorTest extends TestCase
         int $messageTypeId,
     ): void {
         $relativeSchemaPath = self::relativePath($schemaPath);
-        $testLabel = sprintf('[%s] %s (v%s)', $messageTypeId === 2 ? 'CALL' : 'RESP', $action, $version);
+        $testLabel = sprintf('[%s] %s (v%s)', match ($messageTypeId) { 2 => 'CALL', 6 => 'SEND', default => 'RESP' }, $action, $version);
         
         try {
             $schema = json_decode((string) file_get_contents($schemaPath), true, 512, JSON_THROW_ON_ERROR);
@@ -112,6 +112,7 @@ final class JsonSchemaValidatorTest extends TestCase
         $schemaFiles = array_merge(
             glob(dirname(__DIR__) . '/src/Ocpp/v16/Schemas/*.json') ?: [],
             glob(dirname(__DIR__) . '/src/Ocpp/v201/Schemas/*.json') ?: [],
+            glob(dirname(__DIR__) . '/src/Ocpp/v21/Schemas/*.json') ?: [],
         );
 
         sort($schemaFiles);
@@ -126,9 +127,13 @@ final class JsonSchemaValidatorTest extends TestCase
     {
         $filename = pathinfo($schemaPath, PATHINFO_FILENAME);
         $isResponse = str_ends_with($filename, 'Response');
-        $version = str_contains($schemaPath, '/v201/') ? 'v2.0.1' : 'v1.6';
+        $version = match (true) {
+            str_contains($schemaPath, '/v21/') => 'v2.1',
+            str_contains($schemaPath, '/v201/') => 'v2.0.1',
+            default => 'v1.6',
+        };
 
-        if ($version === 'v2.0.1') {
+        if ($version !== 'v1.6') {
             $action = preg_replace('/(Request|Response)$/', '', $filename);
         } else {
             $action = $isResponse ? preg_replace('/Response$/', '', $filename) : $filename;
@@ -138,7 +143,10 @@ final class JsonSchemaValidatorTest extends TestCase
             throw new RuntimeException("Unable to derive action for schema {$schemaPath}");
         }
 
-        return [$version, $action, $isResponse ? 3 : 2];
+        // From OCPP 2.x, a schema without Request/Response suffix is a SEND message (6).
+        $isSend = $version !== 'v1.6' && !preg_match('/(Request|Response)$/', $filename);
+
+        return [$version, $action, $isResponse ? 3 : ($isSend ? 6 : 2)];
     }
 
     private static function relativePath(string $schemaPath): string

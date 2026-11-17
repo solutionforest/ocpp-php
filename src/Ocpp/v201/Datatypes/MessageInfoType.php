@@ -2,18 +2,19 @@
 
 namespace SolutionForest\OcppPhp\Ocpp\v201\Datatypes;
 
+use SolutionForest\OcppPhp\Ocpp\Datatype;
 use SolutionForest\OcppPhp\Ocpp\v201\Enums\MessagePriority;
 use SolutionForest\OcppPhp\Ocpp\v201\Enums\MessageState;
 
-class MessageInfoType
+class MessageInfoType extends Datatype
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData = null;
 
 	/**
 	 * A physical or logical component
 	 */
-	public ?array $display = null;
+	public ?ComponentType $display = null;
 
 	/**
 	 * Identified_ Object. MRID. Numeric_ Identifier
@@ -62,5 +63,5 @@ class MessageInfoType
 	 * urn:x-enexis:ecdm:uid:2:234490
 	 * Contains message details, for a message to be displayed on a Charging Station.
 	 */
-	public array $message;
+	public MessageContentType $message;
 }

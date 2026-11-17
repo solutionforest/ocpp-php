@@ -6,5 +6,5 @@ use SolutionForest\OcppPhp\Ocpp\Messages\Call;
 
 class GetConfiguration extends Call
 {
-	public ?array $key;
+	public ?array $key = null;
 }

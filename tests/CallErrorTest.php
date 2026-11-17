@@ -185,7 +185,7 @@ final class CallErrorTest extends TestCase
     public function test_from_array_throws_on_invalid_message_type(): void
     {
         $this->expectException(\Exception::class);
-        $this->expectExceptionMessage('Invalid message type for CallError, expected 4 got 3');
+        $this->expectExceptionMessage('Invalid message type for CallError, expected 4 or 5 got 3');
 
         CallError::fromArray([3, 'test-id', ['status' => 'Accepted']]);
     }

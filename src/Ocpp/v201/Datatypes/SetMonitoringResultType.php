@@ -2,13 +2,14 @@
 
 namespace SolutionForest\OcppPhp\Ocpp\v201\Datatypes;
 
+use SolutionForest\OcppPhp\Ocpp\Datatype;
 use SolutionForest\OcppPhp\Ocpp\v201\Enums\Monitor;
 use SolutionForest\OcppPhp\Ocpp\v201\Enums\SetMonitoringStatus;
 
-class SetMonitoringResultType
+class SetMonitoringResultType extends Datatype
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData = null;
 
 	/**
 	 * Id given to the VariableMonitor by the Charging Station. The Id is only returned when status is accepted. Installed VariableMonitors should have unique id's but the id's of removed Installed monitors should have unique id's but the id's of removed monitors MAY be reused.
@@ -18,7 +19,7 @@ class SetMonitoringResultType
 	/**
 	 * Element providing more information about the status.
 	 */
-	public ?array $statusInfo = null;
+	public ?StatusInfoType $statusInfo = null;
 
 	/**
 	 * Status is OK if a value could be returned. Otherwise this will indicate the reason why a value could not be returned.
@@ -33,12 +34,12 @@ class SetMonitoringResultType
 	/**
 	 * A physical or logical component
 	 */
-	public array $component;
+	public ComponentType $component;
 
 	/**
 	 * Reference key to a component-variable.
 	 */
-	public array $variable;
+	public VariableType $variable;
 
 	/**
 	 * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.

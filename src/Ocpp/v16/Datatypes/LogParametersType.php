@@ -2,7 +2,9 @@
 
 namespace SolutionForest\OcppPhp\Ocpp\v16\Datatypes;
 
-class LogParametersType
+use SolutionForest\OcppPhp\Ocpp\Datatype;
+
+class LogParametersType extends Datatype
 {
 	public string $remoteLocation;
 	public ?string $oldestTimestamp = null;

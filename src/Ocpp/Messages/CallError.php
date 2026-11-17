@@ -18,7 +18,7 @@ use SolutionForest\OcppPhp\Ocpp\Exceptions\UnknownCallErrorCodeError;
 
 abstract class CallError extends Message
 {
-    public int $messageTypeID = 4;
+    public int $messageTypeID = MessageTypeId::CallError->value;
 
     public string $errorCode;
 
@@ -65,13 +65,18 @@ abstract class CallError extends Message
     /**
      * Create a CallError object from a raw OCPP message array.
      *
-     * @param array $message The raw OCPP message [4, UniqueId, errorCode, errorDescription, errorDetails]
+     * Accepts both CALLERROR (4) and, for OCPP 2.1, CALLRESULTERROR (5) messages.
+     * The original message type is preserved so toArray() round-trips correctly.
+     *
+     * @param array $message The raw OCPP message [4|5, UniqueId, errorCode, errorDescription, errorDetails]
      * @return static
      */
     public static function fromArray(array $message): static
     {
-        if ($message[0] !== 4) {
-            throw new \Exception("Invalid message type for CallError, expected 4 got {$message[0]}");
+        $type = MessageTypeId::tryFromInt($message[0] ?? null);
+
+        if (!in_array($type, [MessageTypeId::CallError, MessageTypeId::CallResultError], true)) {
+            throw new \Exception('Invalid message type for CallError, expected 4 or 5 got ' . ($message[0] ?? 'null'));
         }
 
         $uniqueId = $message[1];
@@ -83,11 +88,21 @@ abstract class CallError extends Message
 
         /** @var static $instance */
         $instance = new $class($uniqueId);
+        $instance->messageTypeID = $type->value;
         $instance->errorCode = $errorCode;
         $instance->errorDescription = $errorDescription;
         $instance->errorDetails = (array) $errorDetails;
 
         return $instance;
+    }
+
+    /**
+     * OCPP 2.1 CALLRESULTERROR (5): reports an error while processing a CALLRESULT.
+     * Same structure and error codes as a CALLERROR (4).
+     */
+    public function isCallResultError(): bool
+    {
+        return $this->messageTypeID === MessageTypeId::CallResultError->value;
     }
 
     public function toArray(): array

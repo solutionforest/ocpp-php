@@ -1,0 +1,17 @@
+<?php
+
+namespace SolutionForest\OcppPhp\Ocpp\v21\CallResults;
+
+use SolutionForest\OcppPhp\Ocpp\Attributes\ListOf;
+use SolutionForest\OcppPhp\Ocpp\Messages\CallResult;
+use SolutionForest\OcppPhp\Ocpp\v21\Datatypes\ClearMonitoringResultType;
+
+class ClearVariableMonitoring extends CallResult
+{
+	/** @var list<ClearMonitoringResultType> */
+	#[ListOf(ClearMonitoringResultType::class)]
+	public array $clearMonitoringResult;
+
+	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
+	public ?object $customData = null;
+}

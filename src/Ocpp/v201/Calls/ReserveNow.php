@@ -3,12 +3,13 @@
 namespace SolutionForest\OcppPhp\Ocpp\v201\Calls;
 
 use SolutionForest\OcppPhp\Ocpp\Messages\Call;
+use SolutionForest\OcppPhp\Ocpp\v201\Datatypes\IdTokenType;
 use SolutionForest\OcppPhp\Ocpp\v201\Enums\Connector;
 
 class ReserveNow extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?object $customData;
+	public ?object $customData = null;
 
 	/**
 	 * Id of reservation.
@@ -23,20 +24,20 @@ class ReserveNow extends Call
 	/**
 	 * This field specifies the connector type.
 	 */
-	public null|string|Connector $connectorType;
+	public null|string|Connector $connectorType = null;
 
 	/**
 	 * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
 	 */
-	public object $idToken;
+	public IdTokenType $idToken;
 
 	/**
 	 * This contains ID of the evse to be reserved.
 	 */
-	public ?int $evseId;
+	public ?int $evseId = null;
 
 	/**
 	 * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
 	 */
-	public ?object $groupIdToken;
+	public ?IdTokenType $groupIdToken = null;
 }

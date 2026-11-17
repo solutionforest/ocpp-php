@@ -2,12 +2,13 @@
 
 namespace SolutionForest\OcppPhp\Ocpp\v201\Datatypes;
 
+use SolutionForest\OcppPhp\Ocpp\Datatype;
 use SolutionForest\OcppPhp\Ocpp\v201\Enums\Attribute;
 
-class SetVariableDataType
+class SetVariableDataType extends Datatype
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?array $customData = null;
+	public ?object $customData = null;
 
 	/**
 	 * Type of attribute: Actual, Target, MinSet, MaxSet. Default is Actual when omitted.
@@ -24,10 +25,10 @@ class SetVariableDataType
 	/**
 	 * A physical or logical component
 	 */
-	public array $component;
+	public ComponentType $component;
 
 	/**
 	 * Reference key to a component-variable.
 	 */
-	public array $variable;
+	public VariableType $variable;
 }

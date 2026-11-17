@@ -7,7 +7,7 @@ use SolutionForest\OcppPhp\Ocpp\Messages\Call;
 class UpdateFirmware extends Call
 {
 	public string $location;
-	public ?int $retries;
+	public ?int $retries = null;
 	public string $retrieveDate;
-	public ?int $retryInterval;
+	public ?int $retryInterval = null;
 }

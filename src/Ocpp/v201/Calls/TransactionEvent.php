@@ -2,21 +2,29 @@
 
 namespace SolutionForest\OcppPhp\Ocpp\v201\Calls;
 
+use SolutionForest\OcppPhp\Ocpp\Attributes\ListOf;
 use SolutionForest\OcppPhp\Ocpp\Messages\Call;
-use SolutionForest\OcppPhp\Ocpp\v201\Enums\TransactionEvent;
+use SolutionForest\OcppPhp\Ocpp\v201\Datatypes\EVSEType;
+use SolutionForest\OcppPhp\Ocpp\v201\Datatypes\IdTokenType;
+use SolutionForest\OcppPhp\Ocpp\v201\Datatypes\MeterValueType;
+use SolutionForest\OcppPhp\Ocpp\v201\Datatypes\TransactionType;
+use SolutionForest\OcppPhp\Ocpp\v201\Enums\TransactionEvent as TransactionEventEnum;
 use SolutionForest\OcppPhp\Ocpp\v201\Enums\TriggerReason;
 
 class TransactionEvent extends Call
 {
 	/** This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data. */
-	public ?object $customData;
+	public ?object $customData = null;
 
 	/**
 	 * This contains the type of this event.
 	 * The first TransactionEvent of a transaction SHALL contain: "Started" The last TransactionEvent of a transaction SHALL contain: "Ended" All others SHALL contain: "Updated"
 	 */
-	public string|TransactionEvent $eventType;
-	public ?array $meterValue;
+	public string|TransactionEventEnum $eventType;
+
+	/** @var list<MeterValueType>|null */
+	#[ListOf(MeterValueType::class)]
+	public ?array $meterValue = null;
 
 	/**
 	 * The date and time at which this transaction event occurred.
@@ -36,38 +44,38 @@ class TransactionEvent extends Call
 	/**
 	 * Indication that this transaction event happened when the Charging Station was offline. Default = false, meaning: the event occurred when the Charging Station was online.
 	 */
-	public ?bool $offline;
+	public ?bool $offline = null;
 
 	/**
 	 * If the Charging Station is able to report the number of phases used, then it SHALL provide it. When omitted the CSMS may be able to determine the number of phases used via device management.
 	 */
-	public ?int $numberOfPhasesUsed;
+	public ?int $numberOfPhasesUsed = null;
 
 	/**
 	 * The maximum current of the connected cable in Ampere (A).
 	 */
-	public ?int $cableMaxCurrent;
+	public ?int $cableMaxCurrent = null;
 
 	/**
 	 * This contains the Id of the reservation that terminates as a result of this transaction.
 	 */
-	public ?int $reservationId;
+	public ?int $reservationId = null;
 
 	/**
 	 * Transaction
 	 * urn:x-oca:ocpp:uid:2:233318
 	 */
-	public object $transactionInfo;
+	public TransactionType $transactionInfo;
 
 	/**
 	 * EVSE
 	 * urn:x-oca:ocpp:uid:2:233123
 	 * Electric Vehicle Supply Equipment
 	 */
-	public ?object $evse;
+	public ?EVSEType $evse = null;
 
 	/**
 	 * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
 	 */
-	public ?object $idToken;
+	public ?IdTokenType $idToken = null;
 }

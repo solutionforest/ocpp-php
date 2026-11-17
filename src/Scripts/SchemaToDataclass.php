@@ -24,9 +24,11 @@ class SchemaToDataclass extends SchemaProcessor
         $schemaContent = json_decode(file_get_contents($schema), true);
 
         $title = $this->getNameFromSchema($schema);
+        $schemaName = $title;
 
         $call = false;
         $callResult = false;
+        $send = false;
         $calls = [];
         $callResults = [];
 
@@ -38,15 +40,18 @@ class SchemaToDataclass extends SchemaProcessor
             $title = substr($title, 0, -8);
         } else {
             $call = true;
+            // OCPP 1.6 requests have no suffix. From OCPP 2.x, a schema without
+            // Request/Response suffix is a one-way SEND message (e.g. NotifyPeriodicEventStream).
+            $send = $this->version !== 'v16';
         }
 
         if (!isset($schemaContent["properties"])) {
             $class = new ClassType($title);
         } else {
-            $class = $this->mapPropertiesToClass($schemaContent, $title, $schemaContent);
+            $class = $this->mapPropertiesToClass($schemaContent, $title, $schemaContent, $schemaName);
         }
 
-        $class->setExtends($call ? 'Call' : 'CallResult');
+        $class->setExtends($send ? 'Send' : ($call ? 'Call' : 'CallResult'));
 
         if ($call) {
             $calls[] = $class;
